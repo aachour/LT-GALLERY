@@ -20,11 +20,14 @@
     <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
     <link rel="stylesheet" type="text/css" href="../../static/css/cms.css"/>
     <link rel="stylesheet" type="text/css" href="../../static/css/popup.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/jquery-ui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/select2.min.css"/>
     
     <script type='text/javascript' src='../../static/js/jquery.js'></script>
     <script type="text/javascript" src="../../static/js/jquery-ui.js"></script>
-    
+    <script type="text/javascript" src="../../static/js/select2.min.js"></script>
 </head>
+
 
 <body>
 

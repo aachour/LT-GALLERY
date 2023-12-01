@@ -265,14 +265,14 @@ CropAvatar.prototype = {
 	ajaxUpload: function () {
 
 		if(cropImageOption==1){
-			$(".avatar-directory").val("aboutus-images");
+			$(".avatar-directory").val("aboutus");
 			$(".avatar-width").val("500");
 			$(".avatar-height").val("500");
 		}
 		else if(cropImageOption==2){
-			$(".avatar-directory").val("publication-images");
-			$(".avatar-width").val("500");
-			$(".avatar-height").val("500");
+			$(".avatar-directory").val("exebitions");
+			$(".avatar-width").val("1000");
+			$(".avatar-height").val("660");
 		}
 		else if(cropImageOption==3){
 			$(".avatar-directory").val("publication-images");
@@ -280,7 +280,7 @@ CropAvatar.prototype = {
 			$(".avatar-height").val("");
 		}
 		else if(cropImageOption==4){
-			$(".avatar-directory").val("topbanner-images");
+			$(".avatar-directory").val("topbanner");
 			$(".avatar-width").val("2000");
 			$(".avatar-height").val("650");
 		}
@@ -373,25 +373,25 @@ CropAvatar.prototype = {
 		this.$avatarPreview.html("");
 
 		if(cropImageOption=="1"){
-			var image=imageUrl.replace("../../aboutus-images/images/","");
+			var image=imageUrl.replace("../../aboutus/images/","");
 			$("#imageTxt").val("Image uploaded");
 			$("#image").val(image);
 			$("#imageViewDelete").removeClass("hidden");
-			$("#imageViewDelete").find("#imageView").attr("href","../../aboutus-images/images/"+image);
+			$("#imageViewDelete").find("#imageView").attr("href","../../aboutus/images/"+image);
 		}
 		else if(cropImageOption=="2" || cropImageOption=="3"){
-			var image=imageUrl.replace("../../publication-images/images/",""); 
+			var image=imageUrl.replace("../../exebitions/images/",""); 
 			$("#imageTxt").val("Image uploaded");
 			$("#image").val(image);
 			$("#imageViewDelete").removeClass("hidden");
-			$("#imageViewDelete").find("#imageView").attr("href","../../publication-images/images/"+image);
+			$("#imageViewDelete").find("#imageView").attr("href","../../exebitions/images/"+image);
 		}
 		if(cropImageOption=="4"){
-			var image=imageUrl.replace("../../topbanner-images/images/","");
+			var image=imageUrl.replace("../../topbanner/images/","");
 			$("#imageTxt").val("Image uploaded");
 			$("#image").val(image);
 			$("#imageViewDelete").removeClass("hidden");
-			$("#imageViewDelete").find("#imageView").attr("href","../../topbanner-images/images/"+image);
+			$("#imageViewDelete").find("#imageView").attr("href","../../topbanner/images/"+image);
 		}
 	},
 
@@ -419,9 +419,9 @@ CropAvatar.prototype = {
 			return new CropAvatar($("#crop-avatar"));
 		});
 
-		$("#publicationBrowseBtn").click(function(){
+		$("#exebitionBrowseBtn").click(function(){
 			cropImageOption="2";
-			aspectRatioValue="1";
+			aspectRatioValue="1.5";
 			return new CropAvatar($("#crop-avatar"));
 		});
 

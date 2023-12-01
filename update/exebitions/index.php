@@ -1,22 +1,22 @@
 <?php
-	$pageTitle = 'PUBLICATIONS';
-	$section = 'PUBLICATIONS';
-	$table='publications';
-	//$folder='../../publications/';
+	$pageTitle = 'EXEBITIONS';
+	$section = 'EXEBITIONS';
+	$table='exebitions';
+	$folder='../../exebitions/';
 
 	include('../top.php');
 
-	// $itemsPerPage=20;
-	// @$current=$_GET['page'];
-	// if(@$current==0){
-	// 	$page=1;
-	// }
-	// else{
-	// 	$page=@$current;
-	// }
+	$itemsPerPage=20;
+	@$current=$_GET['page'];
+	if(@$current==0){
+		$page=1;
+	}
+	else{
+		$page=@$current;
+	}
 
-	// if(!$current){$current=0;$offset=0;}
-	// else{$offset=($current-1)*$itemsPerPage;}
+	if(!$current){$current=0;$offset=0;}
+	else{$offset=($current-1)*$itemsPerPage;}
 ?>
 
 <div id="middle" style="position:relative; width:100%; padding:50px 0px; background:#FFF;">
@@ -51,17 +51,17 @@
 			$list=0;
 		}
 
-		if(@$up){
-			$previous=$listorder-1;
-			runQuery("UPDATE `".$table."` SET `listorder`=".$listorder." WHERE `listorder`=".$previous);
-			runQuery("UPDATE `".$table."` SET `listorder`=".$previous." WHERE `id`=".$entryId);
-		}
+		// if(@$up){
+		// 	$previous=$listorder-1;
+		// 	runQuery("UPDATE `".$table."` SET `listorder`=".$listorder." WHERE `listorder`=".$previous);
+		// 	runQuery("UPDATE `".$table."` SET `listorder`=".$previous." WHERE `id`=".$entryId);
+		// }
 		
-		if(@$down){
-			$next=$listorder+1;
-			runQuery("UPDATE `".$table."` SET `listorder`=".$listorder." WHERE `listorder`=".$next);
-			runQuery("UPDATE `".$table."` SET `listorder`=".$next." WHERE `id`=".$entryId);
-		}
+		// if(@$down){
+		// 	$next=$listorder+1;
+		// 	runQuery("UPDATE `".$table."` SET `listorder`=".$listorder." WHERE `listorder`=".$next);
+		// 	runQuery("UPDATE `".$table."` SET `listorder`=".$next." WHERE `id`=".$entryId);
+		// }
 
 		if($list){
 
@@ -69,7 +69,7 @@
 
 			echo "<a href='edit.php'><input type='submit' class='submit' name='Add' value='Add Entry' /></a><br /><br />";
 
-			$query="SELECT * FROM `".$table."` WHERE `status`='1' ORDER BY `listorder` ASC";
+			$query="SELECT * FROM `".$table."` WHERE `status`='1' ORDER BY `id` DESC";
 
 			$result=runQuery($query);
 
@@ -82,9 +82,8 @@
                     <tr class='head blue'>
 						<th>Title</th>
 						<th>Sub Title</th>
-						<th>Foreworded By</th>
-						<th>Edited By</th>
-						<th>Introduction</th>
+						<th>Date From</th>
+						<th>Date To</th>
 						<th>Image</th>
 						<th>Actions</th>
 					</tr>";
@@ -93,11 +92,10 @@
 					echo '<tr>';
 						echo "<td>".sanitizeInput($title)."</td>";
 						echo "<td>".sanitizeInput($sub_title)."</td>";
-						echo "<td>".sanitizeInput($foreworded_by)."</td>";
-						echo "<td>".sanitizeInput($edited_by)."</td>";
-						echo "<td>".sanitizeInput($introduction,"HTML")."</td>";
+						echo "<td>".date('d-m-Y',strtotime($date_from))."</td>";
+						echo "<td>".date('d-m-Y',strtotime($date_to))."</td>";
 						echo "<td>
-							<img src='../../publication-images/images/".$image."' width='200px' />
+							<img src='../../exebitions/images/".$image."' width='200px' />
 						</td>";
 						echo "<td>";
 							echo"<form action='edit.php' method='post'>
@@ -112,22 +110,22 @@
                                 <input type='hidden' name='id' value='".$id."'/>
                                 <input type='submit' class='submit' name='delete' value='Delete' style='width:150px;'/>
                             </form>";
-							$row2=fetcharray(runQuery("select min(listorder) from `".$table."` WHERE `status`='1'"));
-							if($listorder>$row2[0]){
-								echo "<form action='index.php' method='post'>
-									<input type='hidden' name='id' value='".$id."' />
-									<input type='hidden' name='listorder' value='".$listorder."' />
-									<input type='submit' class='submit' name='up' value='&uArr;' />
-								</form>";
-							}
-							$row2=fetcharray(runQuery("select max(listorder) from `".$table."` WHERE `status`='1'"));
-							if($listorder<$row2[0]){
-								echo "<form action='index.php' method='post'>
-									<input type='hidden' name='id' value='".$id."' />
-									<input type='hidden' name='listorder' value='".$listorder."' />
-									<input type='submit' class='submit' name='down' value='&dArr;' />
-								</form>";
-							}
+							// $row2=fetcharray(runQuery("select min(listorder) from `".$table."` WHERE `status`='1'"));
+							// if($listorder>$row2[0]){
+							// 	echo "<form action='index.php' method='post'>
+							// 		<input type='hidden' name='id' value='".$id."' />
+							// 		<input type='hidden' name='listorder' value='".$listorder."' />
+							// 		<input type='submit' class='submit' name='up' value='&uArr;' />
+							// 	</form>";
+							// }
+							// $row2=fetcharray(runQuery("select max(listorder) from `".$table."` WHERE `status`='1'"));
+							// if($listorder<$row2[0]){
+							// 	echo "<form action='index.php' method='post'>
+							// 		<input type='hidden' name='id' value='".$id."' />
+							// 		<input type='hidden' name='listorder' value='".$listorder."' />
+							// 		<input type='submit' class='submit' name='down' value='&dArr;' />
+							// 	</form>";
+							// }
 						echo"</td>";
 					echo"</tr>";
                 }
