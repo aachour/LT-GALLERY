@@ -48,23 +48,53 @@
                  
                  if($list){
                     echo"<p class='medium blue underline'>".$pageTitle."<br /><br /></p>";
-
+    
                     echo"<a href='edit.php'><input type='submit' class='submit' name='Add' value='Add Entry' /></a><br  /><br />";
+    
+                    $query="SELECT * FROM `".$table."`";
+                    $result=runQuery($query);
+    
+                    $rows=numRows($result);
                     
-                 $query="SELECT * FROM `".$table."`";
-                 $result=runQuery($query);
-
-                 $rows=numRows($result);
-                 
-                 if($rows==0){
-                    
-                 }
-                 
-                 
-                 
-                 
-                 
-                   }
+                    if($rows==0){
+                        echo"<p class='error'>No entries found.</p>";
+                    }else if($rows>0){
+                        echo"<table cellpadding='0' cellspacing='0' border='0' class='listingTable' width='100%'>
+                        <tr class='head blue'>
+                            <th>Title</th>
+                            <th>Aouthor</th>
+                            <th>Text</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                            <th></th>
+    
+                        </tr>";
+                        while($row=fetchArray($result)){
+                            foreach($row as $key =>$temp ){
+                                $$key = stripcslashes($row[$key]);
+                            }
+                            echo'<tr>';
+                                echo "<td>".sanitizeInput($title)."</td>";
+                                echo "<td>".sanitizeInput($author,"HTML")."</td>";
+                                echo "<td>".sanitizeInput($text,"HTML")."</td>";
+                                echo "<td>".date('d-m-Y',strtotime($date))."</td>";                                              
+                                echo "<td>
+                                <form action='edit.php' method='post'>
+                                    <input type='hidden' name='id' value='".$id."'/>
+                                    <input type='submit' class='submit' name='edit' value='Edit' style='width:150px;'/>
+                                </form>";
+                                    
+                            
+                                echo"<form action='index.php' method='post'>
+                                    <input type='hidden' name='id' value='".$id."'/>
+                                    <input type='submit' class='submit' name='delete' value='Delete' style='width:150px;'/>
+                                </form>";	
+                        echo "<td>";
+                            echo'</tr>';
+                        }
+                        echo "</table>";
+                    }
+                }
 
 
 

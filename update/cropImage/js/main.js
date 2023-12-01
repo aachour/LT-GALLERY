@@ -275,7 +275,7 @@ CropAvatar.prototype = {
 			$(".avatar-height").val("660");
 		}
 		else if(cropImageOption==3){
-			$(".avatar-directory").val("publication-images");
+			$(".avatar-directory").val("exebitions");
 			$(".avatar-width").val("");
 			$(".avatar-height").val("");
 		}
@@ -283,6 +283,11 @@ CropAvatar.prototype = {
 			$(".avatar-directory").val("topbanner");
 			$(".avatar-width").val("2000");
 			$(".avatar-height").val("650");
+		}
+		else if(cropImageOption==5){
+			$(".avatar-directory").val("podcasts");
+			$(".avatar-width").val("1000");
+			$(".avatar-height").val("1000");
 		}
 
 		var url = this.$avatarForm.attr('action');
@@ -393,6 +398,13 @@ CropAvatar.prototype = {
 			$("#imageViewDelete").removeClass("hidden");
 			$("#imageViewDelete").find("#imageView").attr("href","../../topbanner/images/"+image);
 		}
+		if(cropImageOption=="5"){
+			var image=imageUrl.replace("../../podcasts/images/","");
+			$("#imageTxt").val("Image uploaded");
+			$("#image").val(image);
+			$("#imageViewDelete").removeClass("hidden");
+			$("#imageViewDelete").find("#imageView").attr("href","../../podcasts/images/"+image);
+		}
 	},
 
 	alert: function (msg) {
@@ -434,6 +446,12 @@ CropAvatar.prototype = {
 		$("#topBannerBrowseBtn").click(function(){
 			cropImageOption="4";
 			aspectRatioValue="3";
+			return new CropAvatar($("#crop-avatar"));
+		});
+
+		$("#podcastBrowseBtn").click(function(){
+			cropImageOption="5";
+			aspectRatioValue="1";
 			return new CropAvatar($("#crop-avatar"));
 		});
 

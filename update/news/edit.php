@@ -1,7 +1,7 @@
 <?php
-	$pagetitle = 'podcast';
-	$section = 'podcast';
-	$table='podcast';
+	$pagetitle = 'news';
+	$section = 'news';
+	$table='news';
 	
 
 	include('../top.php');
@@ -27,29 +27,32 @@
 
         <?php
         if(@$save){
-            if(isEmpty($title)|| isEmpty($subtitle)|| isEmpty($text)||isEmpty($image) ){
+            if(isEmpty($title) ||  isEmpty(@$author) || isEmpty($text) || isEmpty($date) ){
                 $error="Please fill required filed";
 
 
             }
             if(@$error==''){
+
+
                 if(!isEmpty($entryId)){
                     $query="UPDATE `".$table."` SET
-                    `title`='".sanitizeInput($title,"HTML")."'
-                    `subtitle`='".sanitizeInput($subtitle,"HTML")."'
-                    `text`='".sanitizeInput($text,"HTML")."'
-                    `image`='".sanitizeInput($image,"HTML")."'
-                    `link`='".sanitizeInput(@$link,"HTML")."'";
+                    `title`='".sanitizeInput($title,"HTML")."',
+                    `author`='".sanitizeInput($author,"HTML")."',
+                    `text`='".sanitizeInput($text,"HTML")."',
+                    `link`='".sanitizeInput($link,"HTML")."',
+                    `date`=NOW() 
+					 WHERE `id`=".$entryId;
                     
                 }else{
-                    $query="INSERT INTO `".$table."`(`title` , `subtitle` , `text` , `image` , `link`)
-                             VALUES( '".sanitizeInput($title,"HTML")."' ,
-                                    '".sanitizeInput(@$subtitle,"HTML")."', 
-                                    '".sanitizeInput(@$text,"HTML")."' , 
-                                    '".sanitizeInput(@$image,"HTML")."' , 
-                                    '".sanitizeInput(@$link,"HTML"). "'
-                                    )";
-                    }
+                    $query = "INSERT INTO `" .$table. "` (`title` , `author` , `text` , `link` , `date`)
+                    VALUES( '" . sanitizeInput($title, "HTML") . "' ,
+                            '" . sanitizeInput($author, "HTML") . "' , 
+                            '" . sanitizeInput($text, "HTML") . "' , 
+                            '" . sanitizeInput(@$link, "HTML") . "' , 
+                            NOW()
+                            )";
+                }
                 if(runQuery($query)){
                     if(isEmpty($entryId)){
                         $entryId=insertedId();
@@ -70,7 +73,7 @@
         
         if($prompt==1){
             if(isset($entryId) && $entryId != ''){
-                $query='SELECT * FROM `'.$table.'` WHERE `id`= '.$entryId;
+                $query='SELECT * FROM `'.$table.'` WHERE `id`='.$entryId;
                 $result=runQuery($query);
                 $row=fetchArray($result);
                 foreach($row as $key => $item){$$key=stripcslashes($row[$key]);};
@@ -82,15 +85,15 @@
         <form action="<?php echo currentPage(); ?>" method="POST" enctype="multipart/form-data">
             <table>
                 <tr>
-                    <td>title <sup class="red">*</sup></td>
+                    <td>Title <sup class="red">*</sup></td>
                     <td width="20px"></td>
                     <td><?php echoTextField("title",@$title,"ckeditor"); ?></td>
                 </tr>
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Subtitle <sup class="red">*</sup></td>
+                    <td>Author<sup class="red">*</sup></td>
                     <td width=20px""></td>
-                    <td><?php echoTextField("subtitle",@$subtitle,"ckeditor"); ?></td>
+                    <td><?php echoTextField("author",@$author,"ckeditor"); ?></td>
                 </tr>
                 <tr height="20px"></tr>
                 <tr>
@@ -105,21 +108,12 @@
                     <td><?php echoTextField("text",@$link,"ckeditor"); ?></td>
                 </tr>
                 <tr height="20px"></tr>
-                <td>Image <sup class="red">*</sup></td>
-                <td width="20px"></td>
-                <td>
-                    <div>
-                        <input type="text" class="" value="<?php if(@$image!=""){echo "Image uploaded";}?>" id="imageTxt" disabled />
-                        <input type="hidden" value="<?php echo @$image;?>" id="image" name="image" />
-                        <input type="button" class="browseBtn" id="podcastBrowseBtn" value="BROWSE" />
-                    </div>
-                    <div class="topSpacerSmaller tiny textRight <?php if(@$image==""){ echo "hidden";} ?>"id="imageViewDelete">
-                        <a class="tiny" href=""<?php if(@$image!=""){echo "../../podcasts/images/".@$image;}?>" id="imageView" target="_blank">View</a>
-                        &nbsp;|&nbsp;
-                        <span class="tiny clickable" id="imageDelete">Delete</span>></a>
-
-                    </div>
-                </td>
+                <tr>
+                    <td>Date <sup class="red">*</sup></td>
+                    <td width="20px"></td> 
+                    <td><input type="text" class="datepicker" id="date" name="date" value="<?php echo @$date;?>" /></td>
+                    <td></td>
+                </tr>
                 <tr height="10px"></tr>
                 <tr>
                     <td></td>
