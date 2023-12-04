@@ -284,6 +284,11 @@ CropAvatar.prototype = {
 			$(".avatar-width").val("2000");
 			$(".avatar-height").val("650");
 		}
+		else if(cropImageOption==5){
+			$(".avatar-directory").val("podcasts");
+			$(".avatar-width").val("1000");
+			$(".avatar-height").val("1000");
+		}
 
 		var url = this.$avatarForm.attr('action');
 		var data = new FormData(this.$avatarForm[0]);
@@ -400,6 +405,13 @@ CropAvatar.prototype = {
 			$("#imageViewDelete").removeClass("hidden");
 			$("#imageViewDelete").find("#imageView").attr("href","../../topbanner/images/"+image);
 		}
+		if(cropImageOption=="5"){
+			var image=imageUrl.replace("../../podcasts/images/","");
+			$("#imageTxt").val("Image uploaded");
+			$("#image").val(image);
+			$("#imageViewDelete").removeClass("hidden");
+			$("#imageViewDelete").find("#imageView").attr("href","../../podcasts/images/"+image);
+		}
 	},
 
 	alert: function (msg) {
@@ -441,6 +453,12 @@ CropAvatar.prototype = {
 		$("#topBannerBrowseBtn").click(function(){
 			cropImageOption="4";
 			aspectRatioValue="3";
+			return new CropAvatar($("#crop-avatar"));
+		});
+
+		$("#podcastBrowseBtn").click(function(){
+			cropImageOption="5";
+			aspectRatioValue="1";
 			return new CropAvatar($("#crop-avatar"));
 		});
 
