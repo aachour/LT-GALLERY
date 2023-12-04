@@ -1,5 +1,5 @@
 <?php
-	$pageTitle = 'podcast';
+	$pageTitle = 'PODCAST';
 	$section = 'podcast';
 	$table='podcast';
 	//$folder='../../publications/';
@@ -66,7 +66,6 @@
 						<th>sub Title</th>
 						<th>Text</th>
 						<th>Image</th>
-						<th>link</th>
 						<th>Actions</th>
 						<th></th>
 
@@ -83,7 +82,7 @@
                             echo "<td>
                                 <img src='../../podcast-images/images/".$image."' width='200px' />
                             </td>";
-                            echo "<td>".sanitizeInput($link,"HTML")."</td>";                        
+                                                  
                             echo "<td>
 							<form action='edit.php' method='post'>
                                 <input type='hidden' name='id' value='".$id."'/>

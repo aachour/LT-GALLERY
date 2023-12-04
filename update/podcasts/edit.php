@@ -1,5 +1,5 @@
 <?php
-	$pagetitle = 'podcast';
+	$pagetitle = 'PODCAST';
 	$section = 'podcast';
 	$table='podcast';
 	
@@ -50,27 +50,33 @@
                                     '".sanitizeInput(@$link,"HTML"). "'
                                     )";
                     }
+
+
+
                 if(runQuery($query)){
                     if(isEmpty($entryId)){
                         $entryId=insertedId();
                     }
-                    $msg="<br /> Entry saved.<br />";
+                    $msg="<br />Entry saved.<br />";
                     $prompt=0;
-                    echo"<meta http-equiv='refresh' content='2;url=index.php'";
+					echo "<meta http-equiv='refresh' content='2;url=index.php'>";
                 }else{
-                    $error="<br />Could not save entery.Please try again. <br  />";
+                    $error="<br />Could not save entry. Please try again.<br />";
                     $prompt=1;
                 }
-            }else{
-                $prompt=1;
             }
+            
         }
+        else{
+            $prompt=1;
+        }
+
         if(@$erro){echo"<p class='error'>".$erro."<br  /></p><br  /><br  />";}
         if(@$msg){echo "<p class='msg'>".$msg."<br /></p><br /><br /><br /><br /><br /><br /><br /><br />";}
         
         if($prompt==1){
             if(isset($entryId) && $entryId != ''){
-                $query='SELECT * FROM `'.$table.'` WHERE `id`= '.$entryId;
+                $query='SELECT * FROM `'.$table.'` WHERE `id`='.$entryId;
                 $result=runQuery($query);
                 $row=fetchArray($result);
                 foreach($row as $key => $item){$$key=stripcslashes($row[$key]);};

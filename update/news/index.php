@@ -1,5 +1,5 @@
 <?php
-	$pageTitle = 'news';
+	$pageTitle = 'NEWS';
 	$section = 'news';
 	$table='news';
 	
