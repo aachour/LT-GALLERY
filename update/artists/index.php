@@ -1,8 +1,8 @@
 <?php
-	$pageTitle = 'EXEBITIONS';
-	$section = 'EXEBITIONS';
-	$table='exebitions';
-	$folder='../../exebitions/';
+	$pageTitle = 'ARTISTS';
+	$section = 'ARTISTS';
+	$table='artists';
+	$folder='../../artists/';
 
 	include('../top.php');
 
@@ -81,21 +81,17 @@
                 echo "<table cellpadding='0' cellspacing='0' border='0' class='listingTable' width='100%'>
                     <tr class='head blue'>
 						<th>Title</th>
-						<th>Sub Title</th>
-						<th>Date From</th>
-						<th>Date To</th>
+						<th>Text</th>
 						<th>Image</th>
 						<th>Actions</th>
 					</tr>";
                 while($row=fetchArray($result)){
                     foreach($row as $key => $temp){$$key = stripslashes(($row[$key]));}
 					echo '<tr>';
-						echo "<td>".sanitizeInput($title)."</td>";
-						echo "<td>".sanitizeInput($sub_title)."</td>";
-						echo "<td>".date('d-m-Y',strtotime($date_from))."</td>";
-						echo "<td>".date('d-m-Y',strtotime($date_to))."</td>";
+						echo "<td>".sanitizeInput($name)."</td>";
+						echo "<td>".sanitizeInput($text)."</td>";
 						echo "<td>
-							<img src='../../exebitions/images/".$image."' width='200px' />
+							<img src='../../artists/images/".$image."' width='200px' />
 						</td>";
 						echo "<td>";
 							echo"<form action='edit.php' method='post'>
@@ -103,8 +99,8 @@
                                 <input type='submit' class='submit' name='edit' value='Edit' style='width:150px;'/>
 							</form>";
 							echo"<form action='images.php' method='post'>
-								<input type='hidden' name='exebitionid' value='".$id."'/>
-                                <input type='submit' class='submit' name='image' value='Gallery' style='width:150px;'/>
+								<input type='hidden' name='artistid' value='".$id."'/>
+                                <input type='submit' class='submit' name='image' value='Artworks' style='width:150px;'/>
                             </form>";
 							echo"<form action='index.php' method='post'>
                                 <input type='hidden' name='id' value='".$id."'/>

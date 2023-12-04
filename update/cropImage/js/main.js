@@ -275,7 +275,7 @@ CropAvatar.prototype = {
 			$(".avatar-height").val("660");
 		}
 		else if(cropImageOption==3){
-			$(".avatar-directory").val("publication-images");
+			$(".avatar-directory").val("artists");
 			$(".avatar-width").val("");
 			$(".avatar-height").val("");
 		}
@@ -379,12 +379,19 @@ CropAvatar.prototype = {
 			$("#imageViewDelete").removeClass("hidden");
 			$("#imageViewDelete").find("#imageView").attr("href","../../aboutus/images/"+image);
 		}
-		else if(cropImageOption=="2" || cropImageOption=="3"){
+		else if(cropImageOption=="2"){
 			var image=imageUrl.replace("../../exebitions/images/",""); 
 			$("#imageTxt").val("Image uploaded");
 			$("#image").val(image);
 			$("#imageViewDelete").removeClass("hidden");
 			$("#imageViewDelete").find("#imageView").attr("href","../../exebitions/images/"+image);
+		}
+		else if(cropImageOption=="3"){
+			var image=imageUrl.replace("../../artists/images/",""); 
+			$("#imageTxt").val("Image uploaded");
+			$("#image").val(image);
+			$("#imageViewDelete").removeClass("hidden");
+			$("#imageViewDelete").find("#imageView").attr("href","../../artists/images/"+image);
 		}
 		if(cropImageOption=="4"){
 			var image=imageUrl.replace("../../topbanner/images/","");
@@ -425,7 +432,7 @@ CropAvatar.prototype = {
 			return new CropAvatar($("#crop-avatar"));
 		});
 
-		$("#galleryBrowseBtn").click(function(){
+		$("#artistBrowseBtn").click(function(){
 			cropImageOption="3";
 			aspectRatioValue="0";
 			return new CropAvatar($("#crop-avatar"));

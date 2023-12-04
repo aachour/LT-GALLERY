@@ -32,7 +32,7 @@
 
         if(@$save){
 
-			if(isEmpty($title) || isEmpty($sub_title) || isEmpty($text) || isEmpty($image)){
+            if(isEmpty($title) || isEmpty($text) || isEmpty($image)){
 				$error="Please fill all required fields";
             }
 
@@ -43,9 +43,9 @@
                     `title`='".sanitizeInput($title,"HTML")."',
                     `sub_title`='".sanitizeInput(@$sub_title,"HTML")."',
                     `text`='".sanitizeInput($text,"HTML")."',
-                    `date_from`='".sanitizeInput(@$date_from,"HTML")."',
-                    `date_to`='".sanitizeInput(@$date_to,"HTML")."',
-                    `artists_id`='".sanitizeInput(@$artists_id,"HTML")."',
+                    `date_from`='".date('Y-m-d',strtotime(@$date_from))."',
+                    `date_to`='".date('Y-m-d',strtotime(@$date_to))."',
+                    `artists_id`='".json_encode(@$artists_id)."',
                     `file`='".sanitizeInput(@$file,"HTML")."',
                     `image`='".sanitizeInput($image,"HTML")."',
                     `dateedit`=NOW()
@@ -56,9 +56,9 @@
 							VALUES( '".sanitizeInput($title,"HTML")."' , 
                                     '".sanitizeInput(@$sub_title,"HTML")."' , 
                                     '".sanitizeInput($text,"HTML")."' , 
-                                    '".sanitizeInput(@$date_from,"HTML")."' , 
-                                    '".sanitizeInput(@$date_to,"HTML")."' ,
-                                    '".sanitizeInput(@$artists_id,"HTML")."' ,
+                                    '".date('Y-m-d',strtotime(@$date_from))."' , 
+                                    '".date('Y-m-d',strtotime(@$date_to))."' ,
+                                    '".json_encode(@$artists_id)."' ,
                                     '".sanitizeInput(@$file,"HTML")."' ,
                                     '".sanitizeInput($image,"HTML")."' , 
 									NOW() , 
@@ -91,8 +91,13 @@
                 $result=runQuery($query);
                 $row=fetchArray($result);
                 foreach($row as $key => $item){$$key=stripslashes($row[$key]);}
-                
+                $artists_id=json_decode($artists_id);
+                $date_from=date('d-m-Y',strtotime(@$date_from));
+                $date_to=date('d-m-Y',strtotime(@$date_to));
 			}
+            else{
+                @$artists_id=[];
+            }
         ?>
 
     	<form action="<?php echo currentPage(); ?>" method="POST" enctype="multipart/form-data">
@@ -138,15 +143,17 @@
                     <td>Artists</td>
                     <td width="20px"></td> 
                     <td>
-                    <select id="artists_id" name="artists_id" class="select2" multiple>
+                    <select id="artists_id" name="artists_id[]" class="select2" multiple>
                         <option value=""></option>
                         <?php
-                            $query2="SELECT * FROM `artists` WHERE `status`='1' ORDER BY `name` ASC" ;
+                            $query2="SELECT `id` as `artistId` , `name` as `artistName` FROM `artists` WHERE `status`='1' ORDER BY `name` ASC" ;
                             $result2=runQuery($query2);
                             if(numRows($result2)>0){
                                 while($row2=fetchArray($result2)){
                                     foreach($row2 as $key => $item){$$key=stripslashes($row2[$key]);}
-                                    echo'<option value="'.$id.'">'.$name.'</option>';
+                                    $selected="";
+                                    if(in_array($artistId,$artists_id)){$selected="selected";}
+                                    echo'<option value="'.$artistId.'" '.$selected.'>'.$artistName.'</option>';
                                 }
                             }
                         ?>
@@ -219,7 +226,7 @@
     $(document).ready(function(){
 
         $(".datepicker").datepicker({
-            dateFormat: 'dd/mm/yy', // Date format
+            dateFormat: 'dd-mm-yy', // Date format
             beforeShow: function (input, inst) {
                 setTimeout(function () {
                     inst.dpDiv.css({

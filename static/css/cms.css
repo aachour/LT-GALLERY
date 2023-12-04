@@ -1,7 +1,7 @@
 /* CSS Document */
 body{
 	margin:0px;
-	background-color:#F5F3F5;;
+	background-color:#454545;
 }
 /* START INPUT TABLE */
 .inputTable td{
@@ -20,7 +20,7 @@ body{
 
 /* START LISTING TABLE */
 .listingTable {
-	width:98%;
+	width:98% !important;
 	border-spacing:15px;
 	text-align:left;
 	color:#000;
@@ -57,7 +57,7 @@ body{
 /*START INPUT BUTTONS*/
 input[type="text"].login, input[type="password"].login{
 	width:300px;
-	padding:10px;
+	padding:5px 10px;
 	outline:none;
 	border:0px;
 	text-align:left;
@@ -66,8 +66,8 @@ input[type="text"].login, input[type="password"].login{
 	background:#FFF;
 }
 input[type="submit"].login{
-	width:120px;
-	padding:15px 30px;
+	width:150px;
+	padding:10px 0px;
 	outline:none;
 	border:0px;
 	cursor:pointer;
@@ -75,8 +75,8 @@ input[type="submit"].login{
 	background:#000;
 }
 input[type="submit"].login:hover{
-	width:120px;
-	padding:15px 30px;
+	width:150px;
+	padding:10px 0px;
 	background:#333333;
 }
 

@@ -1,7 +1,7 @@
 <link href="../uploadFile/style.css" rel="stylesheet">
 <script src="../uploadFile/hayageek.js"></script>
 
-<div class="popup hidden" id="popupUploadImage">
+<div class="popup hidden" id="popupUploadExebitionImage">
 
 	<div class="content">
 
@@ -21,12 +21,12 @@
 
 	$(document).ready(function(){
 
-		$("#popupUploadImage").find(".closeBtn").click(function(){
-			$("#popupUploadImage").addClass("hidden");
+		$("#popupUploadExebitionImage").find(".closeBtn").click(function(){
+			$("#popupUploadExebitionImage").addClass("hidden");
 		});
 
 		$("#fileuploader").uploadFile({
-			url:"../../update/uploadFile/uploadimage.php",
+			url:"../../update/uploadFile/uploadimage-exebition.php",
 			multiple:false,
 			dragDrop:true,
 			maxFileCount:100,
@@ -35,27 +35,29 @@
 			fileName:"myfile",
 			showDelete: true,
 			onSubmit:function(files){
-				$("#popupUploadImage").find(".closeBtn").addClass("hidden");
+				$("#popupUploadExebitionImage").find(".closeBtn").addClass("hidden");
 			},
 			onAbort:function(){
-				$("#popupUploadImage").find(".closeBtn").removeClass("hidden");
+				$("#popupUploadExebitionImage").find(".closeBtn").removeClass("hidden");
 			},
 			onSuccess:function(files,data,xhr,pd){
 
-				var filename=data.replace('["','');
+				console.log(data);
+
+				var filename=data.replace('["',''); 
 				filename=filename.replace('"]','');
 
-				$("#popupUploadImage").addClass("hidden");
+				$("#popupUploadExebitionImage").addClass("hidden");
 				$(".ajax-file-upload-container").html("");
-				$("#popupUploadImage").find(".closeBtn").removeClass("hidden");
+				$("#popupUploadExebitionImage").find(".closeBtn").removeClass("hidden");
 
 				$("#image").val(filename);
 				$("#imageTxt").val("Image uploaded");
 				$("#imageViewDelete").removeClass("hidden");
-				$("#imageViewDelete").find("#imageView").attr("href","../../publication-images/images/"+filename);
+				$("#imageViewDelete").find("#imageView").attr("href","../../exebitions/images/"+filename);
 			},
 			onError: function(files,status,errMsg,pd){
-				$("#popupUploadImage").find(".closeBtn").removeClass("hidden");
+				$("#popupUploadExebitionImage").find(".closeBtn").removeClass("hidden");
 				alert("Error,unable to upload your file.")
 			}
 		});

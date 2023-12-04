@@ -41,27 +41,27 @@
 
             <div class="black small" style="float:right;">
 
-                <a class="<?php if(@$section=="HOME"){echo"grey underline";}else{echo"blackGrey";}?>" href="../home/index.php">Home</a> &nbsp;|&nbsp;
+                <a class="<?php if(@$section=="HOME"){echo"white underline";}else{echo"whiteUnderline";}?>" href="../home/index.php">Home</a> &nbsp;|&nbsp;
 
-                <a class="<?php if(@$section=="TOP BANNER"){echo"grey underline";}else{echo"blackGrey";}?>" href="../topBanner/index.php">Top Banner</a> &nbsp;|&nbsp;
+                <a class="<?php if(@$section=="TOP BANNER"){echo"white underline";}else{echo"whiteUnderline";}?>" href="../topBanner/index.php">Top Banner</a> &nbsp;|&nbsp;
 
-                <a class="<?php if(@$section=="EXEBITIONS"){echo"grey underline";}else{echo"blackGrey";}?>" href="../exebitions/index.php">Exebitions</a> &nbsp;|&nbsp;
+                <a class="<?php if(@$section=="EXEBITIONS"){echo"white underline";}else{echo"whiteUnderline";}?>" href="../exebitions/index.php">Exebitions</a> &nbsp;|&nbsp;
                 
-                <a class="<?php if(@$section=="ARTISTS"){echo"grey underline";}else{echo"blackGrey";}?>" href="../artists/index.php">Artists</a> &nbsp;|&nbsp;
+                <a class="<?php if(@$section=="ARTISTS"){echo"white underline";}else{echo"whiteUnderline";}?>" href="../artists/index.php">Artists</a> &nbsp;|&nbsp;
 
-                <a class="<?php if(@$section=="PODCASTS"){echo"grey underline";}else{echo"blackGrey";}?>" href="../podcasts/index.php">Poscasts</a> &nbsp;|&nbsp;
+                <a class="<?php if(@$section=="PODCASTS"){echo"white underline";}else{echo"whiteUnderline";}?>" href="../podcasts/index.php">Poscasts</a> &nbsp;|&nbsp;
                 
-                <a class="<?php if(@$section=="NEWS"){echo"grey underline";}else{echo"blackGrey";}?>" href="../news/index.php">News</a> &nbsp;|&nbsp;
+                <a class="<?php if(@$section=="NEWS"){echo"white underline";}else{echo"whiteUnderline";}?>" href="../news/index.php">News</a> &nbsp;|&nbsp;
 
-                <a class="<?php if(@$section=="ABOUT US"){echo"grey underline";}else{echo"blackGrey";}?>" href="../aboutus/index.php">About Us</a> &nbsp;|&nbsp;
+                <a class="<?php if(@$section=="ABOUT US"){echo"white underline";}else{echo"whiteUnderline";}?>" href="../aboutus/index.php">About Us</a> &nbsp;|&nbsp;
 
                 <br /><br />
 
-                <a class="<?php if(@$section=="CONTACT US"){echo"grey underline";}else{echo"blackGrey";}?>" href="../contactus/index.php">Contact Us</a> &nbsp;|&nbsp;
+                <a class="<?php if(@$section=="CONTACT US"){echo"white underline";}else{echo"whiteUnderline";}?>" href="../contactus/index.php">Contact Us</a> &nbsp;|&nbsp;
                 
-                <a class=" <?php if(@$section=="CHANGE PASSWORD"){echo"grey underline";}else{echo"blackGrey";}?>" href="../home/edit.php">Change Password</a> &nbsp;|&nbsp;
+                <a class=" <?php if(@$section=="CHANGE PASSWORD"){echo"white underline";}else{echo"whiteUnderline";}?>" href="../home/edit.php">Change Password</a> &nbsp;|&nbsp;
 
-                <a class="blackGrey small" href="../../update/index.php?logout=1">Logout</a>
+                <a class="whiteUnderline small" href="../../update/index.php?logout=1">Logout</a>
 
             </div>
 

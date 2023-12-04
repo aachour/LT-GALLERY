@@ -1,12 +1,13 @@
 <?php
-	$pageTitle = 'TOP BANNER';
-	$section = 'TOP BANNER';
-	$table='top_banner';
-	$folder='../../top_banner/';
+	$pageTitle = 'ARTISTS';
+	$section = 'ARTISTS';
+	$table='artists';
+	$folder='../../artists/';
 
 	include('../top.php');
 
     include("../cropImage/index.html");
+    
     
 	$prompt=1;
 	extract($_POST);
@@ -30,7 +31,7 @@
 
         if(@$save){
 
-			if(isEmpty($title) || isEmpty($image) || isEmpty($link)){
+            if(isEmpty($name) || isEmpty($text) || isEmpty($image)){
 				$error="Please fill all required fields";
             }
 
@@ -38,12 +39,20 @@
 
 				if(!isEmpty($entryId)){
                     $query="UPDATE `".$table."` SET
-                    `title`='".sanitizeInput($title,"HTML")."',
+                    `name`='".sanitizeInput($name,"HTML")."',
+                    `text`='".sanitizeInput($text,"HTML")."',
                     `image`='".sanitizeInput($image,"HTML")."',
-                    `link`='".sanitizeInput($link,"HTML")."',
                     `dateedit`=NOW()
 					WHERE `id`=".$entryId;
                 }
+                else{
+					$query="INSERT INTO `".$table."` (`name` , `text` , `image` , `datesubmit` , `status`) 
+							VALUES( '".sanitizeInput($name,"HTML")."' , 
+                                    '".sanitizeInput($text,"HTML")."' , 
+                                    '".sanitizeInput($image,"HTML")."' , 
+									NOW() , 
+									'1')";
+				}
 				
                 if(runQuery($query)){
                     if(isEmpty($entryId)){
@@ -71,7 +80,7 @@
                 $result=runQuery($query);
                 $row=fetchArray($result);
                 foreach($row as $key => $item){$$key=stripslashes($row[$key]);}
-			}
+            }
         ?>
 
     	<form action="<?php echo currentPage(); ?>" method="POST" enctype="multipart/form-data">
@@ -79,38 +88,37 @@
             <table cellpadding="0" cellspacing="0" class="prompt small">
 
                 <tr>
-                    <td>Title <sup class='red'>*</sup></td>
+                    <td>Name <sup class='red'>*</sup></td>
                     <td width="20px"></td>
-                    <td><?php echoTextArea("title", @$title,"ckeditor"); ?></td>
+                    <td><?php echoTextField("name", sanitizeInput(@$name),"ckeditor"); ?></td>
                 </tr>
 
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Link <sup class='red'>*</sup></td>
+                    <td>Text <sup class='red'>*</sup></td>
                     <td width="20px"></td>
-                    <td><?php echoTextField("link", @$link,"ckeditor"); ?></td>
+                    <td><?php echoTextArea("text", @$text,"ckeditor"); ?></td>
                 </tr>
 
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Image <sup class='red'>*</sup><br />[2000x700px]</td>
+                    <td>Image <sup class='red'>*</sup></td>
                     <td width="20px"></td>
                     <td>
                         <div>
-                            <input type="text" class="" value="<?php if(@$image!=""){echo "Image uploaded";}?>" id="imageTxt" disabled />
+                            <input type="text" value="<?php if(@$image!=""){echo "Image uploaded";}?>" id="imageTxt" disabled />
                             <input type="hidden" value="<?php echo @$image;?>" id="image" name="image" />
-                            <input type="button" class="browseBtn" id="topBannerBrowseBtn" value="BROWSE" />
+                            <input type="button" class="browseBtn" id="artistBrowseBtn" value="BROWSE" />
                         </div>
                         <div class="topSpacerSmaller tiny textRight <?php if(@$image==""){echo "hidden";}?>" id="imageViewDelete">
-                            <a class="tiny" href="<?php if(@$image!=""){echo "../../topbanner/images/".@$image;}?>" id="imageView" target="_blank">View</a>
+                            <a class="tiny" href="<?php if(@$image!=""){echo "../../artists/images/".@$image;}?>" id="imageView" target="_blank">View</a>
                             &nbsp;|&nbsp;
                             <span class="tiny clickable" id="imageDelete">Delete</span>
                         </div>
                     </td>
                 </tr>
 
-
-                <tr height="10px"></tr>
+                <tr height="30px"></tr>
                 <tr>
                     <td></td>
                     <td></td>
@@ -136,12 +144,14 @@
 
 <script>
     $(document).ready(function(){
+
         $("#imageDelete").click(function(){
             $("#imageTxt").val("");
             $("#image").val("");
             $("#imageViewDelete").addClass("hidden");
             $("#imageView").attr("href","");
-        })
+        });
+
     });
 </script>
 

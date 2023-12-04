@@ -84,7 +84,7 @@
 					</div>
 				</a>
 
-				<div class="topSpacerBig big greyDark">
+				<div class="topSpacerBig medium white">
 					Welcome to LT GALLERY's<br />
 					update interface.<br />Please Login.
 				</div>
@@ -94,15 +94,15 @@
 				<form action="index.php" method="post" class="topSpacer">
 
 					<div>
-						<input class="login tiny" type="text" name="email" value="Email" maxlength="30" onblur="if (this.value== '' || !this.value) {this.value= 'Email';}" onfocus="if (this.value == 'Email') {this.value= '';}" autocomplete="off" />
+						<input class="login small" type="text" name="email" value="Email" maxlength="30" onblur="if (this.value== '' || !this.value) {this.value= 'Email';}" onfocus="if (this.value == 'Email') {this.value= '';}" autocomplete="off" />
 					</div>
 
 					<div class="topSpacer">
-						<input class="login tiny" type="password" name="password" value="password" maxlength="20" onblur="if (this.value== '' || !this.value) {this.value= 'Password';}" onfocus="if (this.value == 'password') {this.value= '';}" autocomplete="off" />
+						<input class="login small" type="password" name="password" value="password" maxlength="20" onblur="if (this.value== '' || !this.value) {this.value= 'Password';}" onfocus="if (this.value == 'password') {this.value= '';}" autocomplete="off" />
 					</div>
 
 					<div class="topSpacer">
-						<input class="login tiny" type="submit" name="login" value="LOGIN" />
+						<input class="login small" type="submit" name="login" value="LOGIN" />
 					</div>
 				</form>
 

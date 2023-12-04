@@ -1,7 +1,7 @@
 <?php
-	$pageTitle='Change Password';
+	$pageTitle='CHANGE PASSWORD';
+	$section = 'CHANGE PASSWORD';
 	$table='users';
-	$section='Change Password';
 
 	include('../top.php');
 

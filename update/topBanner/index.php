@@ -56,9 +56,9 @@
                 while($row=fetchArray($result)){
                     foreach($row as $key => $temp){$$key = stripslashes(($row[$key]));}
 					echo '<tr>';
-						echo "<td>".sanitizeInput($title)."</td>";
+						echo "<td>".sanitizeInput($title,"HTML")."</td>";
 						echo "<td>
-							<img src='../../topbanner-images/images/".$image."' width='200px' />
+							<img src='../../topbanner/images/".$image."' width='200px' />
 						</td>";
 						echo "<td>";
 							echo"<form action='edit.php' method='post'>

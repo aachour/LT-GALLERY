@@ -1,6 +1,6 @@
 <?php 
 	$pageTitle = 'HOME';
-	$section = 'Home';
+	$section = 'HOME';
 	include('../top.php');
 ?>
 

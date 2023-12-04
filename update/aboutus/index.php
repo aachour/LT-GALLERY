@@ -62,7 +62,7 @@
 						echo "<td>".sanitizeInput($sub_title)."</td>";
 						echo "<td>".sanitizeInput($text,"HTML")."</td>";
 						echo "<td>
-							<img src='../../aboutus-images/images/".$image."' width='200px' />
+							<img src='../../aboutus/images/".$image."' width='200px' />
 						</td>";
 						echo "<td>";
 							echo"<form action='edit.php' method='post'>

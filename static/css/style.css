@@ -10,6 +10,13 @@ a.blackGrey:hover{
 	color:#333333 !important;
 }
 
+a.whiteUnderline{
+	color:#FFF !important;
+}	
+a.whiteUnderline:hover{
+	text-decoration: underline !important;
+}
+
 a.blackRed{
 	color:#2B2B2B !important;
 }	
