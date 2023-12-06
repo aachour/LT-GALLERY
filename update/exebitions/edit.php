@@ -2,7 +2,7 @@
 	$pageTitle = 'EXEBITIONS';
 	$section = 'EXEBITIONS';
 	$table='exebitions';
-	$folder='../../exebitions/';
+    $folder='../../exebitions/';
 
 	include('../top.php');
 
@@ -27,7 +27,8 @@
 	<div class="content">
 
     	<p class='medium blue underline'><?php echo $pageTitle;?></p><br /><br />
-
+       
+       
 		<?php
 
         if(@$save){
@@ -35,7 +36,7 @@
             if(isEmpty($title) || isEmpty($text) || isEmpty($image)){
 				$error="Please fill all required fields";
             }
-
+            
             if(@$error==''){
 
 				if(!isEmpty($entryId)){
@@ -103,7 +104,31 @@
     	<form action="<?php echo currentPage(); ?>" method="POST" enctype="multipart/form-data">
 
             <table cellpadding="0" cellspacing="0" class="prompt small">
+                
+                <tr>
+                    <td>Category <sup class="red">*</sup></td>
+                    <td width="20px"></td> 
+                    <td>
+                    <select id="category_id" name="category_id">
+                        <option value=""></option>
+                        <?php
+                            $query2="SELECT `id` as `categoryId` , `name` as `categoryName`  FROM `categories`" ;
+                            $result2=runQuery($query2);
+                            if(numRows($result2)>0){
+                                while($row2=fetchArray($result2)){
+                                    foreach($row2 as $key => $item){$$key=stripslashes($row2[$key]);}
+                                    $selected="";
+                                    if($categoryId==$category_id){$selected="selected";}
+                                    echo'<option value="'.$categoryId.'" '.$selected.'>'.$categoryName.'</option>';
+                                }
+                            }
+                        ?>
+                    </select>
 
+                    </td>
+                </tr>
+                
+                <tr height="20px"></tr>
                 <tr>
                     <td>Title <sup class='red'>*</sup></td>
                     <td width="20px"></td>
