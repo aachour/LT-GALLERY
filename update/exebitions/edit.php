@@ -83,7 +83,7 @@
             $prompt=1;
         }
 
-        if(@$error){echo "<p class='error'>".$error."<br /></p><br /><br />";}
+         if(@$error){echo "<p class='error'>".$error."<br /></p><br /><br />";}
         if(@$msg){echo "<p class='msg'>".$msg."<br /></p><br /><br /><br /><br /><br /><br /><br /><br />";}
 
         if($prompt==1){

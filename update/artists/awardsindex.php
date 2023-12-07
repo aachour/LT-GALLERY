@@ -1,7 +1,7 @@
 <?php
 	$pageTitle = 'AWARDS ';
-	$section = 'AWARDS';
-	$table='artists_awards';
+	$section = 'ARTISTS';
+	$table='artist_awards';
 	$folder='../../artists/';
 
 	include('../top.php');
@@ -29,11 +29,14 @@
 		@extract($_GET);
 
 		@$entryId=sanitizeInput($id);
+		@$artistId=sanitizeInput($artistid);
+
 
 		if(@$delete){
 			echo "<div class='error'>Are you sure you want to delete this entry?<br /><br />
-				<form action='index_awards.php' method='POST'>
+				<form action='awardsindex.php' method='POST'>
 				<input type='hidden' name='id' value='".$entryId."' />
+				<input type='hidden' name='artistid' value='".$artistId."' />
 				<input class='submit' type='submit' name='doDelete' value='Yes' />
 				&nbsp;&nbsp;<input class='submit' type='submit' name='' value='No' />
 			</form></div>";
@@ -45,7 +48,7 @@
 			runQuery($query);
 
 			echo "<div class='msg'>Entry deleted successfully</div><br /><br />";
-			echo "<meta http-equiv='refresh' content='2;url=".currentPage()."'>";
+			echo "<meta http-equiv='refresh' content='2;url=".currentPage()."?artistid=".@$artistId."'>";
 			$list=0;
 		}
 
@@ -55,15 +58,15 @@
 
 			echo "<p class='medium blue underline'>".$pageTitle."<br /><br /></p>";
 
-			echo "<a href='edit_awards.php'><input type='submit' class='submit' name='Add' value='Add Entry' /></a>
-			<a href='index.php'>
-				<input type='submit' class='submit' name='Add' value='Back' />
-			</a>
+			echo "<a href='awardsEdit.php?artistid=".@$artistId."'><input type='submit' class='submit' name='Add' value='Add Entry' /></a>
+				<a href='index.php'>
+					<input type='submit' class='submit' name='Add' value='Back' />
+				</a>
 			<br /><br />
 			<br /><br />";
 			
 
-			$query="SELECT * FROM `".$table."` WHERE `status`='1' ORDER BY `id` DESC";
+			$query="SELECT * FROM `".$table."` WHERE `artist_id`='".@$artistId."'AND `status`='1' ORDER BY `id` DESC";
 
 			$result=runQuery($query);
 
@@ -76,24 +79,23 @@
                     <tr class='head blue'>
 						<th>TEXT</th>
 						<th>Years</th>
-						<th>link</th>
 						<th>Actions</th>
 					</tr>";
                 while($row=fetchArray($result)){
                     foreach($row as $key => $temp){$$key = stripslashes(($row[$key]));}
 					echo '<tr>';
 						echo "<td>".sanitizeInput($text)."</td>";
-						echo "<td>".date('Y',strtotime($years))."</td>";
-						echo "<td>".sanitizeInput($link)."</td>";
-
+						echo "<td>".sanitizeInput($years)."</td>";
 						echo "<td>";
-							echo"<form action='edit_awards.php' method='post'>
+							echo"<form action='awardsEdit.php' method='post'>
                                 <input type='hidden' name='id' value='".$id."'/>
+								<input type='hidden' name='artistid' value='".$artistId."'/>
                                 <input type='submit' class='submit' name='edit' value='Edit' style='width:150px;'/>
 							</form>";
-							echo"<form action='index_awards.php' method='post'>
+							echo"<form action='awardsindex.php' method='post'>
                                 <input type='hidden' name='id' value='".$id."'/>
-                                <input type='submit' class='submit' name='delete' value='Delete' style='width:150px;'/>
+								<input type='hidden' name='artistid' value='".$artistId."'/>
+								<input type='submit' class='submit' name='delete' value='Delete' style='width:150px;'/>
                             </form>";
 							
 						echo"</td>";
