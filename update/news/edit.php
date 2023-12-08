@@ -1,9 +1,8 @@
 <?php
 	$pagetitle = 'NEWS';
-	$section = 'news';
+	$section = 'NEWS';
 	$table='news';
 	
-
 	include('../top.php');
 
     include("../cropImage/index.html");
@@ -18,7 +17,7 @@
 ?>
 <script type="text/javascript" src="../../ckeditor/ckeditor.js"></script>
 
-<div id="middle" style="position:relative; width:100%; padding:50px 0xp; background:#FFF;">
+<div id="middle" style="position:relative; width:100%; padding:50px 0px; background:#FFF;">
 
     <!-- content -->
     <div class="content">
@@ -41,17 +40,20 @@
                     `author`='".sanitizeInput($author,"HTML")."',
                     `text`='".sanitizeInput($text,"HTML")."',
                     `link`='".sanitizeInput($link,"HTML")."',
-                    `date`=NOW() 
+                    `date`='".date('Y-m-d',strtotime(@$date))."', 
+                    `dateedit`=NOW()
 					 WHERE `id`=".$entryId;
                     
                 }else{
-                    $query = "INSERT INTO `" .$table. "` (`title` , `author` , `text` , `link` , `date`)
+                    $query = "INSERT INTO `" .$table. "` (`title` , `author` , `text` , `link` , `date`, `datesubmit` ,`status`)
                     VALUES( '" . sanitizeInput($title, "HTML") . "' ,
                             '" . sanitizeInput($author, "HTML") . "' , 
                             '" . sanitizeInput($text, "HTML") . "' , 
                             '" . sanitizeInput(@$link, "HTML") . "' , 
-                            NOW()
-                            )";
+                            '".date('Y-m-d',strtotime(@$date))."',
+                            NOW(),
+                            '1'
+                        )";
                 }
                 if(runQuery($query)){
                     if(isEmpty($entryId)){
@@ -78,9 +80,9 @@
                 $result=runQuery($query);
                 $row=fetchArray($result);
                 foreach($row as $key => $item){$$key=stripcslashes($row[$key]);};
+                $date=date('d-m-Y',strtotime(@$date));
 
             }
-        }
         ?>
 
         <form action="<?php echo currentPage(); ?>" method="POST" enctype="multipart/form-data">
@@ -106,7 +108,7 @@
                 <tr>
                     <td>Link<sup class="red">*</sup></td>
                     <td width="20px"></td>
-                    <td><?php echoTextField("text",@$link,"ckeditor"); ?></td>
+                    <td><?php echoTextField("link",@$link,"ckeditor"); ?></td>
                 </tr>
                 <tr height="20px"></tr>
                 <tr>
@@ -130,6 +132,8 @@
             </table>
 
         </form>
+
+        <?php } ?>
             
     </div>
 
@@ -137,6 +141,18 @@
 <!-- End_section -->
 <script>
     $(document).ready(function(){
+
+        $(".datepicker").datepicker({
+            dateFormat: 'dd-mm-yy', // Date format
+            beforeShow: function (input, inst) {
+                setTimeout(function () {
+                    inst.dpDiv.css({
+                        width: '850px'
+                    });
+                }, 0);
+            }
+        });
+        
         $("#imageDelete").click(function(){
             $("#imageTxt").val("");
             $("#image").val("");

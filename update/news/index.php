@@ -1,6 +1,6 @@
 <?php
 	$pageTitle = 'NEWS';
-	$section = 'news';
+	$section = 'NEWS';
 	$table='news';
 	
 

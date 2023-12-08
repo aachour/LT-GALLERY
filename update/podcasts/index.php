@@ -1,6 +1,6 @@
 <?php
-	$pageTitle = 'PODCAST';
-	$section = 'podcast';
+	$pageTitle = 'PODCASTS';
+	$section = 'PODCASTS';
 	$table='podcast';
 	//$folder='../../publications/';
 
@@ -78,9 +78,8 @@
                             echo "<td>".sanitizeInput($title)."</td>";
                             echo "<td>".sanitizeInput($subtitle,"HTML")."</td>";
                             echo "<td>".sanitizeInput($text,"HTML")."</td>";
-
                             echo "<td>
-                                <img src='../../podcast-images/images/".$image."' width='200px' />
+                                <img src='../../podcasts/images/".$image."' width='200px' />
                             </td>";
                                                   
                             echo "<td>

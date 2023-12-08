@@ -1,6 +1,6 @@
 <?php
-	$pagetitle = 'PODCAST';
-	$section = 'podcast';
+	$pagetitle = 'PODCASTS';
+	$section = 'PODCASTS';
 	$table='podcast';
 	
 
@@ -18,7 +18,7 @@
 ?>
 <script type="text/javascript" src="../../ckeditor/ckeditor.js"></script>
 
-<div id="middle" style="position:relative; width:100%; padding:50px 0xp; background:#FFF;">
+<div id="middle" style="position:relative; width:100%; padding:50px 0px; background:#FFF;">
 
     <!-- content -->
     <div class="content">
@@ -27,28 +27,31 @@
 
         <?php
         if(@$save){
-            if(isEmpty($title)|| isEmpty($subtitle)|| isEmpty($text)||isEmpty($image) ){
+            if(isEmpty($title) || isEmpty($subtitle) || isEmpty($text) || isEmpty($image) ){
                 $error="Please fill required filed";
-
-
             }
             if(@$error==''){
                 if(!isEmpty($entryId)){
                     $query="UPDATE `".$table."` SET
-                    `title`='".sanitizeInput($title,"HTML")."'
-                    `subtitle`='".sanitizeInput($subtitle,"HTML")."'
-                    `text`='".sanitizeInput($text,"HTML")."'
-                    `image`='".sanitizeInput($image,"HTML")."'
-                    `link`='".sanitizeInput(@$link,"HTML")."'";
+                    `title`='".sanitizeInput($title,"HTML")."',
+                    `subtitle`='".sanitizeInput($subtitle,"HTML")."',
+                    `text`='".sanitizeInput($text,"HTML")."',
+                    `image`='".sanitizeInput($image,"HTML")."',
+                    `link`='".sanitizeInput(@$link,"HTML")."',
+                    `dateedit`=NOW()
+                    WHERE `id`='".@$entryId."'
+                    ";
                     
                 }else{
-                    $query="INSERT INTO `".$table."`(`title` , `subtitle` , `text` , `image` , `link`)
+                    $query="INSERT INTO `".$table."`(`title` , `subtitle` , `text` , `image` , `link` , `datesubmit` , `status`)
                              VALUES( '".sanitizeInput($title,"HTML")."' ,
                                     '".sanitizeInput(@$subtitle,"HTML")."', 
                                     '".sanitizeInput(@$text,"HTML")."' , 
                                     '".sanitizeInput(@$image,"HTML")."' , 
-                                    '".sanitizeInput(@$link,"HTML"). "'
-                                    )";
+                                    '".sanitizeInput(@$link,"HTML"). "',
+                                    NOW(),
+                                    '1'
+                                )";
                     }
 
 
@@ -82,7 +85,6 @@
                 foreach($row as $key => $item){$$key=stripcslashes($row[$key]);};
 
             }
-        }
         ?>
 
         <form action="<?php echo currentPage(); ?>" method="POST" enctype="multipart/form-data">
@@ -108,7 +110,7 @@
                 <tr>
                     <td>Link<sup class="red">*</sup></td>
                     <td width="20px"></td>
-                    <td><?php echoTextField("text",@$link,"ckeditor"); ?></td>
+                    <td><?php echoTextField("link",@$link,"ckeditor"); ?></td>
                 </tr>
                 <tr height="20px"></tr>
                 <td>Image <sup class="red">*</sup></td>
@@ -122,8 +124,7 @@
                     <div class="topSpacerSmaller tiny textRight <?php if(@$image==""){ echo "hidden";} ?>"id="imageViewDelete">
                         <a class="tiny" href=""<?php if(@$image!=""){echo "../../podcasts/images/".@$image;}?>" id="imageView" target="_blank">View</a>
                         &nbsp;|&nbsp;
-                        <span class="tiny clickable" id="imageDelete">Delete</span>></a>
-
+                        <span class="tiny clickable" id="imageDelete">Delete</span></a>
                     </div>
                 </td>
                 <tr height="10px"></tr>
@@ -139,12 +140,14 @@
                     </td>
                 </tr>
             </table>
-
         </form>
+
+        <?php } ?>
             
     </div>
 
 </div>
+
 <!-- End_section -->
 <script>
     $(document).ready(function(){
