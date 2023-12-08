@@ -70,9 +70,9 @@
 			echo "<a href='edit.php'><input type='submit' class='submit' name='Add' value='Add Entry' /></a><br /><br />";
 
 			$query="SELECT * FROM `".$table."` WHERE `status`='1' ORDER BY `id` DESC";
-
+			
 			$result=runQuery($query);
-
+			
             $rows=numRows($result);
 
             if($rows==0){
@@ -87,6 +87,7 @@
 						<th>Image</th>
 						<th>Actions</th>
 					</tr>";
+				
                 while($row=fetchArray($result)){
                     foreach($row as $key => $temp){$$key = stripslashes(($row[$key]));}
 					echo '<tr>';
@@ -110,6 +111,7 @@
                                 <input type='hidden' name='id' value='".$id."'/>
                                 <input type='submit' class='submit' name='delete' value='Delete' style='width:150px;'/>
                             </form>";
+							
 							// $row2=fetcharray(runQuery("select min(listorder) from `".$table."` WHERE `status`='1'"));
 							// if($listorder>$row2[0]){
 							// 	echo "<form action='index.php' method='post'>

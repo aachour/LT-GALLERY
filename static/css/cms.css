@@ -91,6 +91,7 @@ input[type="text"], input[type="password"], select.normal, textarea{
 select{
 	width:100%;
 	height:40px;
+	background:#FFF;
 }
 select[multiple]{
 	width:100%;
@@ -127,8 +128,8 @@ select{
 	padding:5px 15px;
 	border:0px;
 	cursor:pointer;
-	color:#FFF;
-	background:#333333;
+	border:1px solid #d8d8d8;
+	background:#FFF;
 }
 
 .sortUp{
