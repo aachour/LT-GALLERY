@@ -111,10 +111,7 @@
                                 <input type='hidden' name='id' value='".$id."'/>
                                 <input type='submit' class='submit' name='delete' value='Delete' style='width:150px;'/>
                             </form>";
-							echo"<form action='exebtion_index.php' method='post'>
-							<input type='hidden' name='id' value='".$id."'/>
-							<input type='submit' class='submit' name='new' value='New' style='width:150px;'/>
-						</form>";
+							
 							// $row2=fetcharray(runQuery("select min(listorder) from `".$table."` WHERE `status`='1'"));
 							// if($listorder>$row2[0]){
 							// 	echo "<form action='index.php' method='post'>
