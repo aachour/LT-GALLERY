@@ -65,7 +65,7 @@ $folder='../../artists/';
                         }
                         $msg="<br />Entry saved.<br />";
                         $prompt=0;
-                        echo "<meta http-equiv='refresh' content='2;url= awardsindex.php?artistid=".@$artistId."'>";
+                        echo "<meta http-equiv='refresh' content='2;url= awards.php?artistid=".@$artistId."'>";
                     } 
                     else{
                         $error="<br />Could not save entry. Please try again.<br />";
@@ -87,7 +87,6 @@ $folder='../../artists/';
                     $result=runQuery($query);
                     $row=fetchArray($result);
                     foreach($row as $key => $item){$$key=stripslashes($row[$key]);}
-                    $artists_id=json_decode(@$artistsid);
                 }
         ?>
 
@@ -127,7 +126,7 @@ $folder='../../artists/';
                         <?php } ?>
                         <input type='hidden' name='artistid' value='<?php echo $artistId; ?>' />
                         <input name='save' class='submit' value='Save' type='submit'/>
-                        <input onclick="window.location='awardsindex.php?artistid=<?php echo @$artistId; ?>'" class='submit' value='Cancel' type='Button'/>
+                        <input onclick="window.location='awards.php?artistid=<?php echo @$artistId; ?>'" class='submit' value='Cancel' type='Button'/>
                     </td>
                 </tr>
             </table>

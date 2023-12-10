@@ -9,11 +9,11 @@
 		@$_SESSION['LTG-ADMIN-STATUS']="";
 		unset($_SESSION['LTG-ADMIN-STATUS']);
 		session_destroy();
-		echo "<meta http-equiv='refresh' content='0;url=update/index.php'>";
+		echo "<meta http-equiv='refresh' content='0;url=/update/index.php'>";
 	}
 
 	if(isset($_SESSION['LTG-ADMIN-ID'])){
-		echo "<meta http-equiv='refresh' content='0;url=home/'>";
+		echo "<meta http-equiv='refresh' content='0;url=/home/'>";
 		die();
 	}
 ?>
@@ -29,7 +29,6 @@
 </head>
 
 <?php
-	@session_start();
 	extract($_POST);
 	$prompt=1;
 	//not logged in
@@ -56,6 +55,7 @@
 				@session_regenerate_id ();
 				$_SESSION['LTG-ADMIN-STATUS']="LOGIN-OK-PROCEED";
 				$_SESSION['LTG-ADMIN-ID']=$id;
+
 				echo "<meta http-equiv='refresh' content='0;url=home/'>";
 				$prompt=0;
 			}

@@ -1,10 +1,9 @@
 <?php
     include('../../global/global.php');
-    include('../../global/SimpleImage.php');
-
-	// if(checkAdminLogin()==0){
-	// 	die(header("location:../../"));
-	// }
+    
+	if(checkAdminLogin()==0){
+		// die(header("location:../../"));
+	}
 
 	runQuery("SET NAMES 'utf8'");
 	runQuery('SET CHARACTER SET utf8');

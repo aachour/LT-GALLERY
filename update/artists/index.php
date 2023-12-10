@@ -43,7 +43,7 @@
 		}
 
 		if(@$doDelete){
-			$query="DELETE FROM `".$table."` WHERE `id`=".$entryId;
+			$query="UPDATE `".$table."` SET `status`='0' `".$table."` WHERE `id`=".$entryId;
 			runQuery($query);
 
 			echo "<div class='msg'>Entry deleted successfully</div><br /><br />";
@@ -98,14 +98,14 @@
                                 <input type='hidden' name='id' value='".$id."'/>
                                 <input type='submit' class='submit' name='edit' value='Edit' style='width:150px;'/>
 							</form>";
-							echo"<form action='awardsindex.php' method='post'>
+							echo"<form action='awards.php' method='post'>
                                 <input type='hidden' name='artistid' value='".$id."'/>
                                 <input type='submit' class='submit' name='award' value='Awards' style='width:150px;'/>
                             </form>";
-							// echo"<form action='exebtion_index.php' method='post'>
-							// <input type='hidden' name='id' value='".$id."'/>
-							// <input type='submit' class='submit' name='exebtion' value='Exebtion' style='width:150px;'/>
-							// </form>";
+							echo"<form action='exebitions.php' method='post'>
+								<input type='hidden' name='artistid' value='".$id."'/>
+								<input type='submit' class='submit' name='exebition' value='Exebitions' style='width:150px;'/>
+							</form>";
 							echo"<form action='images.php' method='post'>
 								<input type='hidden' name='artistid' value='".$id."'/>
                                 <input type='submit' class='submit' name='image' value='Artworks' style='width:150px;'/>

@@ -44,7 +44,7 @@
 		}
 
 		if(@$doDelete){
-			$query="DELETE FROM `".$table."` WHERE `id`=".$entryId;
+			$query="UPDATE `".$table."` SET `status`='0' WHERE `id`=".$entryId;
 			runQuery($query);
 
 			echo "<div class='msg'>Entry deleted successfully</div><br /><br />";
@@ -53,12 +53,11 @@
 		}
 
 		
-
 		if($list){
 
 			echo "<p class='medium blue underline'>".$pageTitle."<br /><br /></p>";
 
-			echo "<a href='awardsEdit.php?artistid=".@$artistId."'><input type='submit' class='submit' name='Add' value='Add Entry' /></a>
+			echo "<a href='awardEdit.php?artistid=".@$artistId."'><input type='submit' class='submit' name='Add' value='Add Entry' /></a>
 				<a href='index.php'>
 					<input type='submit' class='submit' name='Add' value='Back' />
 				</a>
@@ -87,12 +86,12 @@
 						echo "<td>".sanitizeInput($text)."</td>";
 						echo "<td>".sanitizeInput($years)."</td>";
 						echo "<td>";
-							echo"<form action='awardsEdit.php' method='post'>
+							echo"<form action='awardEdit.php' method='post'>
                                 <input type='hidden' name='id' value='".$id."'/>
 								<input type='hidden' name='artistid' value='".$artistId."'/>
                                 <input type='submit' class='submit' name='edit' value='Edit' style='width:150px;'/>
 							</form>";
-							echo"<form action='awardsindex.php' method='post'>
+							echo"<form action='awards.php' method='post'>
                                 <input type='hidden' name='id' value='".$id."'/>
 								<input type='hidden' name='artistid' value='".$artistId."'/>
 								<input type='submit' class='submit' name='delete' value='Delete' style='width:150px;'/>

@@ -38,7 +38,7 @@
                 $list=0;
             }
             if(@$doDelete){
-                $query="DELETE FROM `".$table."` WHERE `id`=".$entryId;
+                $query="UPDATE `".$table."` SET `status`='0' `".$table."` WHERE `id`=".$entryId;
                 runQuery($query);
     
                 echo "<div class='msg'>Entry deleted successfully</div><br /><br />";

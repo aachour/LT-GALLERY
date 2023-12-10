@@ -1,6 +1,7 @@
 <?php
 
 	if(!isset($_SESSION)) {
+		ob_clean();
 		@session_start();
 	}
 	$dbLink = new mysqli("127.0.0.1", "root", "test","lt-gallery");
