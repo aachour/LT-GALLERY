@@ -1,49 +1,57 @@
 /* CSS Document */
 
 @font-face {
-    font-family: 'Proxima Nova Rg';
-    src: url('fonts/ProximaNova-Regular.eot');
-    src: url('fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
-        url('fonts/ProximaNova-Regular.woff2') format('woff2'),
-        url('fonts/ProximaNova-Regular.woff') format('woff'),
-        url('fonts/ProximaNova-Regular.ttf') format('truetype');
+    font-family: 'Gilroy Regular';
+    src: url('fonts/Gilroy-Regular.eot');
+    src: url('fonts/Gilroy-Regular.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Gilroy-Regular.woff2') format('woff2'),
+        url('fonts/Gilroy-Regular.woff') format('woff'),
+        url('fonts/Gilroy-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
-.proximaRg{
-	font-family: 'Proxima Nova Rg' !important;
+.gilroyRegular{
+	font-family: 'Gilroy Regular' !important;
 }
 
 @font-face {
-    font-family: 'Proxima Nova Sb';
-    src: url('fonts/ProximaNova-Semibold.eot');
-    src: url('fonts/ProximaNova-Semibold.eot?#iefix') format('embedded-opentype'),
-        url('fonts/ProximaNova-Semibold.woff2') format('woff2'),
-        url('fonts/ProximaNova-Semibold.woff') format('woff'),
-        url('fonts/ProximaNova-Semibold.ttf') format('truetype');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-}
-.proximaSb{
-	font-family: 'Proxima Nova Sb' !important;
-}
-
-@font-face {
-    font-family: 'ProximaNova Md';
-    src: url('fonts/ProximaNova-Medium.eot');
-    src: url('fonts/ProximaNova-Medium.eot?#iefix') format('embedded-opentype'),
-        url('fonts/ProximaNova-Medium.woff2') format('woff2'),
-        url('fonts/ProximaNova-Medium.woff') format('woff'),
-        url('fonts/ProximaNova-Medium.ttf') format('truetype');
+    font-family: 'Gilroy Medium';
+    src: url('fonts/Gilroy-Medium.eot');
+    src: url('fonts/Gilroy-Medium.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Gilroy-Medium.woff2') format('woff2'),
+        url('fonts/Gilroy-Medium.woff') format('woff'),
+        url('fonts/Gilroy-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
 }
-.proximaMd{
-	font-family: 'ProximaNova Md' !important;
+.gilroyMedium{
+	font-family: 'Gilroy Medium' !important;
 }
+
+
+@font-face {
+    font-family: 'Gilroy Light';
+    src: url('fonts/Gilroy-Light.eot');
+    src: url('fonts/Gilroy-Light.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Gilroy-Light.woff2') format('woff2'),
+        url('fonts/Gilroy-Light.woff') format('woff'),
+        url('fonts/Gilroy-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+.gilroyLight{
+	font-family: 'Gilroy Light' !important;
+}
+
+
+
+
+
+
+
 
 
 
@@ -66,7 +74,7 @@ time, mark, audio, video , textarea {
 	font-size: 100%;
 	font: inherit;
 	vertical-align:top;
-	font-family: 'Proxima Nova Rg' !important;
+	font-family: 'Gilroy Regular' !important;
 	size:inherit;
 	color:inherit;
 	line-height:150%;

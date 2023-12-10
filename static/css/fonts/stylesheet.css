@@ -1,11 +1,11 @@
 @font-face {
-    font-family: 'ProximaNova';
-    src: url('ProximaNova-Medium.eot');
-    src: url('ProximaNova-Medium.eot?#iefix') format('embedded-opentype'),
-        url('ProximaNova-Medium.woff2') format('woff2'),
-        url('ProximaNova-Medium.woff') format('woff'),
-        url('ProximaNova-Medium.ttf') format('truetype');
-    font-weight: 500;
+    font-family: 'Gilroy';
+    src: url('Gilroy-Regular.eot');
+    src: url('Gilroy-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Gilroy-Regular.woff2') format('woff2'),
+        url('Gilroy-Regular.woff') format('woff'),
+        url('Gilroy-Regular.ttf') format('truetype');
+    font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
