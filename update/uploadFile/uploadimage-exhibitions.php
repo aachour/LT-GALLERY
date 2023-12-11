@@ -1,6 +1,6 @@
 <?php
 
-	$output_dir = "../../exebitions/images/";
+	$output_dir = "../../exhibitions/images/";
 
 	if(isset($_FILES["myfile"])){
 		$ret = array();

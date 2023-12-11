@@ -1,8 +1,8 @@
 <?php
-	$pageTitle = 'EXEBITION IMAGES';
-	$section = 'EXEBITIONS';
-	$table='exebition_images';
-	$folder='../../exebitions/';
+	$pageTitle = 'EXHIBITION IMAGES';
+	$section = 'EXHIBITIONS';
+	$table='exhibition_images';
+	$folder='../../exhibitions/';
 
 	include('../top.php');
 
@@ -31,13 +31,14 @@
 		@extract($_GET);
 
 		@$entryId=sanitizeInput($id);
-		@$exebitionId=sanitizeInput($exebitionid);
+		
+		@$exhibitionsId=sanitizeInput($exhibitionsid); 
 
 		if(@$delete){
 			echo "<div class='error'>Are you sure you want to delete this entry?<br /><br />
 				<form action='images.php' method='POST'>
 				<input type='hidden' name='id' value='".$entryId."' />
-				<input type='hidden' name='exebitionid' value='".$exebitionId."' />
+				<input type='hidden' name='exhibitionsid' value='".$exhibitionsId."' />
 				<input class='submit' type='submit' name='doDelete' value='Yes' />
 				&nbsp;&nbsp;<input class='submit' type='submit' name='' value='No' />
 			</form></div>";
@@ -49,19 +50,19 @@
 			runQuery($query);
 
 			echo "<div class='msg'>Entry deleted successfully</div><br /><br />";
-			echo "<meta http-equiv='refresh' content='2;url=".currentPage()."?$exebitionid=".$exebitionId."'>";
+			echo "<meta http-equiv='refresh' content='2;url=".currentPage()."?$exhibitionsid=".$exhibitionsId."'>";
 			$list=0;
 		}
 		
 		if(@$up){
 			$previous=$listorder-1;
-			runQuery("UPDATE `".$table."` SET `listorder`=".$listorder." WHERE `exebition_id`='".$exebitionId."' AND `listorder`=".$previous);
+			runQuery("UPDATE `".$table."` SET `listorder`=".$listorder." WHERE `exhibitions_id`='".$exhibitionsId."' AND `listorder`=".$previous);
 			runQuery("UPDATE `".$table."` SET `listorder`=".$previous." WHERE `id`=".$entryId);
 		}
 		
 		if(@$down){
 			$next=$listorder+1;
-			runQuery("UPDATE `".$table."` SET `listorder`=".$listorder." WHERE `exebition_id`='".$exebitionId."' AND `listorder`=".$next);
+			runQuery("UPDATE `".$table."` SET `listorder`=".$listorder." WHERE `exhibitions_id`='".$exhibitionsId."' AND `listorder`=".$next);
 			runQuery("UPDATE `".$table."` SET `listorder`=".$next." WHERE `id`=".$entryId);
 		}
 
@@ -69,7 +70,7 @@
 
 			echo "<p class='medium blue underline'>".$pageTitle."<br /><br /></p>";
 
-			echo "<a href='imageEdit.php?exebitionid=".$exebitionId."'>
+			echo "<a href='imageEdit.php?exhibitionsid=".$exhibitionsId."'>
 				<input type='submit' class='submit' name='Add' value='Add Entry' />
 			</a>
 			<a href='index.php'>
@@ -77,7 +78,7 @@
 			</a>
 			<br /><br />";
 
-			$query="SELECT * FROM `".$table."` WHERE `exebition_id`='".@$exebitionId."' AND `status`='1' ORDER BY `listorder` ASC ";
+			$query="SELECT * FROM `".$table."` WHERE `exhibitions_id`='".@$exhibitionsId."' AND `status`='1' ORDER BY `listorder` ASC ";
 
 			$result=runQuery($query);
 
@@ -96,36 +97,36 @@
                     foreach($row as $key => $temp){$$key = stripslashes(($row[$key]));}
 					echo '<tr>';
 						echo "<td>
-							<img src='../../exebitions/images/".$image."' width='200px' />
+							<img src='../../exhibitions/images/".$image."' width='200px' />
 						</td>";
 						echo "<td>".sanitizeInput($caption,"HTML")."</td>";
 						echo "<td>";
 
 							echo"<form action='imageEdit.php' method='post'>
                                 <input type='hidden' name='id' value='".$id."'/>
-								<input type='hidden' name='exebitionid' value='".$exebitionId."'/>
+								<input type='hidden' name='exhibitionsid' value='".$exhibitionsId."'/>
 								<input type='submit' class='submit' name='edit' value='Edit' style='width:150px;'/>
 							</form>";
 							echo"<form action='images.php' method='post'>
 								<input type='hidden' name='id' value='".$id."'/>
-								<input type='hidden' name='exebitionid' value='".$exebitionId."'/>
+								<input type='hidden' name='exhibitionsid' value='".$exhibitionsId."'/>
                                 <input type='submit' class='submit' name='delete' value='Delete' style='width:150px;'/>
                             </form>";
 
-							$row2=fetcharray(runQuery("select min(listorder) from `".$table."` WHERE `exebition_id`='".@$exebitionId."' AND `status`='1'"));
+							$row2=fetcharray(runQuery("select min(listorder) from `".$table."` WHERE `exhibitions_id`='".@$exhibitionsId."' AND `status`='1'"));
 							if($listorder>$row2[0]){
 								echo "<form action='images.php' method='post'>
 									<input type='hidden' name='id' value='".$id."' />
-									<input type='hidden' name='exebitionid' value='".$exebitionId."'/>
+									<input type='hidden' name='exhibitionsid' value='".$exhibitionsId."'/>
 									<input type='hidden' name='listorder' value='".$listorder."' />
 									<input type='submit' class='submit' name='up' value='&uArr;' />
 								</form>";
 							}
-							$row2=fetcharray(runQuery("select max(listorder) from `".$table."` WHERE `exebition_id`='".@$exebitionId."' AND `status`='1'"));
+							$row2=fetcharray(runQuery("select max(listorder) from `".$table."` WHERE `exhibitions_id`='".@$exhibitionsId."' AND `status`='1'"));
 							if($listorder<$row2[0]){
 								echo "<form action='images.php' method='post'>
 									<input type='hidden' name='id' value='".$id."' />
-									<input type='hidden' name='exebitionid' value='".$exebitionId."'/>
+									<input type='hidden' name='exhibitionsid' value='".$exhibitionsId."'/>
 									<input type='hidden' name='listorder' value='".$listorder."' />
 									<input type='submit' class='submit' name='down' value='&dArr;' />
 								</form>";

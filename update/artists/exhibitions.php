@@ -1,8 +1,8 @@
 <?php
-	$pageTitle = 'EXEBITIONS';
+	$pageTitle = 'EXHIBITION';
 	$section = 'ARTISTS';
-	$table='artist_exebitions';
-	$folder='../../exebitions/';
+	$table='artist_exhibitions';
+	$folder='../../exhibitions/';
 
 	include('../top.php');
 
@@ -35,7 +35,7 @@
     
             if(@$delete){
                 echo "<div class='error'>Are you sure you want to delete this entry?<br /><br />
-                    <form action='exebitions.php' method='POST'>
+                    <form action='exhibitions.php' method='POST'>
                     <input type='hidden' name='id' value='".$entryId."' />
                     <input type='hidden' name='artistid' value='".$artistId."' />
                     <input class='submit' type='submit' name='doDelete' value='Yes' />
@@ -57,7 +57,7 @@
             if($list){
                 echo "<p class='medium blue underline'>".$pageTitle."<br /><br /></p>";
 
-                echo "<a href='exebitionEdit.php?artistid=".@$artistId."''><input type='submit' class='submit' name='Add' value='Add Entry' /></a>
+                echo "<a href='exhibitionEdit.php?artistid=".@$artistId."''><input type='submit' class='submit' name='Add' value='Add Entry' /></a>
                 <a href='index.php'><input type='submit' class='submit' name='Back' value='Back' /></a>
                 <br /><br />";
 
@@ -88,12 +88,12 @@
                                 echo "<td>".sanitizeInput($text)."</td>";
                                 echo "<td>".sanitizeInput($year)."</td>";
                                 echo"<td>
-                                    <form action='exebitionEdit.php' method='post'>
+                                    <form action='exhibitionEdit.php' method='post'>
                                         <input type='hidden' name='id' value='".$id."'/>
                                         <input type='hidden' name='artistid' value='".$artistId."'/>
                                         <input type='submit' class='submit' name='edit' value='Edit' style='width:150px;'/>
                                     </form>";
-                                    echo"<form action='exebitions.php' method='post'>
+                                    echo"<form action='exhibitions.php' method='post'>
                                         <input type='hidden' name='id' value='".$id."'/>
                                         <input type='hidden' name='artistid' value ='".$artistId."'/>
                                         <input type='submit' class='submit' name='delete' value='Delete' style='width:150px;'/>

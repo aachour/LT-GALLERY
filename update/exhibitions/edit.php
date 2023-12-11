@@ -1,8 +1,8 @@
 <?php
-	$pageTitle = 'EXEBITIONS';
-	$section = 'EXEBITIONS';
-	$table='exebitions';
-    $folder='../../exebitions/';
+	$pageTitle = 'EXHIBITION';
+	$section = 'EXHIBITIONS';
+	$table='exhibitions';
+    $folder='../../exhibitions/';
 
 	include('../top.php');
 
@@ -198,7 +198,7 @@
                             <input type="button" class="browseBtn" id="exebitionFileBrowseBtn" value="BROWSE" />
                         </div>
                         <div class="topSpacerSmaller tiny textRight <?php if(@$file==""){echo "hidden";}?>" id="fileViewDelete">
-                            <a class="tiny" href="<?php if(@$file!=""){echo "../../exebitions/images/".@$file;}?>" id="fileView" target="_blank">View</a>
+                            <a class="tiny" href="<?php if(@$file!=""){echo "../../exhibitions/images/".@$file;}?>" id="fileView" target="_blank">View</a>
                             &nbsp;|&nbsp;
                             <span class="tiny clickable" id="fileDelete">Delete</span>
                         </div>
@@ -213,10 +213,10 @@
                         <div>
                             <input type="text" value="<?php if(@$image!=""){echo "Image uploaded";}?>" id="imageTxt" disabled />
                             <input type="hidden" value="<?php echo @$image;?>" id="image" name="image" />
-                            <input type="button" class="browseBtn" id="exebitionBrowseBtn" value="BROWSE" />
+                            <input type="button" class="browseBtn" id="exhibitionBrowseBtn" value="BROWSE" />
                         </div>
                         <div class="topSpacerSmaller tiny textRight <?php if(@$image==""){echo "hidden";}?>" id="imageViewDelete">
-                            <a class="tiny" href="<?php if(@$image!=""){echo "../../exebitions/images/".@$image;}?>" id="imageView" target="_blank">View</a>
+                            <a class="tiny" href="<?php if(@$image!=""){echo "../../exhibitions/images/".@$image;}?>" id="imageView" target="_blank">View</a>
                             &nbsp;|&nbsp;
                             <span class="tiny clickable" id="imageDelete">Delete</span>
                         </div>

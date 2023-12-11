@@ -266,11 +266,11 @@ CropAvatar.prototype = {
 
 		if(cropImageOption==1){
 			$(".avatar-directory").val("aboutus");
-			$(".avatar-width").val("500");
-			$(".avatar-height").val("500");
+			$(".avatar-width").val("");
+			$(".avatar-height").val("");
 		}
 		else if(cropImageOption==2){
-			$(".avatar-directory").val("exebitions");
+			$(".avatar-directory").val("exhibitions");
 			$(".avatar-width").val("1000");
 			$(".avatar-height").val("660");
 		}
@@ -385,11 +385,11 @@ CropAvatar.prototype = {
 			$("#imageViewDelete").find("#imageView").attr("href","../../aboutus/images/"+image);
 		}
 		else if(cropImageOption=="2"){
-			var image=imageUrl.replace("../../exebitions/images/",""); 
+			var image=imageUrl.replace("../../exhibitions/images/",""); 
 			$("#imageTxt").val("Image uploaded");
 			$("#image").val(image);
 			$("#imageViewDelete").removeClass("hidden");
-			$("#imageViewDelete").find("#imageView").attr("href","../../exebitions/images/"+image);
+			$("#imageViewDelete").find("#imageView").attr("href","../../exhibitions/images/"+image);
 		}
 		else if(cropImageOption=="3"){
 			var image=imageUrl.replace("../../artists/images/",""); 
@@ -434,13 +434,15 @@ CropAvatar.prototype = {
 
 		$("#aboutusBrowseBtn").click(function(){
 			cropImageOption="1";
-			aspectRatioValue="1";
+			aspectRatioValue="0";
 			return new CropAvatar($("#crop-avatar"));
 		});
 
-		$("#exebitionBrowseBtn").click(function(){
-			cropImageOption="2";
-			aspectRatioValue="1.5";
+		$("#exhibitionBrowseBtn").click(function(){
+			// cropImageOption="2";
+			// aspectRatioValue="1.5";
+			cropImageOption="3";
+			aspectRatioValue="1";
 			return new CropAvatar($("#crop-avatar"));
 		});
 

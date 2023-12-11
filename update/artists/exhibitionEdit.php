@@ -1,8 +1,8 @@
 <?php
-	$pageTitle = 'EXEBITIONS';
+	$pageTitle = 'EXHIBITION';
 	$section = 'ARTISTS';
-	$table='artist_exebitions';
-    $folder='../../exebitions/';
+	$table='artist_exhibitions';
+    $folder='../../exhibitions/';
 
 	include('../top.php');
 
@@ -33,7 +33,7 @@
         if(@$save){
 
             if(@$error==''){
-                if($type==1 && !isset($exebitions_id)){
+                if($type==1 && !isset($exhibitions_id)){
                     $error="Please fill all required fields";
                 }
                 else if($type==2 && (isEmpty($year) || isEmpty($text))){
@@ -45,7 +45,7 @@
                     if(!isEmpty($entryId)){
                         $query="UPDATE `".$table."` SET 
                         `type`='".sanitizeInput(@$type,"HTML")."',
-                        `exebitions_id`='".json_encode(@$exebitions_id)."',
+                        `exhibitions_id`='".json_encode(@$exhibitions_id)."',
                         `year`='".sanitizeInput(@$year,"HTML")."',
                         `text`='".sanitizeInput(@$text,"HTML")."',
                         `link`='".sanitizeInput(@$link,"HTML")."',
@@ -53,11 +53,11 @@
                         WHERE `id`=".$entryId;
                     }
                     else{
-                        $query="INSERT INTO `".$table."` ( `artist_id` , `type`, `exebitions_id` , `year` , `text` , `link` , `datesubmit` , `status`)
+                        $query="INSERT INTO `".$table."` ( `artist_id` , `type`, `exhibitions_id` , `year` , `text` , `link` , `datesubmit` , `status`)
                             VALUE(
                             '".sanitizeInput(@$artistId)."', 
                             '".sanitizeInput(@$type,"HTML")."' , 
-                            '".json_encode(@$exebitions_id)."' , 
+                            '".json_encode(@$exhibitions_id)."' , 
                             '".sanitizeInput(@$year,"HTML")."' , 
                             '".sanitizeInput(@$text,"HTML")."' , 
                             '".sanitizeInput(@$link,"HTML")."' ,
@@ -72,7 +72,7 @@
                         }
                         $msg="<br />Entry saved.<br />";
                         $prompt=0;
-                        echo "<meta http-equiv='refresh' content='2;url=exebitions.php?artistid=".$artistId."'>";
+                        echo "<meta http-equiv='refresh' content='2;url=exhibitions.php?artistid=".$artistId."'>";
                     }else{
                         $error="<br  />Could not save . Please try again.<br  />";
                         $prompt=1;
@@ -93,14 +93,14 @@
                 $result=runQuery($query);
                 $row=fetchArray($result);
                 foreach($row as $key => $item){$$key=stripslashes($row[$key]);}
-                if($exebitions_id=="null"){ 
-                    $exebitions_id=[];
+                if($exhibitions_id=="null"){ 
+                    $exhibitions_id=[];
                 }else{
-                    $exebitions_id=json_decode($exebitions_id,true);
+                    $exhibitions_id=json_decode($exhibitions_id,true);
                 }
             }
             else{
-                @$exebitions_id=[];
+                @$exhibitions_id=[];
             }
 
         ?>
@@ -113,27 +113,27 @@
                     <td>Type <sup class="red">*</sup></td>
                     <td width="20px"></td>
                     <td>
-                        <input type="radio" class="typeRBtn" name="type" value="1" <?php if(@$type=="" || @$type=="1"){echo "checked";}?> />&nbsp;LT Exebitions
+                        <input type="radio" class="typeRBtn" name="type" value="1" <?php if(@$type=="" || @$type=="1"){echo "checked";}?> />&nbsp;LT Exhibitions
                         &nbsp;&nbsp;&nbsp;
-                        <input type="radio" class="typeRBtn" name="type" value="2" <?php if(@$type=="2"){echo "checked";}?> />&nbsp;External Exebitions
+                        <input type="radio" class="typeRBtn" name="type" value="2" <?php if(@$type=="2"){echo "checked";}?> />&nbsp;External Exhibitions
                     </td>
                 </tr>
 
                 <tr height="20px" class="internal"></tr>
                 <tr class="internal">
-                    <td>Exebitions <sup class="red">*</sup></td>
+                    <td>Exhibitions <sup class="red">*</sup></td>
                     <td width="20px"></td> 
                     <td>
-                        <select id="exebitions_id" name="exebitions_id[]" class="select2" multiple>
+                        <select id="exhibitions_id" name="exhibitions_id[]" class="select2" multiple>
                             <option value=""></option>
                             <?php
-                                $query2 = "SELECT `id` as `exebitionId`, `title` as `exebitionTitle` FROM `exebitions` WHERE `status`='1' ORDER BY `id` DESC";
+                                $query2 = "SELECT `id` as `exebitionId`, `title` as `exebitionTitle` FROM `exhibitions` WHERE `status`='1' ORDER BY `id` DESC";
                                 $result2 = runQuery($query2);
                                 if (numRows($result2) > 0) {
                                     while ($row2 = fetchArray($result2)) {
                                         foreach ($row2 as $key => $item) {$$key = stripslashes($row2[$key]);}
                                         $selected = "";
-                                        if(in_array($exebitionId,$exebitions_id)){$selected="selected";}
+                                        if(in_array($exebitionId,$exhibitions_id)){$selected="selected";}
                                         echo '<option value="' . $exebitionId . '" ' . $selected . '>' . $exebitionTitle . '</option>';
                                     }
                                 }
@@ -173,7 +173,7 @@
                         <?php } ?>
                         <input name='save' class='submit' value='Save' type='submit' />
                         <input type='hidden' name='artistid' value='<?php echo $artistId; ?>' />
-                        <input onclick="window.location='exebitions.php?artistid=<?php echo @$artistId; ?>'" class='submit' value='Cancel' type='Button' />
+                        <input onclick="window.location='exhibitions.php?artistid=<?php echo @$artistId; ?>'" class='submit' value='Cancel' type='Button' />
                     </td>
                 </tr>              
 

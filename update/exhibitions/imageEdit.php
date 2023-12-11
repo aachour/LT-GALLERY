@@ -1,12 +1,12 @@
 <?php
-	$pageTitle = 'EXEBITION IMAGES';
-	$section = 'EXEBITIONS';
-	$table='exebition_images';
-	$folder='../../exebitions/';
+	$pageTitle = 'EXHIBITION IMAGES';
+	$section = 'EXHIBITIONS';
+	$table='exhibition_images';
+	$folder='../../exhibitions/';
 
 	include('../top.php');
 
-    include("../uploadFile/popupUploadImage-exebition.php");
+    include("../uploadFile/uploadimage-exhibitions.php");
 
     // include("../cropImage/index.html");
     
@@ -14,7 +14,7 @@
 	extract($_POST);
 	extract($_GET);
 	@$entryId=sanitizeInput($id);
-    @$exebitionId=sanitizeInput($exebitionid); 
+    @$exhibitionsId=sanitizeInput($exhibitionsid); 
     
 	$error='';
 
@@ -34,7 +34,7 @@
 
         if(@$save){
 
-			if(isEmpty($image)){
+			if(isEmpty(@$image)){
 				$error="Please fill all required fields";
             }
 
@@ -48,11 +48,11 @@
 					WHERE `id`=".$entryId;
                 }
                 else{
-                    $row=fetchArray(runQuery("SELECT max(listorder) FROM `".$table."` WHERE `exebition_id`='".@$exebitionId."' AND `status`='1' "));
+                    $row=fetchArray(runQuery("SELECT max(listorder) FROM `".$table."` WHERE `exhibitions_id`='".@$exhibitionsId."' AND `status`='1' "));
 					if($row[0] != null){$listorder = $row[0]+1;}
 					else{$listorder = 1;}
-					$query="INSERT INTO `".$table."` (`exebition_id` , `image` , `caption` , `datesubmit` , `status` , `listorder`) 
-							VALUES( '".sanitizeInput($exebitionId)."' , 
+					$query="INSERT INTO `".$table."` (`exhibitions_id` , `image` , `caption` , `datesubmit` , `status` , `listorder`) 
+							VALUES( '".sanitizeInput($exhibitionsId)."' , 
                                     '".sanitizeInput($image,"HTML")."' , 
                                     '".sanitizeInput($caption,"HTML")."' , 
 									NOW() , 
@@ -66,7 +66,7 @@
                     }
                     $msg="<br />Entry saved.<br />";
                     $prompt=0;
-					echo "<meta http-equiv='refresh' content='2;url=images.php?exebitionid=".@$exebitionId."'>";
+					echo "<meta http-equiv='refresh' content='2;url=images.php?exhibitionsid=".@$exhibitionsId."'>";
                 }else{
                     $error="<br />Could not save entry. Please try again.<br />";
                     $prompt=1;
@@ -98,13 +98,13 @@
                     <td>Image <sup class='red'>*</sup></td>
                     <td width="20px"></td>
                     <td>
-                        <div>
-                            <input type="text" value="<?php if(@$image!=""){echo "Image uploaded";}?>" id="imageTxt" disabled />
-                            <input type="hidden" value="<?php echo @$image;?>" id="image" name="image" />
-                            <input type="button" class="browseBtn" id="galleryBrowseBtn" value="BROWSE" />
-                        </div>
+                    <div>
+                        <input type="text" value="<?php if(@$image!=""){echo "Image uploaded";}?>" id="imageTxt" disabled />
+                        <input type="hidden" value="<?php echo @$image;?>" id="image" name="image" />
+                        <input type="button" class="browseBtn" id="exhibitionBrowseBtn" value="BROWSE" />
+                    </div>
                         <div class="topSpacerSmaller tiny textRight <?php if(@$image==""){echo "hidden";}?>" id="imageViewDelete">
-                            <a class="tiny" href="<?php if(@$image!=""){echo "../../exebitions/images/".@$image;}?>" id="imageView" target="_blank">View</a>
+                            <a class="tiny" href="<?php if(@$image!=""){echo "../../exhibitions/images/".@$image;}?>" id="imageView" target="_blank">View</a>
                             &nbsp;|&nbsp;
                             <span class="tiny clickable" id="imageDelete">Delete</span>
                         </div>
@@ -117,7 +117,7 @@
                     <td width="20px"></td>
                     <td><?php echoTextArea("caption", @$caption,"ckeditor"); ?></td>
                 </tr>
-
+              
                 <tr height="20px"></tr>
                 <tr>
                     <td></td>
@@ -126,9 +126,9 @@
                         <?php if(isset($entryId)){?>
                             <input type='hidden' name='id' value='<?php echo $entryId; ?>' />
                         <?php } ?>
-                        <input type='hidden' name='exebitionid' value='<?php echo $exebitionId; ?>' />
+                        <input type='hidden' name='exhibitionsid' value='<?php echo $exhibitionsId; ?>' />
                         <input name='save' class='submit' value='Save' type='submit' />
-                        <input onclick="window.location='images.php?exebitionid=<?php echo @$exebitionId; ?>'" class='submit' value='Cancel' type='Button' />
+                        <input onclick="window.location='images.php?exhibitionsid=<?php echo @$exhibitionsId; ?>'" class='submit' value='Cancel' type='Button' />
                     </td>
                 </tr>
 

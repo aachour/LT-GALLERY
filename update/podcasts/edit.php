@@ -90,7 +90,7 @@
         <form action="<?php echo currentPage(); ?>" method="POST" enctype="multipart/form-data">
             <table>
                 <tr>
-                    <td>title <sup class="red">*</sup></td>
+                    <td>Title <sup class="red">*</sup></td>
                     <td width="20px"></td>
                     <td><?php echoTextField("title",@$title,"ckeditor"); ?></td>
                 </tr>
@@ -113,6 +113,7 @@
                     <td><?php echoTextField("link",@$link,"ckeditor"); ?></td>
                 </tr>
                 <tr height="20px"></tr>
+                
                 <td>Image <sup class="red">*</sup></td>
                 <td width="20px"></td>
                 <td>

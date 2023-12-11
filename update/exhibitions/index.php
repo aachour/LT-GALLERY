@@ -1,8 +1,8 @@
 <?php
-	$pageTitle = 'EXEBITIONS';
-	$section = 'EXEBITIONS';
-	$table='exebitions';
-	$folder='../../exebitions/';
+	$pageTitle = 'EXHIBITION';
+	$section = 'EXHIBITIONS';
+	$table='exhibitions';
+	$folder='../../exhibitions/';
 
 	include('../top.php');
 
@@ -43,7 +43,7 @@
 		}
 
 		if(@$doDelete){
-			$query="UPDATE `".$table."` SET `status`='0' `".$table."` WHERE `id`=".$entryId;
+			$query="UPDATE `".$table."` SET `status`='0' WHERE `id`=".$entryId;
 			runQuery($query);
 
 			echo "<div class='msg'>Entry deleted successfully</div><br /><br />";
@@ -96,7 +96,7 @@
 						echo "<td>".date('d-m-Y',strtotime($date_from))."</td>";
 						echo "<td>".date('d-m-Y',strtotime($date_to))."</td>";
 						echo "<td>
-							<img src='../../exebitions/images/".$image."' width='200px' />
+							<img src='../../exhibitions/images/".$image."' width='200px' />
 						</td>";
 						echo "<td>";
 							echo"<form action='edit.php' method='post'>

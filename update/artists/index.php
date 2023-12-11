@@ -43,7 +43,7 @@
 		}
 
 		if(@$doDelete){
-			$query="UPDATE `".$table."` SET `status`='0' `".$table."` WHERE `id`=".$entryId;
+			$query="UPDATE `".$table."` SET `status`='0' WHERE `id`=".$entryId;
 			runQuery($query);
 
 			echo "<div class='msg'>Entry deleted successfully</div><br /><br />";
@@ -81,7 +81,7 @@
                 echo "<table cellpadding='0' cellspacing='0' border='0' class='listingTable' width='100%'>
                     <tr class='head blue'>
 						<th>Title</th>
-						<th>Text</th>
+						<th>Biography</th>
 						<th>Image</th>
 						<th>Actions</th>
 					</tr>";
@@ -102,13 +102,13 @@
                                 <input type='hidden' name='artistid' value='".$id."'/>
                                 <input type='submit' class='submit' name='award' value='Awards' style='width:150px;'/>
                             </form>";
-							echo"<form action='exebitions.php' method='post'>
+							echo"<form action='exhibitions.php' method='post'>
 								<input type='hidden' name='artistid' value='".$id."'/>
-								<input type='submit' class='submit' name='exebition' value='Exebitions' style='width:150px;'/>
+								<input type='submit' class='submit' name='exhibitions' value='Exhibitions' style='width:150px;'/>
 							</form>";
 							echo"<form action='images.php' method='post'>
 								<input type='hidden' name='artistid' value='".$id."'/>
-                                <input type='submit' class='submit' name='image' value='Artworks' style='width:150px;'/>
+                                <input type='submit' class='submit' name='image' value='Collections' style='width:150px;'/>
                             </form>";
 							echo"<form action='index.php' method='post'>
                                 <input type='hidden' name='id' value='".$id."'/>

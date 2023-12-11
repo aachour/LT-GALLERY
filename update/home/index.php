@@ -13,6 +13,7 @@
 		<div class="medium black">
             Welcome to The LT GALLERY's Content Management System.<br /><br />
             <span class="small">Click on the above links to update the content of the pages.</span>
+			
         </div>
         
 	</div>

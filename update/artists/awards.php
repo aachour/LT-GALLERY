@@ -34,7 +34,7 @@
 
 		if(@$delete){
 			echo "<div class='error'>Are you sure you want to delete this entry?<br /><br />
-				<form action='awardsindex.php' method='POST'>
+				<form action='awards.php' method='POST'>
 				<input type='hidden' name='id' value='".$entryId."' />
 				<input type='hidden' name='artistid' value='".$artistId."' />
 				<input class='submit' type='submit' name='doDelete' value='Yes' />

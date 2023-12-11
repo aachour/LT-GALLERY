@@ -87,7 +87,7 @@
 
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Sub Title <sup class='red'>*</sup></td>
+                    <td>Not Required<sup class='red'>*</sup></td>
                     <td width="20px"></td>
                     <td><?php echoTextField("sub_title", @$sub_title,"ckeditor"); ?></td>
                 </tr>

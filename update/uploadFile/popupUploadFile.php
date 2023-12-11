@@ -52,7 +52,7 @@
 				$("#file").val(filename);
 				$("#fileTxt").val("File uploaded");
 				$("#fileViewDelete").removeClass("hidden");
-				$("#fileViewDelete").find("#fileView").attr("href","../../exebitions/files/"+filename);
+				$("#fileViewDelete").find("#fileView").attr("href","../../exhibitions/files/"+filename);
 			},
 			onError: function(files,status,errMsg,pd){
 				$("#popupUploadFile").find(".closeBtn").removeClass("hidden");

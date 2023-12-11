@@ -1,7 +1,7 @@
 <link href="../uploadFile/style.css" rel="stylesheet">
 <script src="../uploadFile/hayageek.js"></script>
 
-<div class="popup hidden" id="popupUploadExebitionImage">
+<div class="popup hidden" id="popupUploadExhibitionImage">
 
 	<div class="content">
 
@@ -21,12 +21,12 @@
 
 	$(document).ready(function(){
 
-		$("#popupUploadExebitionImage").find(".closeBtn").click(function(){
-			$("#popupUploadExebitionImage").addClass("hidden");
+		$("#popupUploadExhibitionImage").find(".closeBtn").click(function(){
+			$("#popupUploadExhibitionImage").addClass("hidden");
 		});
 
 		$("#fileuploader").uploadFile({
-			url:"../../update/uploadFile/uploadimage-exebition.php",
+			url:"../../update/uploadFile/uploadimage-exhibitions.php",
 			multiple:false,
 			dragDrop:true,
 			maxFileCount:100,
@@ -35,10 +35,10 @@
 			fileName:"myfile",
 			showDelete: true,
 			onSubmit:function(files){
-				$("#popupUploadExebitionImage").find(".closeBtn").addClass("hidden");
+				$("#popupUploadExhibitionImage").find(".closeBtn").addClass("hidden");
 			},
 			onAbort:function(){
-				$("#popupUploadExebitionImage").find(".closeBtn").removeClass("hidden");
+				$("#popupUploadExhibitionImage").find(".closeBtn").removeClass("hidden");
 			},
 			onSuccess:function(files,data,xhr,pd){
 
@@ -47,17 +47,17 @@
 				var filename=data.replace('["',''); 
 				filename=filename.replace('"]','');
 
-				$("#popupUploadExebitionImage").addClass("hidden");
+				$("#popupUploadExhibitionImage").addClass("hidden");
 				$(".ajax-file-upload-container").html("");
-				$("#popupUploadExebitionImage").find(".closeBtn").removeClass("hidden");
+				$("#popupUploadExhibitionImage").find(".closeBtn").removeClass("hidden");
 
 				$("#image").val(filename);
 				$("#imageTxt").val("Image uploaded");
 				$("#imageViewDelete").removeClass("hidden");
-				$("#imageViewDelete").find("#imageView").attr("href","../../exebitions/images/"+filename);
+				$("#imageViewDelete").find("#imageView").attr("href","../../exhibitions/images/"+filename);
 			},
 			onError: function(files,status,errMsg,pd){
-				$("#popupUploadExebitionImage").find(".closeBtn").removeClass("hidden");
+				$("#popupUploadExhibitionImage").find(".closeBtn").removeClass("hidden");
 				alert("Error,unable to upload your file.")
 			}
 		});

@@ -84,9 +84,10 @@
 					</div>
 				</a>
 
+
 				<div class="topSpacerBig medium white">
-					Welcome to LT GALLERY's<br />
-					update interface.<br />Please Login.
+				Access LT GALLERY's<br  /> 
+				update interface.<br />	
 				</div>
 
 				<?php if(@$error){echo "<div class='topSpacer red'>".$error."</div>";}?>
@@ -94,7 +95,7 @@
 				<form action="index.php" method="post" class="topSpacer">
 
 					<div>
-						<input class="login small" type="text" name="email" value="Email" maxlength="30" onblur="if (this.value== '' || !this.value) {this.value= 'Email';}" onfocus="if (this.value == 'Email') {this.value= '';}" autocomplete="off" />
+						<input class="login small" type="text" name="email" value="Username" maxlength="30" onblur="if (this.value== '' || !this.value) {this.value= 'Username';}" onfocus="if (this.value == 'Username') {this.value= '';}" autocomplete="off" />
 					</div>
 
 					<div class="topSpacer">

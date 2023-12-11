@@ -95,7 +95,7 @@
 
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Text <sup class='red'>*</sup></td>
+                    <td>Biography <sup class='red'>*</sup></td>
                     <td width="20px"></td>
                     <td><?php echoTextArea("text", @$text,"ckeditor"); ?></td>
                 </tr>
