@@ -44,7 +44,7 @@
 
                 <a class="<?php if(@$section=="TOP BANNER"){echo"white underline";}else{echo"whiteUnderline";}?>" href="../topBanner/index.php">Top Banner</a> &nbsp;|&nbsp;
 
-                <a class="<?php if(@$section=="EXHIBITIONS"){echo"white underline";}else{echo"whiteUnderline";}?>" href="../exhibitions/index.php">Exhibitions</a> &nbsp;|&nbsp;
+                <a class="<?php if(@$section=="EXHIBITIONS"){echo"white underline";}else{echo"whiteUnderline";}?>" href="../exhibitions/index.php">LT Exhibitions </a> &nbsp;|&nbsp;
                 
                 <a class="<?php if(@$section=="ARTISTS"){echo"white underline";}else{echo"whiteUnderline";}?>" href="../artists/index.php">Artists</a> &nbsp;|&nbsp;
 

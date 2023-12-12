@@ -1,5 +1,5 @@
 <?php
-	$pageTitle = 'EXHIBITION IMAGES';
+	$pageTitle = 'LT EXHIBITIONS  IMAGES';
 	$section = 'EXHIBITIONS';
 	$table='exhibition_images';
 	$folder='../../exhibitions/';

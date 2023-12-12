@@ -43,15 +43,19 @@
                     ";
                     
                 }else{
-                    $query="INSERT INTO `".$table."`(`title` , `subtitle` , `text` , `image` , `link` , `datesubmit` , `status`)
+                    $row=fetchArray(runQuery("SELECT max(listorder) FROM `".$table."` WHERE `status`='1' "));
+					if($row[0] != null){$listorder = $row[0]+1;}
+					else{$listorder = 1;}
+                    $query="INSERT INTO `".$table."`(`title` , `subtitle` , `text` , `image` , `link` , `datesubmit` , `status`,`listorder`)
                              VALUES( '".sanitizeInput($title,"HTML")."' ,
                                     '".sanitizeInput(@$subtitle,"HTML")."', 
                                     '".sanitizeInput(@$text,"HTML")."' , 
                                     '".sanitizeInput(@$image,"HTML")."' , 
                                     '".sanitizeInput(@$link,"HTML"). "',
                                     NOW(),
-                                    '1'
-                                )";
+                                    '1',
+                                    '".$listorder."')";
+                                
                     }
 
 

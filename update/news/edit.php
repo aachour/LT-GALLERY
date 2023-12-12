@@ -27,6 +27,7 @@
         <?php
         if(@$save){
             if(isEmpty($title) ||  isEmpty(@$author) || isEmpty($text) || isEmpty($date) ){
+                
                 $error="Please fill required filed";
 
 
@@ -41,16 +42,18 @@
                     `text`='".sanitizeInput($text,"HTML")."',
                     `link`='".sanitizeInput($link,"HTML")."',
                     `date`='".date('Y-m-d',strtotime(@$date))."', 
+                    `image`='".sanitizeInput(@$image,"HTML")."',
                     `dateedit`=NOW()
 					 WHERE `id`=".$entryId;
                     
                 }else{
-                    $query = "INSERT INTO `" .$table. "` (`title` , `author` , `text` , `link` , `date`, `datesubmit` ,`status`)
+                    $query = "INSERT INTO `" .$table. "` (`title` , `author` , `text` , `link` , `date`, `image`, `datesubmit` ,`status`)
                     VALUES( '" . sanitizeInput($title, "HTML") . "' ,
                             '" . sanitizeInput($author, "HTML") . "' , 
                             '" . sanitizeInput($text, "HTML") . "' , 
                             '" . sanitizeInput(@$link, "HTML") . "' , 
                             '".date('Y-m-d',strtotime(@$date))."',
+                            '" . sanitizeInput(@$image, "HTML") . "' , 
                             NOW(),
                             '1'
                         )";
@@ -118,6 +121,21 @@
                     <td></td>
                 </tr>
                 <tr height="10px"></tr>
+                <td>Image <sup class="red">*</sup></td>
+                <td width="20px"></td>
+                <td>
+                    <div>
+                        <input type="text" class="" value="<?php if(@$image!=""){echo "Image uploaded";}?>" id="imageTxt" disabled />
+                        <input type="hidden" value="<?php echo @$image;?>" id="image" name="image" />
+                        <input type="button" class="browseBtn" id="newsBrowseBtn" value="BROWSE" />
+                    </div>
+                    <div class="topSpacerSmaller tiny textRight <?php if(@$image==""){ echo "hidden";} ?>"id="imageViewDelete">
+                        <a class="tiny" href=""<?php if(@$image!=""){echo "../../news/images/".@$image;}?>" id="imageView" target="_blank">View</a>
+                        &nbsp;|&nbsp;
+                        <span class="tiny clickable" id="imageDelete">Delete</span></a>
+                    </div>
+                </td>
+                <tr height="20px"></tr>
                 <tr>
                     <td></td>
                     <td></td>

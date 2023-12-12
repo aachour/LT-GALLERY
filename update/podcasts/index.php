@@ -37,6 +37,7 @@
                 </form></div>";
                 $list=0;
             }
+
             if(@$doDelete){
                 $query="UPDATE `".$table."` SET `status`='0' WHERE `id`=".$entryId;
                 runQuery($query);
@@ -46,13 +47,25 @@
                 $list=0;
             }
 
+            if(@$up){
+                $previous=$listorder-1;
+                runQuery("UPDATE `".$table."` SET `listorder`=".$listorder." WHERE  `listorder`=".$previous);
+                runQuery("UPDATE `".$table."` SET `listorder`=".$previous." WHERE `id`=".$entryId);
+            }
+                
+            if(@$down){
+                $next=$listorder+1;
+                runQuery("UPDATE `".$table."` SET `listorder`=".$listorder." WHERE  `listorder`=".$next);
+                runQuery("UPDATE `".$table."` SET `listorder`=".$next." WHERE `id`=".$entryId);
+            }
+
 
             if($list){
                 echo"<p class='medium blue underline'>".$pageTitle."<br /><br /></p>";
 
                 echo"<a href='edit.php'><input type='submit' class='submit' name='Add' value='Add Entry' /></a><br  /><br />";
 
-                $query="SELECT * FROM `".$table."`";
+                $query="SELECT * FROM `".$table."` WHERE `status`='1' ORDER BY `listorder` ASC";
                 $result=runQuery($query);
 
                 $rows=numRows($result);
@@ -93,8 +106,24 @@
 								<input type='hidden' name='id' value='".$id."'/>
                                 <input type='submit' class='submit' name='delete' value='Delete' style='width:150px;'/>
                             </form>";	
-					echo "<td>";
-                        echo'</tr>';
+                            $row2=fetcharray(runQuery("select min(listorder) from `".$table."` WHERE `status`='1'"));
+							if($listorder>$row2[0]){
+								echo "<form action='index.php' method='post'>
+									<input type='hidden' name='id' value='".$id."' />
+									<input type='hidden' name='listorder' value='".$listorder."' />
+									<input type='submit' class='submit' name='up' value='&uArr;' />
+								</form>";
+							}
+							$row2=fetcharray(runQuery("select max(listorder) from `".$table."` WHERE `status`='1'"));
+							if($listorder<$row2[0]){
+								echo "<form action='index.php' method='post'>
+									<input type='hidden' name='id' value='".$id."' />
+									<input type='hidden' name='listorder' value='".$listorder."' />
+									<input type='submit' class='submit' name='down' value='&dArr;' />
+								</form>";
+							}
+                    echo "<td>";
+                    echo'</tr>';
                     }
                     echo "</table>";
                 }

@@ -293,6 +293,10 @@ CropAvatar.prototype = {
 			$(".avatar-directory").val("exhibitions");
 			$(".avatar-width").val("");
 			$(".avatar-height").val("");
+		}else if(cropImageOption==7){
+			$(".avatar-directory").val("news");
+			$(".avatar-width").val("");
+			$(".avatar-height").val("");
 		}
 
 		var url = this.$avatarForm.attr('action');
@@ -416,6 +420,12 @@ CropAvatar.prototype = {
 			$("#image").val(image);
 			$("#imageViewDelete").removeClass("hidden");
 			$("#imageViewDelete").find("#imageView").attr("href","../../podcasts/images/"+image);
+		}if(cropImageOption=="7"){
+			var image=imageUrl.replace("../../news/images/","");
+			$("#imageTxt").val("Image uploaded");
+			$("#image").val(image);
+			$("#imageViewDelete").removeClass("hidden");
+			$("#imageViewDelete").find("#imageView").attr("href","../../news/images/"+image);
 		}
 	},
 
@@ -439,6 +449,11 @@ CropAvatar.prototype = {
 
 		$("#aboutusBrowseBtn").click(function(){
 			cropImageOption="1";
+			aspectRatioValue="0";
+			return new CropAvatar($("#crop-avatar"));
+		});
+		$("#newsBrowseBtn").click(function(){
+			cropImageOption="7";
 			aspectRatioValue="0";
 			return new CropAvatar($("#crop-avatar"));
 		});
