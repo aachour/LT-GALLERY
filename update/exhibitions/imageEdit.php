@@ -6,9 +6,7 @@
 
 	include('../top.php');
 
-    include("../uploadFile/uploadimage-exhibitions.php");
-
-    // include("../cropImage/index.html");
+    include("../cropImage/index.html");
     
 	$prompt=1;
 	extract($_POST);
@@ -101,7 +99,7 @@
                     <div>
                         <input type="text" value="<?php if(@$image!=""){echo "Image uploaded";}?>" id="imageTxt" disabled />
                         <input type="hidden" value="<?php echo @$image;?>" id="image" name="image" />
-                        <input type="button" class="browseBtn" id="exhibitionBrowseBtn" value="BROWSE" />
+                        <input type="button" class="browseBtn" id="galleryBrowseBtn" value="BROWSE" />
                     </div>
                         <div class="topSpacerSmaller tiny textRight <?php if(@$image==""){echo "hidden";}?>" id="imageViewDelete">
                             <a class="tiny" href="<?php if(@$image!=""){echo "../../exhibitions/images/".@$image;}?>" id="imageView" target="_blank">View</a>
@@ -146,10 +144,6 @@
 <script>
 
     $(document).ready(function(){
-
-        $("#galleryBrowseBtn").click(function(){ 
-            $("#popupUploadExebitionImage").removeClass("hidden");
-        });
 
         $("#imageDelete").click(function(){
             $("#imageTxt").val("");

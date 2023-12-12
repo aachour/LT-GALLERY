@@ -80,7 +80,7 @@
 
 				<a href="index.php">
 					<div class="topSpacerBig">
-						<img src="../static/images/logo.png" width="50px"/>
+						<img src="../static/images/logo1-white.png" width="200px"/>
 					</div>
 				</a>
 

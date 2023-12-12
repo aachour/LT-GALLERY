@@ -4,7 +4,7 @@
 		ob_clean();
 		@session_start();
 	}
-	$dbLink = new mysqli("localhost", "root", "123456","lt-gallery");
+	$dbLink = new mysqli("localhost", "root", "test","lt-gallery");
 
 	/* check connection */
 	if ($dbLink->connect_errno) {

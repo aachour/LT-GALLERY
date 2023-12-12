@@ -272,7 +272,7 @@ CropAvatar.prototype = {
 		else if(cropImageOption==2){
 			$(".avatar-directory").val("exhibitions");
 			$(".avatar-width").val("1000");
-			$(".avatar-height").val("660");
+			$(".avatar-height").val("625");
 		}
 		else if(cropImageOption==3){
 			$(".avatar-directory").val("artists");
@@ -288,6 +288,11 @@ CropAvatar.prototype = {
 			$(".avatar-directory").val("podcasts");
 			$(".avatar-width").val("1000");
 			$(".avatar-height").val("1000");
+		}
+		else if(cropImageOption==6){
+			$(".avatar-directory").val("exhibitions");
+			$(".avatar-width").val("");
+			$(".avatar-height").val("");
 		}
 
 		var url = this.$avatarForm.attr('action');
@@ -384,7 +389,7 @@ CropAvatar.prototype = {
 			$("#imageViewDelete").removeClass("hidden");
 			$("#imageViewDelete").find("#imageView").attr("href","../../aboutus/images/"+image);
 		}
-		else if(cropImageOption=="2"){
+		else if(cropImageOption=="2" || cropImageOption=="6"){
 			var image=imageUrl.replace("../../exhibitions/images/",""); 
 			$("#imageTxt").val("Image uploaded");
 			$("#image").val(image);
@@ -439,10 +444,14 @@ CropAvatar.prototype = {
 		});
 
 		$("#exhibitionBrowseBtn").click(function(){
-			// cropImageOption="2";
-			// aspectRatioValue="1.5";
-			cropImageOption="3";
-			aspectRatioValue="1";
+			cropImageOption="2";
+			aspectRatioValue="1.5";
+			return new CropAvatar($("#crop-avatar"));
+		});
+
+		$("#galleryBrowseBtn").click(function(){
+			cropImageOption="6";
+			aspectRatioValue="0";
 			return new CropAvatar($("#crop-avatar"));
 		});
 

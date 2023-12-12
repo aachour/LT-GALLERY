@@ -30,7 +30,7 @@
 
         if(@$save){
 
-			if(isEmpty($title) || isEmpty($sub_title) || isEmpty($text) || isEmpty($image)){
+			if(isEmpty($title) || isEmpty($text) || isEmpty($image)){
 				$error="Please fill all required fields";
             }
 
@@ -87,7 +87,7 @@
 
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Not Required<sup class='red'>*</sup></td>
+                    <td>Sub Title</td>
                     <td width="20px"></td>
                     <td><?php echoTextField("sub_title", @$sub_title,"ckeditor"); ?></td>
                 </tr>

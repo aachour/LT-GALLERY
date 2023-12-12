@@ -35,10 +35,10 @@
         <div class="content">
 
             <div style="float:left; margin-top:20px;">
-                <a href="../home"><img src="../../static/images/logo.png" width="40px" /></a>
+                <a href="../home"><img src="../../static/images/logo2-white.png" width="200px" /></a>
             </div>
 
-            <div class="black small" style="float:right;">
+            <div class="topSpacer black small" style="float:right;">
 
                 <a class="<?php if(@$section=="HOME"){echo"white underline";}else{echo"whiteUnderline";}?>" href="../home/index.php">Home</a> &nbsp;|&nbsp;
 

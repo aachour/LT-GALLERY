@@ -50,7 +50,7 @@
                 echo "<table cellpadding='0' cellspacing='0' border='0' class='listingTable' width='100%'>
                     <tr class='head blue'>
 						<th>Title</th>
-						<th>Not Required </th>
+						<th>Sub Title</th>
 						<th>Text</th>
 						<th>Image</th>
 						<th>Actions</th>
