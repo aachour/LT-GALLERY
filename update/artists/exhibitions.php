@@ -74,8 +74,11 @@
                     echo "<table cellpadding='0' cellspacing='0' border='0' class='listingTable' width='100%'>
                         <tr class='head blue'>
                             <th>Type</th>
-                            <th>Text</th>
+                            <th>Title</th>
                             <th>Year</th>
+                            <th>venue</th>
+                            <th>city</th>
+                            <th>country</th>
                             <th>Actions</th>
                         </tr>";
                         while($row=fetchArray($result)){
@@ -85,8 +88,13 @@
                                     if($type==1){echo "LT Exebition";}
                                     else{echo "External Exebition";}
                                 echo "</td>";
-                                echo "<td>".sanitizeInput($text)."</td>";
-                                echo "<td>".sanitizeInput($year)."</td>";
+                                echo "<td>".sanitizeInput($title)."</td>";
+                                echo "<td>";
+                                if(@$from_year!=0){echo @$from_year;}
+                                echo"</td>";
+                                echo "<td>".sanitizeInput($venue)."</td>";
+                                echo "<td>".sanitizeInput($city)."</td>";
+						        echo "<td>".getCountryName($country_id)."</td>";
                                 echo"<td>
                                     <form action='exhibitionEdit.php' method='post'>
                                         <input type='hidden' name='id' value='".$id."'/>

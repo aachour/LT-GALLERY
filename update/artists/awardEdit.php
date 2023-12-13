@@ -33,7 +33,7 @@ $folder='../../artists/';
 
             if(@$save){
                     
-                if(isEmpty($years) || isEmpty($text)){
+                if(isEmpty($from_year) || isEmpty(@$title) || isEmpty($city) || isEmpty($country_id)){
 
                     $error="Please fill all required fields";
                 }
@@ -43,18 +43,22 @@ $folder='../../artists/';
                     if(!isEmpty($entryId)){
                         $query="UPDATE `".$table."` SET
                         `artist_id`='".sanitizeInput(@$artistId)."',
-                        `years`='".sanitizeInput($years,"HTML")."',
-                        `text`='".sanitizeInput($text,"HTML")."',
+                        `from_year`='".sanitizeInput(@$from_year,"HTML")."',
+                        `title`='".sanitizeInput($title,"HTML")."',
                         `link`='".sanitizeInput($link,"HTML")."',
+                        `city`='".sanitizeInput($city,"HTML")."',
+                        `country_id`='".sanitizeInput($country_id,"HTML")."',
                         `dateedit`=NOW()
                         WHERE `id`=".$entryId;
                     }
                     else{
-                        $query="INSERT INTO `".$table."` ( `artist_id` ,`years` , `text` , `link` ,`status` )
+                        $query="INSERT INTO `".$table."` ( `artist_id` ,`from_year` , `title` , `link` , `city` , `country_id`,`status` )
                         VALUES( '".sanitizeInput(@$artistId)."',
-                                '".sanitizeInput(@$years,"HTML")."' , 
-                                '".sanitizeInput(@$text,"HTML")."' , 
+                                '".sanitizeInput(@$from_year,"HTML")."' , 
+                                '".sanitizeInput(@$title,"HTML")."' , 
                                 '".sanitizeInput(@$link,"HTML"). "' ,
+                                '".sanitizeInput(@$country_id,"HTML"). "' ,
+                                '".sanitizeInput(@$city,"HTML"). "' ,
                                 '1'
                                 )";
                     }
@@ -95,27 +99,66 @@ $folder='../../artists/';
 
             <table cellpadding="0" cellspacing="0" class="prompt small">
 
-                <tr>
-                    <td>Text <sup class='red'>*</sup></td>
+            <tr>
+                    <td>Year <sup class='red'>*</sup></td>
                     <td width="20px"></td>
-                    <td><?php echoTextArea("text", @$text,"ckeditor"); ?></td>
-                </tr>
-                
-                <tr height="20px"></tr>
-                <tr>
-                    <td>YEARS<sup class='red'>*</sup></td>
-                    <td width="20px"></td>
-                    <td><?php echoTextField("years", @$years,"ckeditor"); ?></td>
+                    <td>
+                        <?php
+                            $temp=date("Y");
+                            echoYearDropDown("from_year", @$from_year, $temp+3, $temp-5,"date","width:250px;");
+                        ?>
+                    </td>
                 </tr>
 
                 <tr height="20px"></tr>
+                <tr>
+                    <td width="150px">Title <sup class='red'>*</sup></td>
+                    <td width="20px"></td>
+                    <td width="700px"><?php echoTextField("title", @$title,"ckeditor"); ?></td>
+                </tr>
+
+                <tr height="30px"></tr>
+
                 <tr>
                     <td>LINK</td>
                     <td width="20px"></td>
                     <td><?php echoTextField("link", @$link,"ckeditor"); ?></td>
                 </tr>
 
-                <tr height="30px"></tr>
+                <tr height="20px"></tr>
+
+                <tr>
+                    <td>City <sup class='red'>*</sup></td>
+                    <td width="20px"></td>
+                    <td><?php echoTextField("city", @$city,"ckeditor"); ?></td>
+                </tr>
+
+                <tr height="20px"></tr>
+
+                <tr>
+                    <td>Country<sup class='red'>*</sup></td>
+                    <td width="20px"></td> 
+                    <td>
+                    <select id="country_id" name="country_id">
+                        <option value=""></option>
+                        <?php
+                            $query2="SELECT `id` as `countryId` , `name` as `countryName`  FROM `countries` WHERE `status`='1' ORDER BY `name` ASC" ;
+                            $result2=runQuery($query2);
+                            if(numRows($result2)>0){
+                                while($row2=fetchArray($result2)){
+                                    foreach($row2 as $key => $item){$$key=stripslashes($row2[$key]);}
+                                    $selected="";
+                                    if(@$countryId==@$country_id){$selected="selected";}
+                                    echo'<option value="'.$countryId.'" '.$selected.'>'.$countryName.'</option>';
+                                }
+                            }
+                        ?>
+                    </select>
+
+                    </td>
+                </tr>
+
+                <tr height="20px"></tr>
 
                 <tr>
                     <td></td>

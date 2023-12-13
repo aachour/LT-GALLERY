@@ -36,7 +36,7 @@
                 if($type==1 && !isset($exhibitions_id)){
                     $error="Please fill all required fields";
                 }
-                else if($type==2 && (isEmpty($year) || isEmpty($text))){
+                else if($type==2 && (isEmpty($from_year) || isEmpty($title))){
                     $error="Please fill all required fields";
                 }
 
@@ -46,21 +46,27 @@
                         $query="UPDATE `".$table."` SET 
                         `type`='".sanitizeInput(@$type,"HTML")."',
                         `exhibitions_id`='".json_encode(@$exhibitions_id)."',
-                        `year`='".sanitizeInput(@$year,"HTML")."',
-                        `text`='".sanitizeInput(@$text,"HTML")."',
+                        `title`='".sanitizeInput(@$title,"HTML")."',
+                        `from_year`='".sanitizeInput($from_year,"HTML")."',
+                        `venue`='".sanitizeInput(@$venue,"HTML")."',
                         `link`='".sanitizeInput(@$link,"HTML")."',
-                        `dateedit`=NOW()
+                        `city`='".sanitizeInput(@$city,"HTML")."',
+                        `country_id`='".sanitizeInput($country_id,"HTML")."',
+                       `dateedit`=NOW()
                         WHERE `id`=".$entryId;
                     }
                     else{
-                        $query="INSERT INTO `".$table."` ( `artist_id` , `type`, `exhibitions_id` , `year` , `text` , `link` , `datesubmit` , `status`)
+                        $query="INSERT INTO `".$table."` ( `artist_id` , `type`, `exhibitions_id` , `title`, `from_year` , `venue`, `link` , `city`, `country_id` , `datesubmit` , `status`)
                             VALUE(
                             '".sanitizeInput(@$artistId)."', 
                             '".sanitizeInput(@$type,"HTML")."' , 
-                            '".json_encode(@$exhibitions_id)."' , 
-                            '".sanitizeInput(@$year,"HTML")."' , 
-                            '".sanitizeInput(@$text,"HTML")."' , 
+                            '".json_encode(@$exhibitions_id)."' ,
+                            '".sanitizeInput(@$title,"HTML")."' , 
+                            '".sanitizeInput(@$from_year,"HTML")."' ,
+                            '".sanitizeInput(@$venue,"HTML")."' , 
                             '".sanitizeInput(@$link,"HTML")."' ,
+                            '".sanitizeInput(@$city,"HTML")."' , 
+                            '".sanitizeInput(@$country_id,"HTML")."', 
                             NOW() , 
                             '1'
                         )";
@@ -141,27 +147,102 @@
                         </select>
                     </td>
                 </tr>
-                                
+
                 <tr height="20px" class="external"></tr>
+
                 <tr class="external">
-                    <td>Year <sup class='red'>*</sup></td>
+                    <td width="150px">Title <sup class='red'>*</sup></td>
                     <td width="20px"></td>
-                    <td><?php echoTextField("year", @$year,"ckeditor"); ?></td>
+                    <td width="700px"><?php echoTextField("title", @$title,"ckeditor"); ?></td>
                 </tr>
 
                 <tr height="20px" class="external"></tr>
-                <tr class="external">
-                    <td>Text <sup class='red'>*</sup></td>
-                    <td width="20px"></td>
-                    <td><?php echoTextArea("text", @$text,"ckeditor"); ?></td>
-                </tr>
 
-                <tr height="20px" class="external"></tr>
                 <tr class="external">
                     <td>link</td>
                     <td width="20px"></td>
                     <td><?php echoTextField("link", @$link,"ckeditor"); ?></td>
                 </tr>
+
+                <tr height="20px" class="external"></tr>
+
+                <tr class="external">
+                <td>Year <sup class='red'>*</sup></td>
+                    <td width="20px"></td>
+                    <td>
+                        <?php
+                            $temp=date("Y");
+                            echoYearDropDown("from_year", @$from_year, $temp+3, $temp-5,"date","width:250px;");
+                        ?>
+                    </td>
+                </tr>
+
+                <tr height="20px" class="external"></tr>
+
+                <tr class="external">
+                    <td>venue</td>
+                    <td width="20px"></td>
+                    <td><?php echoTextField("venue", @$venue,"ckeditor"); ?></td>
+                </tr>
+
+                <tr height="20px" class="external"></tr>
+
+                <tr class="external">
+                    <td>City</td>
+                    <td width="20px"></td>
+                    <td><?php echoTextField("city", @$city,"ckeditor"); ?></td>
+                </tr>
+
+                <tr height="20px" class="external"></tr>
+
+                <tr class="external">
+                    <td>Country</td>
+                    <td width="20px"></td> 
+                    <td>
+                    <select id="country_id" name="country_id">
+                        <option value=""></option>
+                        <?php
+                            $query2="SELECT `id` as `countryId` , `name` as `countryName`  FROM `countries` WHERE `status`='1' ORDER BY `name` ASC" ;
+                            $result2=runQuery($query2);
+                            if(numRows($result2)>0){
+                                while($row2=fetchArray($result2)){
+                                    foreach($row2 as $key => $item){$$key=stripslashes($row2[$key]);}
+                                    $selected="";
+                                    if(@$countryId==@$country_id){$selected="selected";}
+                                    echo'<option value="'.$countryId.'" '.$selected.'>'.$countryName.'</option>';
+                                }
+                            }
+                        ?>
+                    </select>
+
+                    </td>
+                </tr>
+
+                <tr height="20px" class="external"></tr>
+
+                <tr class="external">
+                    <td>Category <sup class="red">*</sup></td>
+                    <td width="20px"></td> 
+                    <td>
+                    <select id="category_id" name="category_id">
+                        <option value=""></option>
+                        <?php
+                            $query2="SELECT `id` as `categoryId` , `name` as `categoryName`  FROM `categories`" ;
+                            $result2=runQuery($query2);
+                            if(numRows($result2)>0){
+                                while($row2=fetchArray($result2)){
+                                    foreach($row2 as $key => $item){$$key=stripslashes($row2[$key]);}
+                                    $selected="";
+                                    if(@$categoryId==@$category_id){$selected="selected";}
+                                    echo'<option value="'.$categoryId.'" '.$selected.'>'.$categoryName.'</option>';
+                                }
+                            }
+                        ?>
+                    </select>
+
+                    </td>
+                </tr>
+
 
                 <tr height="30px"></tr>
                 <tr>
