@@ -74,14 +74,12 @@
 	<body>
 
 		<!--Container-->
-		<div style="position:relative; margin:0px auto; width:850px;">
+		<div style="position:relative; margin:0px auto; margin-top:100px; width:850px;">
 
-			<div class="topSpacerBigger textCenter">
+			<div class="textCenter">
 
 				<a href="index.php">
-					<div class="topSpacerBig">
-						<img src="../static/images/logo1-white.png" width="200px"/>
-					</div>
+					<img src="../static/images/logo1-white.png" width="200px"/>
 				</a>
 
 

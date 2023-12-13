@@ -452,6 +452,7 @@ CropAvatar.prototype = {
 			aspectRatioValue="0";
 			return new CropAvatar($("#crop-avatar"));
 		});
+
 		$("#newsBrowseBtn").click(function(){
 			cropImageOption="7";
 			aspectRatioValue="0";
@@ -460,7 +461,7 @@ CropAvatar.prototype = {
 
 		$("#exhibitionBrowseBtn").click(function(){
 			cropImageOption="2";
-			aspectRatioValue="1.5";
+			aspectRatioValue="1.6";
 			return new CropAvatar($("#crop-avatar"));
 		});
 
@@ -478,7 +479,7 @@ CropAvatar.prototype = {
 
 		$("#topBannerBrowseBtn").click(function(){
 			cropImageOption="4";
-			aspectRatioValue="3";
+			aspectRatioValue="2";
 			return new CropAvatar($("#crop-avatar"));
 		});
 

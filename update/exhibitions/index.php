@@ -81,7 +81,9 @@
                 echo "<table cellpadding='0' cellspacing='0' border='0' class='listingTable' width='100%'>
                     <tr class='head blue'>
 						<th>Title</th>
-						<th>Sub Title</th>
+						<th>Venue</th>
+						<th>City</th>
+						<th>Country</th>
 						<th>Date From</th>
 						<th>Date To</th>
 						<th>Image</th>
@@ -92,9 +94,20 @@
                     foreach($row as $key => $temp){$$key = stripslashes(($row[$key]));}
 					echo '<tr>';
 						echo "<td>".sanitizeInput($title)."</td>";
-						echo "<td>".sanitizeInput($sub_title)."</td>";
-						echo "<td>".date('d-m-Y',strtotime($date_from))."</td>";
-						echo "<td>".date('d-m-Y',strtotime($date_to))."</td>";
+						echo "<td>".sanitizeInput($venue)."</td>";
+						echo "<td>".sanitizeInput($city)."</td>";
+						echo "<td>".getCountryName($country_id)."</td>";
+						echo "<td>";
+							if($from_day!=0){echo $from_day."-";}
+							if($from_month!=0){echo $from_month."-";}
+							if($from_year!=0){echo $from_year;}
+						echo "</td>";
+						echo "<td>";
+							if($to_day!=0){echo $to_day."-";}
+							if($to_month!=0){echo $to_month."-";}
+							if($to_year!=0){echo $to_year;}
+						echo "</td>";
+
 						echo "<td>
 							<img src='../../exhibitions/images/".$image."' width='200px' />
 						</td>";

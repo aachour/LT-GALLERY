@@ -41,25 +41,35 @@
 
 				if(!isEmpty($entryId)){
                     $query="UPDATE `".$table."` SET
-                    `title`='".sanitizeInput($title,"HTML")."',
-                    `sub_title`='".sanitizeInput(@$sub_title,"HTML")."',
-                    `text`='".sanitizeInput($text,"HTML")."',
-                    `date_from`='".date('Y-m-d',strtotime(@$date_from))."',
-                    `date_to`='".date('Y-m-d',strtotime(@$date_to))."',
+                    `category_id`='".sanitizeInput(@$category_id)."',
                     `artists_id`='".json_encode(@$artists_id)."',
+                    `title`='".sanitizeInput($title,"HTML")."',
+                    `text`='".sanitizeInput($text,"HTML")."',
+                    `venue`='".sanitizeInput($venue,"HTML")."',
+                    `city`='".sanitizeInput($city,"HTML")."',
+                    `country_id`='".sanitizeInput($country_id,"HTML")."',
+                    `from_day`='".sanitizeInput($from_day,"HTML")."',
+                    `from_month`='".sanitizeInput($from_month,"HTML")."',
+                    `from_year`='".sanitizeInput($from_year,"HTML")."',
+                    `to_day`='".sanitizeInput($to_day,"HTML")."',
+                    `to_month`='".sanitizeInput($to_month,"HTML")."',
+                    `to_year`='".sanitizeInput($to_year,"HTML")."',
                     `file`='".sanitizeInput(@$file,"HTML")."',
                     `image`='".sanitizeInput($image,"HTML")."',
                     `dateedit`=NOW()
 					WHERE `id`=".$entryId;
                 }
                 else{
-					$query="INSERT INTO `".$table."` (`title` , `sub_title` , `text` , `date_from` , `date_to` , `artists_id` , `file` , `image` , `datesubmit` , `status`) 
+					$query="INSERT INTO `".$table."` (`category_id` , `artists_id` , `title` , `text` , `venue` , `city` , `country_id` , `date_from` , `date_to`  , `file` , `image` , `datesubmit` , `status`) 
 							VALUES( '".sanitizeInput($title,"HTML")."' , 
-                                    '".sanitizeInput(@$sub_title,"HTML")."' , 
-                                    '".sanitizeInput($text,"HTML")."' , 
-                                    '".date('Y-m-d',strtotime(@$date_from))."' , 
-                                    '".date('Y-m-d',strtotime(@$date_to))."' ,
                                     '".json_encode(@$artists_id)."' ,
+                                    '".sanitizeInput($title,"HTML")."' , 
+                                    '".sanitizeInput($text,"HTML")."' , 
+                                    '".sanitizeInput($venue,"HTML")."' , 
+                                    '".sanitizeInput($city,"HTML")."' , 
+                                    '".sanitizeInput($country_id,"HTML")."' , 
+                                    '".date('Y-m-d',strtotime(@$datefrom))."' , 
+                                    '".date('Y-m-d',strtotime(@$dateto))."' ,
                                     '".sanitizeInput(@$file,"HTML")."' ,
                                     '".sanitizeInput($image,"HTML")."' , 
 									NOW() , 
@@ -93,9 +103,7 @@
                 $row=fetchArray($result);
                 foreach($row as $key => $item){$$key=stripslashes($row[$key]);}
                 $artists_id=json_decode($artists_id);
-                $date_from=date('d-m-Y',strtotime(@$date_from));
-                $date_to=date('d-m-Y',strtotime(@$date_to));
-			}
+            }
             else{
                 @$artists_id=[];
             }
@@ -127,6 +135,29 @@
 
                     </td>
                 </tr>
+
+                <tr height="20px"></tr>
+                <tr>
+                    <td>Artists</td>
+                    <td width="20px"></td> 
+                    <td>
+                        <select id="artists_id" name="artists_id[]" class="select2" multiple>
+                            <option value=""></option>
+                            <?php
+                                $query2="SELECT `id` as `artistId` , `name` as `artistName` FROM `artists` WHERE `status`='1' ORDER BY `name` ASC" ;
+                                $result2=runQuery($query2);
+                                if(numRows($result2)>0){
+                                    while($row2=fetchArray($result2)){
+                                        foreach($row2 as $key => $item){$$key=stripslashes($row2[$key]);}
+                                        $selected="";
+                                        if(in_array($artistId,$artists_id)){$selected="selected";}
+                                        echo'<option value="'.$artistId.'" '.$selected.'>'.$artistName.'</option>';
+                                    }
+                                }
+                            ?>
+                        </select>
+                    </td>
+                </tr>
                 
                 <tr height="20px"></tr>
                 <tr>
@@ -135,12 +166,6 @@
                     <td><?php echoTextField("title", sanitizeInput(@$title),"ckeditor"); ?></td>
                 </tr>
 
-                <tr height="20px"></tr>
-                <tr>
-                    <td>Sub Title </td>
-                    <td width="20px"></td>
-                    <td><?php echoTextField("sub_title", sanitizeInput(@$sub_title),"ckeditor"); ?></td>
-                </tr>
 
                 <tr height="20px"></tr>
                 <tr>
@@ -149,7 +174,7 @@
                     <td><?php echoTextArea("text", @$text,"ckeditor"); ?></td>
                 </tr>
 
-                <tr height="20px"></tr>
+                <!-- <tr height="20px"></tr>
                 <tr>
                     <td>Date From</td>
                     <td width="20px"></td> 
@@ -161,29 +186,71 @@
                     <td>Date To</td>
                     <td width="20px"></td> 
                     <td><input type="text" class="datepicker" id="date_to" name="date_to" value="<?php echo @$date_to;?>" /></td>
+                </tr> -->
+
+                <tr height="20px"></tr>
+                <tr>
+                    <td>Venue </td>
+                    <td width="20px"></td>
+                    <td><?php echoTextField("venue", @$venue,"ckeditor"); ?></td>
                 </tr>
 
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Artists</td>
+                    <td>City </td>
+                    <td width="20px"></td>
+                    <td><?php echoTextField("city", @$city,"ckeditor"); ?></td>
+                </tr>
+
+                <tr height="20px"></tr>
+                <tr>
+                    <td>Country</td>
                     <td width="20px"></td> 
                     <td>
-                    <select id="artists_id" name="artists_id[]" class="select2" multiple>
+                    <select id="country_id" name="country_id">
                         <option value=""></option>
                         <?php
-                            $query2="SELECT `id` as `artistId` , `name` as `artistName` FROM `artists` WHERE `status`='1' ORDER BY `name` ASC" ;
+                            $query2="SELECT `id` as `countryId` , `name` as `countryName`  FROM `countries` WHERE `status`='1' ORDER BY `name` ASC" ;
                             $result2=runQuery($query2);
                             if(numRows($result2)>0){
                                 while($row2=fetchArray($result2)){
                                     foreach($row2 as $key => $item){$$key=stripslashes($row2[$key]);}
                                     $selected="";
-                                    if(in_array($artistId,$artists_id)){$selected="selected";}
-                                    echo'<option value="'.$artistId.'" '.$selected.'>'.$artistName.'</option>';
+                                    if(@$countryId==@$country_id){$selected="selected";}
+                                    echo'<option value="'.$countryId.'" '.$selected.'>'.$countryName.'</option>';
                                 }
                             }
                         ?>
                     </select>
 
+                    </td>
+                </tr>
+
+                <tr height="10px"></tr>
+        		<tr>
+                    <td>Date From <sup class='red'>*</sup></td>
+                    <td width="20px"></td>
+                    <td>
+                        <?php
+                            $temp=date("Y");
+                            echoDayDropDown("from_day", $from_day,"date","width:250px;");
+                            echoMonthDropDown("from_month", $from_month,"date","width:250px;");
+                            echoYearDropDown("from_year", $from_year, $temp+3, $temp-5,"date","width:250px;");
+                        ?>
+                    </td>
+                </tr>
+
+                <tr height="10px"></tr>
+        		<tr>
+                    <td>Date To <sup class='red'>*</sup></td>
+                    <td width="20px"></td>
+                    <td>
+                        <?php
+                            $temp=date("Y");
+                            echoDayDropDown("to_day", $to_day,"date","width:250px;");
+                            echoMonthDropDown("to_month", $to_month,"date","width:250px;");
+                            echoYearDropDown("to_year", $to_year, $temp+3, $temp-5,"date","width:250px;");
+                        ?>
                     </td>
                 </tr>
 

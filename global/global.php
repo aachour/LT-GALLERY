@@ -1229,6 +1229,16 @@
 		$encrypPassword = base64_encode($encrypPassword);
 		return $encrypPassword;
 	}
+
+	function getCountryName($countryid){
+		$query="SELECT `name` FROM `countries` WHERE `id`='".@$countryid."'";
+		$result=runQuery($query);
+		if(numRows($result)==1){
+			$row=fetchArray($result);
+			foreach($row as $key => $temp){$$key = stripslashes(($row[$key] ?? ''));}
+			return $name;
+		}
+	}
 	
 
 ?>

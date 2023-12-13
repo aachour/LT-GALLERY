@@ -12,7 +12,7 @@
 	extract($_POST);
 	extract($_GET);
 	@$entryId=sanitizeInput($id);
-    @$exhibitionsId=sanitizeInput($exhibitionsid); 
+    @$exhibitionsId=sanitizeInput($exhibitionid); 
     
 	$error='';
 
@@ -46,11 +46,11 @@
 					WHERE `id`=".$entryId;
                 }
                 else{
-                    $row=fetchArray(runQuery("SELECT max(listorder) FROM `".$table."` WHERE `exhibitions_id`='".@$exhibitionsId."' AND `status`='1' "));
+                    $row=fetchArray(runQuery("SELECT max(listorder) FROM `".$table."` WHERE `exhibition_id`='".@$exhibitionId."' AND `status`='1' "));
 					if($row[0] != null){$listorder = $row[0]+1;}
 					else{$listorder = 1;}
-					$query="INSERT INTO `".$table."` (`exhibitions_id` , `image` , `caption` , `datesubmit` , `status` , `listorder`) 
-							VALUES( '".sanitizeInput($exhibitionsId)."' , 
+					$query="INSERT INTO `".$table."` (`exhibition_id` , `image` , `caption` , `datesubmit` , `status` , `listorder`) 
+							VALUES( '".sanitizeInput($exhibitionId)."' , 
                                     '".sanitizeInput($image,"HTML")."' , 
                                     '".sanitizeInput($caption,"HTML")."' , 
 									NOW() , 
@@ -64,7 +64,7 @@
                     }
                     $msg="<br />Entry saved.<br />";
                     $prompt=0;
-					echo "<meta http-equiv='refresh' content='2;url=images.php?exhibitionsid=".@$exhibitionsId."'>";
+					echo "<meta http-equiv='refresh' content='2;url=images.php?exhibitionid=".@$exhibitionId."'>";
                 }else{
                     $error="<br />Could not save entry. Please try again.<br />";
                     $prompt=1;

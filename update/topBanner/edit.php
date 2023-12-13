@@ -30,7 +30,7 @@
 
         if(@$save){
 
-			if(isEmpty($title) || isEmpty($image) || isEmpty($link)){
+			if(isEmpty($title) || isEmpty($image)){
 				$error="Please fill all required fields";
             }
 
@@ -79,14 +79,14 @@
             <table cellpadding="0" cellspacing="0" class="prompt small">
 
                 <tr>
-                    <td>Title <sup class='red'>*</sup></td>
+                    <td width="150px">Title <sup class='red'>*</sup></td>
                     <td width="20px"></td>
-                    <td><?php echoTextArea("title", @$title,"ckeditor"); ?></td>
+                    <td width="700px"><?php echoTextField("title", @$title,"ckeditor"); ?></td>
                 </tr>
 
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Link <sup class='red'>*</sup></td>
+                    <td>Link </td>
                     <td width="20px"></td>
                     <td><?php echoTextField("link", @$link,"ckeditor"); ?></td>
                 </tr>
