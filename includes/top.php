@@ -43,24 +43,27 @@
 
 <body>
 
-	<!------Header-->
-	<div class="header">
+	<!------Header Desktop-->
+	<div class="header onlyDesktop">
 
 		<div class="content">
 
 			<a href="home/">
-				<div class="logo"></div>
-				<div class="logoTxt proximaSb small black">LT GALLERY</div>
+				<div class="col1">
+					<img src="static/images/logo2-black.png" width="150px" />
+				</div>
 			</a>
 
-			<div class="nav textRight onlyDesktop">
-				<!-- <a class="small proximaMd <?php if(@$CURRENT_SECTION=="HOME"){echo "red";}else{echo "blackRed";}?>" href="home/">Home</a> -->
-				<a class="small proximaMd <?php if(@$CURRENT_SECTION=="PUBLICATIONS"){echo "red";}else{echo "blackRed";}?>" href="publications/">Publications</a>
-				<a class="small proximaMd <?php if(@$CURRENT_SECTION=="ABOUT US"){echo "red";}else{echo "blackRed";}?>" href="aboutus/">About Us</a>
-				<a class="small proximaMd <?php if(@$CURRENT_SECTION=="CONTACT US"){echo "red";}else{echo "blackRed";}?>" href="contactus/">Contact Us</a>
+			<div class="col2">
+				<div class="nav textRight">
+					<a class="small proximaMd <?php if(@$CURRENT_SECTION=="EXHIBITIONS"){echo "red";}else{echo "blackRed";}?>" href="home/">Exhibitions</a>
+					<a class="small proximaMd <?php if(@$CURRENT_SECTION=="ARTISTS"){echo "red";}else{echo "blackRed";}?>" href="artists/">Artists</a>
+					<a class="small proximaMd <?php if(@$CURRENT_SECTION=="PODCASTS"){echo "red";}else{echo "blackRed";}?>" href="podcasts/">Podcasts</a>
+					<a class="small proximaMd <?php if(@$CURRENT_SECTION=="NEWS"){echo "red";}else{echo "blackRed";}?>" href="artists/">News</a>
+					<a class="small proximaMd <?php if(@$CURRENT_SECTION=="ABOUT US"){echo "red";}else{echo "blackRed";}?>" href="about/">About</a>
+					<a class="small proximaMd <?php if(@$CURRENT_SECTION=="CONTACT US"){echo "red";}else{echo "blackRed";}?>" href="contactus/">Contact Us</a>
+				</div>
 			</div>
-
-			<div class="burger clickable onlyMobile" id="burger1"></div>
 
 			<div class="clear"></div>
 
@@ -68,16 +71,19 @@
 
 	</div>
 
+	<div class="rightLine onlyDesktop"></div>
+		
+	<!-- <div class="burger clickable onlyMobile" id="burger1"></div> -->
 
-	<!--Menu-->
+	<!--Menu
 	<div id="mobileMenu" class="textRight hidden">
 
 		<div class="burger clickable" id="burger2"></div>
 		<div class="clear"></div>
 
-		<!-- <div class="topSpacerBigger">
+		<div class="topSpacerBigger">
 			<a class="small proximaMd <?php if(@$CURRENT_SECTION=="HOME"){echo "red";}else{echo "blackRed";}?>" href="home/">Home</a>
-		</div> -->
+		</div>
 		<div class="topSpacerBigger">
 			<a class="small proximaMd <?php if(@$CURRENT_SECTION=="PUBLICATIONS"){echo "red";}else{echo "blackRed";}?>" href="publications/">Publications</a>
 		</div>
@@ -88,38 +94,17 @@
 			<a class="small proximaMd <?php if(@$CURRENT_SECTION=="CONTACT US"){echo "red";}else{echo "blackRed";}?>" href="contactus/">Contact Us</a>
 		</div>
 
-	</div>
+	</div>-->
 
 
 	<script>
 
-		function setTitleRedLine(){
-			
-			var windowWidth=$(window).width();
-
-			if(windowWidth>=900){
-				var left=(windowWidth*0.1);
-				$(".redLine").css("left",(-1*left));
-			
-				var mainTitleWidth=$(".mainTitle").find("span").width(); 
-				var width=left+mainTitleWidth+20; 
-				$(".redLine").width(width)
-			
-			}else{
-				var left=(windowWidth*0.1);
-				$(".redLine").css("left",(-1*left));
-				var mainTitleWidth=$(".mainTitle").find("span").width(); 
-				var width=left+mainTitleWidth+20; 
-				$(".redLine").width(width)			
-			}
-		}
-
 		$(window).load(function(){
-			setTitleRedLine();
+		
 		});
 
 		$(window).resize(function(){
-			setTitleRedLine();
+		
 		});
 		
 		$(document).ready(function(){	
@@ -132,6 +117,6 @@
 				$("#mobileMenu").addClass("hidden");
 			});
 
-		})
+		});
 
 	</script>
