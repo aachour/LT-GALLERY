@@ -76,25 +76,35 @@
                             <th>Type</th>
                             <th>Title</th>
                             <th>Year</th>
-                            <th>venue</th>
-                            <th>city</th>
-                            <th>country</th>
+                            <th>Venue</th>
+                            <th>City</th>
+                            <th>Country</th>
                             <th>Actions</th>
                         </tr>";
                         while($row=fetchArray($result)){
                             foreach($row as $key => $temp){$$key = stripslashes(($row[$key]));}
                             echo '<tr>';
-                                echo "<td>";
-                                    if($type==1){echo "LT Exhibition";}
-                                    else{echo "External Exhibition";}
-                                echo "</td>";
-                                echo "<td>".sanitizeInput($title)."</td>";
-                                echo "<td>";
-                                    if(@$year){echo @$year;}
-                                echo"</td>";
-                                echo "<td>".sanitizeInput($venue)."</td>";
-                                echo "<td>".sanitizeInput($city)."</td>";
-						        echo "<td>".getCountryName($country_id)."</td>";
+                                if($type==1){
+                                    $query2="SELECT `title` , `from_year` ,`venue` , `city` , `country_id` FROM `exhibitions` WHERE `id`='".@$exhibition_id."' ";
+                                    $result2=runQuery($query2);
+                                    if(numRows($result2)==1){
+                                        $row2=fetchArray($result2);
+                                        foreach($row2 as $key => $temp){$$key = stripslashes(($row2[$key]));}
+                                    }
+                                    echo "<td>LT Exhibition</td>";
+                                    echo "<td>".sanitizeInput($title)."</td>";
+                                    echo "<td>".@$from_year."</td>";
+                                    echo "<td>".sanitizeInput($venue)."</td>";
+                                    echo "<td>".sanitizeInput($city)."</td>";
+                                    echo "<td>".getCountryName($country_id)."</td>";
+                                }else{
+                                    echo "<td>External Exhibition</td>";
+                                    echo "<td>".sanitizeInput($title)."</td>";
+                                    echo "<td>".$year."</td>";
+                                    echo "<td>".sanitizeInput($venue)."</td>";
+                                    echo "<td>".sanitizeInput($city)."</td>";
+                                    echo "<td>".getCountryName($country_id)."</td>";
+                                }
                                 echo"<td>
                                     <form action='exhibitionEdit.php' method='post'>
                                         <input type='hidden' name='id' value='".$id."'/>
