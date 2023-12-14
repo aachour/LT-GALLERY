@@ -33,7 +33,7 @@
 
         if(@$save){
 
-            if(isEmpty($title) || isEmpty($text) || isEmpty($image)){
+            if(isEmpty($category_id) || isEmpty($title) || isEmpty($text) || isEmpty($image)){
 				$error="Please fill all required fields";
             }
             
@@ -60,16 +60,20 @@
 					WHERE `id`=".$entryId;
                 }
                 else{
-					$query="INSERT INTO `".$table."` (`category_id` , `artists_id` , `title` , `text` , `venue` , `city` , `country_id` , `date_from` , `date_to`  , `file` , `image` , `datesubmit` , `status`) 
-							VALUES( '".sanitizeInput($title,"HTML")."' , 
+					$query="INSERT INTO `".$table."` (`category_id` , `artists_id` , `title` , `text` , `venue` , `city` , `country_id` , `from_day` , `from_month`  , `from_year` , `to_day` , `to_month` , `to_year` , `file` , `image` , `datesubmit` , `status`) 
+							VALUES( '".sanitizeInput($category_id)."' , 
                                     '".json_encode(@$artists_id)."' ,
                                     '".sanitizeInput($title,"HTML")."' , 
                                     '".sanitizeInput($text,"HTML")."' , 
                                     '".sanitizeInput($venue,"HTML")."' , 
                                     '".sanitizeInput($city,"HTML")."' , 
                                     '".sanitizeInput($country_id,"HTML")."' , 
-                                    '".date('Y-m-d',strtotime(@$datefrom))."' , 
-                                    '".date('Y-m-d',strtotime(@$dateto))."' ,
+                                    '".sanitizeInput(@$from_day)."' , 
+                                    '".sanitizeInput(@$from_month)."' ,
+                                    '".sanitizeInput(@$from_year)."' ,
+                                    '".sanitizeInput(@$to_day)."' ,
+                                    '".sanitizeInput(@$to_month)."' ,
+                                    '".sanitizeInput(@$to_year)."' ,
                                     '".sanitizeInput(@$file,"HTML")."' ,
                                     '".sanitizeInput($image,"HTML")."' , 
 									NOW() , 
@@ -262,7 +266,7 @@
                         <div>
                             <input type="text" value="<?php if(@$file!=""){echo "File uploaded";}?>" id="fileTxt" disabled />
                             <input type="hidden" value="<?php echo @$file;?>" id="file" name="file" />
-                            <input type="button" class="browseBtn" id="exebitionFileBrowseBtn" value="BROWSE" />
+                            <input type="button" class="browseBtn" id="exhibitionFileBrowseBtn" value="BROWSE" />
                         </div>
                         <div class="topSpacerSmaller tiny textRight <?php if(@$file==""){echo "hidden";}?>" id="fileViewDelete">
                             <a class="tiny" href="<?php if(@$file!=""){echo "../../exhibitions/images/".@$file;}?>" id="fileView" target="_blank">View</a>
@@ -334,7 +338,7 @@
             width: '100%'
         });
 
-        $("#exebitionFileBrowseBtn").click(function(){
+        $("#exhibitionFileBrowseBtn").click(function(){
             $("#popupUploadFile").removeClass("hidden");
         })
 

@@ -126,14 +126,14 @@
                         <select id="exhibition_id" name="exhibition_id">
                             <option value=""></option>
                             <?php
-                                $query2 = "SELECT `id` as `exebitionId`, `title` as `exebitionTitle` FROM `exhibitions` WHERE `status`='1' ORDER BY `id` DESC";
+                                $query2 = "SELECT `id` as `exhibitionId`, `title` as `exhibitionTitle` FROM `exhibitions` WHERE `status`='1' ORDER BY `id` DESC";
                                 $result2 = runQuery($query2);
                                 if (numRows($result2) > 0) {
                                     while ($row2 = fetchArray($result2)) {
                                         foreach ($row2 as $key => $item) {$$key = stripslashes($row2[$key]);}
                                         $selected = "";
-                                        if($exebitionId==@$exhibition_id){$selected="selected";}
-                                        echo '<option value="' . $exebitionId . '" ' . $selected . '>' . $exebitionTitle . '</option>';
+                                        if($exhibitionId==@$exhibition_id){$selected="selected";}
+                                        echo '<option value="' . $exhibitionId . '" ' . $selected . '>' . $exhibitionTitle . '</option>';
                                     }
                                 }
                             ?>

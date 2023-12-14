@@ -1,7 +1,7 @@
 <?php
 	$pageTitle = 'COLLECTION';
 	$section = 'ARTISTS';
-	$table='collection_artists';
+	$table='artist_collections';
     $folder='../../artists/';
 
 	include('../top.php');
@@ -29,10 +29,13 @@
                  @extract($_GET);
          
                  @$entryId=sanitizeInput($id);
+                 @$artistId=sanitizeInput($artistid);
+
                  if(@$delete){
                     echo "<div class='error'>Are you sure you want to delete this entry?<br /><br />
-                        <form action='collection.php' method='POST'>
+                        <form action='collections.php' method='POST'>
                         <input type='hidden' name='id' value='".$entryId."' />
+                        <input type='hidden' name='artistid' value='".$artistId."' />
                         <input class='submit' type='submit' name='doDelete' value='Yes' />
                         &nbsp;&nbsp;<input class='submit' type='submit' name='' value='No' />
                     </form></div>";
@@ -84,17 +87,19 @@
                             echo "<td>".sanitizeInput($city)."</td>";
                             echo "<td>".getCountryName($country_id)."</td>";
                             echo "<td>";
-                                    if($from_day!=0){echo $from_day."-";}
-                                    if($from_month!=0){echo $from_month."-";}
-                                    if($from_year!=0){echo $from_year;}
+                                    if($day!=0){echo $day."-";}
+                                    if($month!=0){echo $month."-";}
+                                    if($year!=0){echo $year;}
                             echo "</td>";
                             echo"<td>";
                                     echo"<form action='collectionEdit.php' method='post'>
                                         <input type='hidden' name='id' value='".$id."'/>
+                                        <input type='hidden' name='artistid' value='".$artistId."'/>
                                         <input type='submit' class='submit' name='edit' value='Edit' style='width:150px;'/>
-                                        </form>";
-                                    echo"<form action='collection.php' method='post'>
+                                    </form>";
+                                    echo"<form action='collections.php' method='post'>
                                         <input type='hidden' name='id' value='".$id."'/>
+                                        <input type='hidden' name='artistid' value='".$artistId."'/>
                                         <input type='submit' class='submit' name='delete' value='Delete' style='width:150px;'/>
                                         </form>";
                                 echo"</td>";

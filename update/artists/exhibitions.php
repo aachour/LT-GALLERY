@@ -85,8 +85,8 @@
                             foreach($row as $key => $temp){$$key = stripslashes(($row[$key]));}
                             echo '<tr>';
                                 echo "<td>";
-                                    if($type==1){echo "LT Exebition";}
-                                    else{echo "External Exebition";}
+                                    if($type==1){echo "LT Exhibition";}
+                                    else{echo "External Exhibition";}
                                 echo "</td>";
                                 echo "<td>".sanitizeInput($title)."</td>";
                                 echo "<td>";

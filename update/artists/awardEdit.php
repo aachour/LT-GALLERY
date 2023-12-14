@@ -6,7 +6,6 @@ $folder='../../artists/';
 
 	include('../top.php');
     
-    include("../cropImage/index.html");
 	$prompt=1;
 	extract($_POST);
 	extract($_GET);

@@ -1,18 +1,17 @@
 <?php
 	$pageTitle = 'COLLECTION';
 	$section = 'ARTISTS';
-	$table='collection_artists';
+	$table='artist_collections';
     $folder='../../artists/';
 
 	include('../top.php');
-
-    include("../cropImage/index.html");
   
 	$prompt=1;
 	extract($_POST);
 	extract($_GET);
 
 	@$entryId=sanitizeInput($id);
+    @$artistId=sanitizeInput($artistid);
    
 	$error='';
 
@@ -29,7 +28,7 @@
 
                     <?php
                      if(@$save){
-                        if(isEmpty($name) || isEmpty($location) || isEmpty($city)  ){
+                        if(isEmpty($name) ){
                             $error="Please fill required filed";
                         }
                         if(@$error==""){
@@ -39,21 +38,21 @@
                                 `location`='".sanitizeInput(@$location,"HTML")."',
                                 `city`='".sanitizeInput(@$city,"HTML")."',
                                 `country_id`='".sanitizeInput(@$country_id,"HTML")."',
-                                `from_day`='".sanitizeInput(@$from_day,"HTML")."',
-                                `from_month`='".sanitizeInput(@$from_month,"HTML")."',
-                                `from_year`='".sanitizeInput(@$from_year,"HTML")."',
+                                `day`='".sanitizeInput(@$day,"HTML")."',
+                                `month`='".sanitizeInput(@$month,"HTML")."',
+                                `year`='".sanitizeInput(@$year,"HTML")."',
                                 `dateedit`=NOW()
                                 WHERE `id`=".$entryId;
                                 }else{
-                                    $query="INSERT INTO `".$table."` ( `name` , `location`, `city` , `country_id`, `from_day` , `from_month`, `from_year` , `datesubmit` , `status`)
+                                    $query="INSERT INTO `".$table."` ( `name` , `location`, `city` , `country_id`, `day` , `month`, `year` , `datesubmit` , `status`)
                                             VALUE(
                                             '".sanitizeInput(@$name ,"HTML")."', 
                                             '".sanitizeInput(@$location,"HTML")."' , 
                                             '".sanitizeInput(@$city,"HTML")."' ,
                                             '".sanitizeInput(@$country_id,"HTML")."' , 
-                                            '".sanitizeInput(@$from_day,"HTML")."' ,
-                                            '".sanitizeInput(@$from_month,"HTML")."' , 
-                                            '".sanitizeInput(@$from_month,"HTML")."' ,
+                                            '".sanitizeInput(@$day,"HTML")."' ,
+                                            '".sanitizeInput(@$month,"HTML")."' , 
+                                            '".sanitizeInput(@$year,"HTML")."' ,
                                             NOW() , 
                                             '1'
                                         )";
@@ -65,7 +64,7 @@
                                         }
                                         $msg="<br />Entry saved.<br />";
                                         $prompt=0;
-                                        echo "<meta http-equiv='refresh' content='2;url=collection.php'>";
+                                        echo "<meta http-equiv='refresh' content='2;url=collections.php?artistid=".@$artistId."'>";
                                     }else{
                                         $error="<br />Could not save entry. Please try again.<br />";
                                         $prompt=1;
@@ -146,9 +145,9 @@
                     <td>
                         <?php
                             $temp=date("Y");
-                            echoDayDropDown("from_day", @$from_day,"date","width:200px;");
-                            echoMonthDropDown("from_month", @$from_month,"date","width:200px;");
-                            echoYearDropDown("from_year", @$from_year, $temp+3, $temp-5,"date","width:200px;");
+                            echoDayDropDown("day", @$day,"date","width:200px;");
+                            echoMonthDropDown("month", @$month,"date","width:200px;");
+                            echoYearDropDown("year", @$year, $temp+3, $temp-5,"date","width:200px;");
                         ?>
                     </td>
                 </tr>
@@ -162,7 +161,7 @@
                         <?php } ?>
                         <input name='save' class='submit' value='Save' type='submit' />
                         <input type='hidden' name='artistid' value='<?php echo $artistId; ?>' />
-                        <input onclick="window.location='collection.php'" class='submit' value='Cancel' type='Button' />
+                        <input onclick="window.location='collections.php'" class='submit' value='Cancel' type='Button' />
 
                     </td>
                 </tr>        
@@ -174,43 +173,6 @@
         </div>
     </div>
 
-
-
-<script>
-    
-    function showHideSections(type){
-        if(type=="1"){
-            $(".internal").show();
-            $(".external").hide();
-            $("#year,#link").val("");
-            CKEDITOR.instances['text'].setData('');
-        }else if(type=="2"){
-            $(".internal").hide();
-            $(".external").show();
-            $(".select2").val("");
-        }
-    }
-
-    $(document).ready(function(){
-
-        var type=$(".typeRBtn:checked").val();
-        showHideSections(type);
-
-        $(".typeRBtn").click(function(){
-            var type=$(this).val();
-            showHideSections(type);
-        });
-
-        $(".select2").select2({
-            selectOnClose: true,
-            allowClear: true,
-            width: '100%'
-        });
-
-        
-        
-    });
-</script>
 
 <?php include("../bottom.php"); ?>
 

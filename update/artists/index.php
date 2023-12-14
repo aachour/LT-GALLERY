@@ -106,9 +106,9 @@
 								<input type='hidden' name='artistid' value='".$id."'/>
 								<input type='submit' class='submit' name='exhibitions' value='Exhibitions' style='width:150px;'/>
 							</form>";
-							echo"<form action='index.php' method='post'>
+							echo"<form action='collections.php' method='post'>
 								<input type='hidden' name='artistid' value='".$id."'/>
-                                <input type='submit' class='submit' name='collection' value='Collection' style='width:150px;'/>
+                                <input type='submit' class='submit' name='collection' value='Collections' style='width:150px;'/>
                             </form>";
 							echo"<form action='images.php' method='post'>
 								<input type='hidden' name='artistid' value='".$id."'/>
