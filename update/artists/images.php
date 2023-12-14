@@ -49,7 +49,7 @@
 			runQuery($query);
 
 			echo "<div class='msg'>Entry deleted successfully</div><br /><br />";
-			echo "<meta http-equiv='refresh' content='2;url=".currentPage()."?$artistId=".$artistId."'>";
+			echo "<meta http-equiv='refresh' content='2;url=".currentPage()."?artistid=".$artistId."'>";
 			$list=0;
 		}
 		

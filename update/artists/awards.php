@@ -85,9 +85,7 @@
                 while($row=fetchArray($result)){
                     foreach($row as $key => $temp){$$key = stripslashes(($row[$key]));}
 					echo '<tr>';
-						echo "<td>";
-						if(@$from_year!=0){echo @$from_year;}
-						echo"</td>";
+						echo "<td>".$year."</td>";
 						echo "<td>".sanitizeInput($title)."</td>";
 						echo "<td>".sanitizeInput($city)."</td>";
 						echo "<td>".getCountryName($country_id)."</td>";

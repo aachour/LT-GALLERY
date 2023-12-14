@@ -90,7 +90,7 @@
                                 echo "</td>";
                                 echo "<td>".sanitizeInput($title)."</td>";
                                 echo "<td>";
-                                if(@$from_year!=0){echo @$from_year;}
+                                    if(@$year){echo @$year;}
                                 echo"</td>";
                                 echo "<td>".sanitizeInput($venue)."</td>";
                                 echo "<td>".sanitizeInput($city)."</td>";

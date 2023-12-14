@@ -33,7 +33,7 @@ $folder='../../artists/';
 
             if(@$save){
                     
-                if(isEmpty($from_year) || isEmpty(@$title) || isEmpty($city) || isEmpty($country_id)){
+                if(isEmpty($year) || isEmpty(@$title)){
 
                     $error="Please fill all required fields";
                 }
@@ -43,24 +43,24 @@ $folder='../../artists/';
                     if(!isEmpty($entryId)){
                         $query="UPDATE `".$table."` SET
                         `artist_id`='".sanitizeInput(@$artistId)."',
-                        `from_year`='".sanitizeInput(@$from_year,"HTML")."',
-                        `title`='".sanitizeInput($title,"HTML")."',
-                        `link`='".sanitizeInput($link,"HTML")."',
+                        `year`='".sanitizeInput(@$year,"HTML")."',
                         `city`='".sanitizeInput($city,"HTML")."',
                         `country_id`='".sanitizeInput($country_id,"HTML")."',
+                        `title`='".sanitizeInput($title,"HTML")."',
+                        `link`='".sanitizeInput($link,"HTML")."',
                         `dateedit`=NOW()
                         WHERE `id`=".$entryId;
                     }
                     else{
-                        $query="INSERT INTO `".$table."` ( `artist_id` ,`from_year` , `title` , `link` , `city` , `country_id`,`status` )
+                        $query="INSERT INTO `".$table."` ( `artist_id` , `year` , `city` , `country_id`, `title` , `link` , `status` )
                         VALUES( '".sanitizeInput(@$artistId)."',
-                                '".sanitizeInput(@$from_year,"HTML")."' , 
+                                '".sanitizeInput(@$year,"HTML")."' , 
+                                '".sanitizeInput(@$city,"HTML"). "' ,
+                                '".sanitizeInput(@$country_id,"HTML"). "' ,
                                 '".sanitizeInput(@$title,"HTML")."' , 
                                 '".sanitizeInput(@$link,"HTML"). "' ,
-                                '".sanitizeInput(@$country_id,"HTML"). "' ,
-                                '".sanitizeInput(@$city,"HTML"). "' ,
                                 '1'
-                                )";
+                            )";
                     }
                     
                     if(runQuery($query)){
@@ -99,44 +99,27 @@ $folder='../../artists/';
 
             <table cellpadding="0" cellspacing="0" class="prompt small">
 
-            <tr>
+                <tr>
                     <td>Year <sup class='red'>*</sup></td>
                     <td width="20px"></td>
                     <td>
                         <?php
                             $temp=date("Y");
-                            echoYearDropDown("from_year", @$from_year, $temp+3, $temp-5,"date","width:250px;");
+                            echoYearDropDown("year", @$year, $temp+3, $temp-5,"date","width:250px;");
                         ?>
                     </td>
                 </tr>
 
                 <tr height="20px"></tr>
                 <tr>
-                    <td width="150px">Title <sup class='red'>*</sup></td>
-                    <td width="20px"></td>
-                    <td width="700px"><?php echoTextField("title", @$title,"ckeditor"); ?></td>
-                </tr>
-
-                <tr height="30px"></tr>
-
-                <tr>
-                    <td>LINK</td>
-                    <td width="20px"></td>
-                    <td><?php echoTextField("link", @$link,"ckeditor"); ?></td>
-                </tr>
-
-                <tr height="20px"></tr>
-
-                <tr>
-                    <td>City <sup class='red'>*</sup></td>
+                    <td>City</td>
                     <td width="20px"></td>
                     <td><?php echoTextField("city", @$city,"ckeditor"); ?></td>
                 </tr>
 
                 <tr height="20px"></tr>
-
                 <tr>
-                    <td>Country<sup class='red'>*</sup></td>
+                    <td>Country</td>
                     <td width="20px"></td> 
                     <td>
                     <select id="country_id" name="country_id">
@@ -157,6 +140,23 @@ $folder='../../artists/';
 
                     </td>
                 </tr>
+
+                <tr height="20px"></tr>
+                <tr>
+                    <td width="150px">Title <sup class='red'>*</sup></td>
+                    <td width="20px"></td>
+                    <td width="700px"><?php echoTextField("title", @$title,"ckeditor"); ?></td>
+                </tr>
+
+                <tr height="30px"></tr>
+
+                <tr>
+                    <td>LINK</td>
+                    <td width="20px"></td>
+                    <td><?php echoTextField("link", @$link,"ckeditor"); ?></td>
+                </tr>
+
+                
 
                 <tr height="20px"></tr>
 
