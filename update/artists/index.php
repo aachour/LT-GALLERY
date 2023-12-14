@@ -110,7 +110,7 @@
 								<input type='hidden' name='artistid' value='".$id."'/>
                                 <input type='submit' class='submit' name='image' value='Gallery' style='width:150px;'/>
                             </form>";
-							echo"<form action='index.php' method='post'>
+							echo"<form action='collection.php' method='post'>
 								<input type='hidden' name='artistid' value='".$id."'/>
                                 <input type='submit' class='submit' name='collection' value='Collection' style='width:150px;'/>
                             </form>";
