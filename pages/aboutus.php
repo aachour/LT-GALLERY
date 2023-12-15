@@ -29,35 +29,32 @@
 
 				<div class="topSpacerBigger big proximaSb mainTitle"><span class="proximaSb"></span><div class="redLine">
 
-							<div class="image textRight">
+							<div class="image textRight topSpacerBig ">
 
-							<img src="aboutus/images/<?php echo @$image;?>" width ="80%"/>
+									<img src="aboutus/images/<?php echo @$image;?>" width ="70%" position= "absolute" padding ="50px"/>
 
 							</div>
 
 				</div>
 			</div>	
 
-				<div class="topSpacerBig medium black proximaSb"><?php echo @$title;?></div>
+				<div class="topSpacerBig medium black proximaSb " id="section2"><?php echo @$title;?></div>
 
 				<div class="topSpacer small black"><?php echo @$sub_title;?></div>
 
 				<div class="row">
 					
 					<div class="topSpacer col-lg-3 col-12">
-						<div class="tiny black justified"><?php echo @$text1;?></div>
+						<div class="tiny black justified "><?php echo @$text1;?></div>
 					</div>
 
-					<div class="topSpacer col-lg-3 col-12">
+					<div class="topSpacer  col-lg-3 col-12">
 						<div class="tiny black justified"><?php echo @$text2;?></div>
 					</div>
 										
 				</div>
-<!-- 
-				<div class="image textRight">
-					<img src="aboutus-images/images/<?php echo @$image;?>" />
-				</div> -->
 
+				
 			</div>
 
 		</div>
