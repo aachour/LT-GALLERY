@@ -27,7 +27,16 @@
 
 			<div class="content">
 
-				<div class="topSpacerBigger big proximaSb mainTitle"><span class="proximaSb">ABOUT US</span><div class="redLine"></div></div>	
+				<div class="topSpacerBigger big proximaSb mainTitle"><span class="proximaSb"></span><div class="redLine">
+
+							<div class="image textRight">
+
+							<img src="aboutus/images/<?php echo @$image;?>" width ="80%"/>
+
+							</div>
+
+				</div>
+			</div>	
 
 				<div class="topSpacerBig medium black proximaSb"><?php echo @$title;?></div>
 
@@ -44,10 +53,10 @@
 					</div>
 										
 				</div>
-
+<!-- 
 				<div class="image textRight">
 					<img src="aboutus-images/images/<?php echo @$image;?>" />
-				</div>
+				</div> -->
 
 			</div>
 

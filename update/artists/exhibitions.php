@@ -100,7 +100,7 @@
                                 }else{
                                     echo "<td>External Exhibition</td>";
                                     echo "<td>".sanitizeInput($title)."</td>";
-                                    echo "<td>".$year."</td>";
+                                    echo "<td>".@$year."</td>";
                                     echo "<td>".sanitizeInput($venue)."</td>";
                                     echo "<td>".sanitizeInput($city)."</td>";
                                     echo "<td>".getCountryName($country_id)."</td>";

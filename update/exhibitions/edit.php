@@ -106,7 +106,11 @@
                 $result=runQuery($query);
                 $row=fetchArray($result);
                 foreach($row as $key => $item){$$key=stripslashes($row[$key]);}
-                $artists_id=json_decode($artists_id);
+                if(@$artists_id!="null"){
+                    $artists_id=json_decode($artists_id,true);
+                }else{
+                    @$artists_id=[];
+                }
             }
             else{
                 @$artists_id=[];
