@@ -30,11 +30,11 @@ body{
 	}
 	.col1{
 		float:left;
-		width:250px;
+		width:20%;
 	}
 	.col2{
 		float:left;
-		width:calc(100% - 250px);
+		width:75%;
 	}
 	.section{
 		position:relative;
@@ -42,14 +42,14 @@ body{
 	}
 	.leftLine{
 		position:relative;
-		width:calc(100% - 250px);
+		width:85%;
 		height:1px; 
 		background:#000;
 	}
 	.rightLine{
 		position:relative;
-		margin-left:300px;
-		width:calc(100% - 300px);
+		margin-left:20%;
+		width:80%;
 		height:1px; 
 		background:#000;
 	}
@@ -131,6 +131,23 @@ body{
 /************************************************************************/
 /************************************************************************/
 /*CONTACTUS*/
+
+#contactus input[type="text"]{
+	width:95%;
+	padding:5px;
+	border:0px;
+	border-bottom:1px solid #000;
+	outline:none;
+}
+#contactus textarea{
+	width:95%;
+	height:177px;
+	padding:5px;
+	border:0px;
+	border-bottom:1px solid #000;
+	outline:none;
+	resize:none;
+}
 
 #footer{
 	position:relative;

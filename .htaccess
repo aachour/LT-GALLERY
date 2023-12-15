@@ -7,7 +7,7 @@ RewriteEngine on
 
 RewriteRule  ^home/$ ./pages/home.php
 
-RewriteRule  ^aboutus/$ ./pages/aboutus.php
+RewriteRule  ^about/$ ./pages/about.php
 
 RewriteRule  ^contactus/$ ./pages/contactus.php
 

@@ -23,43 +23,41 @@
 	<div class="fullContainer" id="aboutus">
 
 		<!--Section1-->
-		<div class="section" id="section1" style="padding-top:0px !important;">
+		<div class="section" id="section1">
 
 			<div class="content">
+				<img src="aboutus/images/<?php echo @$image;?>" width ="100%" />
+			</div>
+			
+			<div class="content">
 
-				<div class="topSpacerBigger big proximaSb mainTitle"><span class="proximaSb"></span><div class="redLine">
+				<div class="col1">&nbsp;</div>
 
-							<div class="image textRight topSpacerBig ">
+				<div class="col2">
 
-									<img src="aboutus/images/<?php echo @$image;?>" width ="70%" position= "absolute" padding ="50px"/>
+					<div class="topSpacerBig big black gilroyMedium"><?php echo @$title;?></div>
 
-							</div>
+					<?php if(@$sub_title!=""){?>
+					<div class="topSpacer small black"><?php echo @$sub_title;?></div>
+					<?php }?>
 
-				</div>
-			</div>	
-
-				<div class="topSpacerBig medium black proximaSb " id="section2"><?php echo @$title;?></div>
-
-				<div class="topSpacer small black"><?php echo @$sub_title;?></div>
-
-				<div class="row">
-					
-					<div class="topSpacer col-lg-3 col-12">
-						<div class="tiny black justified "><?php echo @$text1;?></div>
+					<div class="row">
+						<div class="topSpacer col-lg-6 col-12">
+							<div class="small black"><?php echo @$text1;?></div>
+						</div>
+						<div class="topSpacer  col-lg-6 col-12">
+							<div class="small black"><?php echo @$text2;?></div>
+						</div>
 					</div>
 
-					<div class="topSpacer  col-lg-3 col-12">
-						<div class="tiny black justified"><?php echo @$text2;?></div>
-					</div>
-										
 				</div>
 
-				
+				<div class="clear"></div>
+
 			</div>
 
 		</div>
 
-		<div class="topSpacerBigger">&nbsp;</div>
 		<div class="topSpacerBigger">&nbsp;</div>
 
 	</div>

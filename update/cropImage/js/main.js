@@ -271,8 +271,8 @@ CropAvatar.prototype = {
 		}
 		else if(cropImageOption==2){
 			$(".avatar-directory").val("exhibitions");
-			$(".avatar-width").val("1000");
-			$(".avatar-height").val("625");
+			$(".avatar-width").val("");
+			$(".avatar-height").val("");
 		}
 		else if(cropImageOption==3){
 			$(".avatar-directory").val("artists");
@@ -281,13 +281,13 @@ CropAvatar.prototype = {
 		}
 		else if(cropImageOption==4){
 			$(".avatar-directory").val("topbanner");
-			$(".avatar-width").val("2000");
-			$(".avatar-height").val("650");
+			$(".avatar-width").val("");
+			$(".avatar-height").val("");
 		}
 		else if(cropImageOption==5){
 			$(".avatar-directory").val("podcasts");
-			$(".avatar-width").val("1000");
-			$(".avatar-height").val("1000");
+			$(".avatar-width").val("");
+			$(".avatar-height").val("");
 		}
 		else if(cropImageOption==6){
 			$(".avatar-directory").val("exhibitions");
@@ -449,7 +449,7 @@ CropAvatar.prototype = {
 
 		$("#aboutusBrowseBtn").click(function(){
 			cropImageOption="1";
-			aspectRatioValue="0";
+			aspectRatioValue="2.4";
 			return new CropAvatar($("#crop-avatar"));
 		});
 
@@ -479,7 +479,7 @@ CropAvatar.prototype = {
 
 		$("#topBannerBrowseBtn").click(function(){
 			cropImageOption="4";
-			aspectRatioValue="2";
+			aspectRatioValue="2.05";
 			return new CropAvatar($("#crop-avatar"));
 		});
 
