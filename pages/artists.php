@@ -25,6 +25,7 @@
 								foreach($row as $key => $item){$$key = stripslashes(($row[$key]));}	
 								$tmp_name=str_replace(" ","_",$name);
 								$tmp_name=str_replace("&","and",$tmp_name);
+								$tmp_name=str_replace("-","_",$tmp_name);
 								$url=$tmp_name."-".$id;
 
 								echo'<div class="topSpacerSmall">

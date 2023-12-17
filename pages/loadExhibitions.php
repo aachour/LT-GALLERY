@@ -43,6 +43,7 @@
 
 				$tmp_title=str_replace(" ","_",$title);
 				$tmp_title=str_replace("&","and",$tmp_title);
+				$tmp_title=str_replace("-","_",$tmp_title);
 				$url=$tmp_title."-".$id;
 				
 				
