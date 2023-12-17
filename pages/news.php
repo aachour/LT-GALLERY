@@ -14,38 +14,42 @@
 ?>
 
 <div  class="fullContainer" id="podcasts">
+
     <!--Section1-->
 	<div class="section" id="section1">
+
         <div class="content">
+
             <div class="col1">
+
                 <div class="medium black gilroyMedium">NEWS</div>
                 <div class="topSpacer tiny black bold filterBtn clickable" type="1">view all&nbsp;&nbsp;<img src="static/images/rectangle.svg" /></div>
 				<div class="topSpacerSmall tiny black filterBtn clickable" type="2">Interviews&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
 				<div class="topSpacerSmall tiny black filterBtn clickable" type="3">Artists Talks&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
                 <div class="topSpacerSmall tiny black filterBtn clickable" type="2">News Articles&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
 				<div class="topSpacerSmall tiny black filterBtn clickable" type="3">Videos&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
-
             </div>
+
             <div class="col2">
          
-                    <div class="row">
-                        <div class=" topSpacer col-lg-6 col-12">
+				<div class="row">
+					<div class=" col-lg-6 col-12">
+						<div class="small black "><?php echo date("F j, Y"); ?></div>
+						<div class="topSpacer big black gilroyMedium"><?php echo @$title;?></div>
+						<div class="topSpacer medium black gilroyMedium "><?php echo @$author;?></div>
+					</div>
+					<div class="topSpacer col-lg-5 col-12 ">
+						<img class="topSpacer" src="news/images/<?php echo @$image;?>" width ="100%" />
+					</div>  
+					<?php if($link!=""){?>
+					<div class="topSpacerBigger ">
+						<a href="<?php echo $link; ?>" target="_blank">
+							<input type="button" value="Go to Article" class="buttonTriangle small black" />
+						</a>
+					</div>
+					<?php }?>
+				</div>
 
-                            <div class="topSpacer small black "><?php echo date("F j, Y"); ?></div>
-                            <div class="topSpacer big black gilroyMedium"><?php echo @$title;?></div>
-                            <div class="topSpacer medium black gilroyMedium "><?php echo @$author;?></div>
-                        </div>
-                        <div class="topSpacer col-lg-5 col-12 ">
-						    <img class="topSpacer" src="news/images/<?php echo @$image;?>" width ="100%" />
-					    </div>  
-                        <?php if($link!=""){?>
-						<div class="topSpacerBigger ">
-							<a href="<?php echo $link; ?>" target="_blank">
-								<input type="button" value="Go to Article" class="buttonTriangle small black" />
-							</a>
-						</div>
-						<?php }?>
-                    </div>
 				<div class="topSpacerBig">&nbsp;</div>
 
                 <?php 
