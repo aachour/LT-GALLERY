@@ -1,6 +1,6 @@
 <?php
-	@$PAGE_TITLE="EXHIBITIONS | LT GALLERY";
-	@$CURRENT_SECTION="EXHIBITIONS";
+	@$PAGE_TITLE="ARTISTS | LT GALLERY";
+	@$CURRENT_SECTION="ARTISTS";
 	include ("../includes/top.php");
 ?>
 
@@ -28,7 +28,7 @@
 								$url=$tmp_name."-".$id;
 
 								echo'<div class="topSpacerSmall">
-									<a href="artists/'.$url.'" class="blackGrey tiny">'.$name.'</a>
+									<a href="artist/'.$url.'" class="blackGrey tiny">'.$name.'</a>
 								</div>';
 							}
 						}
@@ -51,8 +51,8 @@
 										$tmp_name=str_replace("&","and",$tmp_name);
 										$url=$tmp_name."-".$id;
 
-										echo'<div class="masonry-item topSpacerSmaller">
-											<a href="artists/'.$url.'">
+										echo'<div class="masonry-item-artist topSpacerSmaller">
+											<a href="artist/'.$url.'">
 												<div>
 													<img src="artists/images/'.$image.'" width="100%" />
 												</div>
@@ -82,8 +82,8 @@
 		function fixImages(){
 			var $masonryContainer = $('#masonry-container');
 			$masonryContainer.masonry({
-				itemSelector: '.masonry-item',
-				columnWidth: '.masonry-item',
+				itemSelector: '.masonry-item-artist',
+				columnWidth: '.masonry-item-artist',
 				gutter: 20, // Adjust the space between columns
 				fitWidth: true // Set to true for a fluid-width container
 			});

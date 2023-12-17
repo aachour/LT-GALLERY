@@ -197,6 +197,10 @@ body{
 	.masonry-item {
 		width: 23%;
 	}
+	.masonry-item-artist {
+		/* width: 32%; */
+		width: 23%;
+	}
 }
 
 

@@ -228,7 +228,7 @@ CropAvatar.prototype = {
 			this.$img.cropper({
 				autoCrop: true,
 			    aspectRatio: NaN,
-			    viewMode: 3,
+			    viewMode: 1,
 				preview: this.$avatarPreview.selector,
 				crop: function (e) {
 					var json = [
@@ -473,7 +473,7 @@ CropAvatar.prototype = {
 
 		$("#artistBrowseBtn").click(function(){
 			cropImageOption="3";
-			aspectRatioValue="0";
+			aspectRatioValue="";
 			return new CropAvatar($("#crop-avatar"));
 		});
 
