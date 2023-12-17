@@ -94,7 +94,7 @@
 					<div class="topSpacerBigger row">
 						
 						<div class="col-lg-6 col-12">
-							<div class="">
+							<div class="topSpacer">
 								<input type="button" class="small buttonTriangle" value="HONORS & AWARDS" />
 							</div>
 							<div class="topSpacerSmall">
