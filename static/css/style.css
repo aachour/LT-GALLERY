@@ -164,6 +164,17 @@ a.underline{
 	-moz-border-radius: 20px;
 	border-radius: 20px;
 }
+.with-underline {
+    border-bottom: 5px solid black; 
+    padding-bottom: 10px; 
+    margin-bottom: 10px;
+}
+.arrow-icon::after {
+    content: url('static/images/triangle-right.png'); /* Replace 'path/to/arrow-image.png' with your arrow image */
+    display: inline-block;
+    margin-left: 10px; /* Adjust the spacing between text and arrow image */
+    vertical-align: middle;
+}
 
 @media(max-width:900px){
 	.topSpacerSmaller{
