@@ -1239,6 +1239,16 @@
 			return $name;
 		}
 	}
+
+	function getArtistName($artistid){
+		$query="SELECT `name` FROM `artists` WHERE `id`='".@$artistid."'";
+		$result=runQuery($query);
+		if(numRows($result)==1){
+			$row=fetchArray($result);
+			foreach($row as $key => $temp){$$key = stripslashes(($row[$key] ?? ''));}
+			return $name;
+		}
+	}
 	
 
 ?>

@@ -32,7 +32,7 @@
 
 		@$entryId=sanitizeInput($id);
 		
-		@$exhibitionId=sanitizeInput($exhibitionId); 
+		@$exhibitionId=sanitizeInput($exhibitionid); 
 
 		if(@$delete){
 			echo "<div class='error'>Are you sure you want to delete this entry?<br /><br />
@@ -70,7 +70,7 @@
 
 			echo "<p class='medium blue underline'>".$pageTitle."<br /><br /></p>";
 
-			echo "<a href='imageEdit.php?exhibitionId=".$exhibitionId."'>
+			echo "<a href='imageEdit.php?exhibitionid=".$exhibitionId."'>
 				<input type='submit' class='submit' name='Add' value='Add Entry' />
 			</a>
 			<a href='index.php'>
@@ -104,12 +104,12 @@
 
 							echo"<form action='imageEdit.php' method='post'>
                                 <input type='hidden' name='id' value='".$id."'/>
-								<input type='hidden' name='exhibitionId' value='".$exhibitionId."'/>
+								<input type='hidden' name='exhibitionid' value='".$exhibitionId."'/>
 								<input type='submit' class='submit' name='edit' value='Edit' style='width:150px;'/>
 							</form>";
 							echo"<form action='images.php' method='post'>
 								<input type='hidden' name='id' value='".$id."'/>
-								<input type='hidden' name='exhibitionId' value='".$exhibitionId."'/>
+								<input type='hidden' name='exhibitionid' value='".$exhibitionId."'/>
                                 <input type='submit' class='submit' name='delete' value='Delete' style='width:150px;'/>
                             </form>";
 
@@ -117,7 +117,7 @@
 							if($listorder>$row2[0]){
 								echo "<form action='images.php' method='post'>
 									<input type='hidden' name='id' value='".$id."' />
-									<input type='hidden' name='exhibitionId' value='".$exhibitionId."'/>
+									<input type='hidden' name='exhibitionid' value='".$exhibitionId."'/>
 									<input type='hidden' name='listorder' value='".$listorder."' />
 									<input type='submit' class='submit' name='up' value='&uArr;' />
 								</form>";
@@ -126,7 +126,7 @@
 							if($listorder<$row2[0]){
 								echo "<form action='images.php' method='post'>
 									<input type='hidden' name='id' value='".$id."' />
-									<input type='hidden' name='exhibitionId' value='".$exhibitionId."'/>
+									<input type='hidden' name='exhibitionid' value='".$exhibitionId."'/>
 									<input type='hidden' name='listorder' value='".$listorder."' />
 									<input type='submit' class='submit' name='down' value='&dArr;' />
 								</form>";

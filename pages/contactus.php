@@ -48,44 +48,14 @@
 							<div class="topSpacer">
 								<textarea class="small black" placeholder="Message" id="message"></textarea>
 							</div>
+						
+							<div class="topSpacerBig">
+								<input type="button" class="small" id="submitBtn" value="SUBMIT" />
+							</div>
+
 						</div>
 
 					</div>
-					
-					<!-- <div class="topSpacerSmall">
-						<select class="small black" id="reason">
-							<option value=""></div>
-							<option value="General Enquiry">General Enquiry</div>
-							<option value="Collaboration Opportunities">Collaboration Opportunities</div>
-						</select>
-					</div> -->
-
-					<!-- <div class="topSpacer small black">Full Name</div>
-					<div class="topSpacerSmall">
-						<input type="text" class="small black" id="fullname" value="" />
-					</div>
-					
-					<div class="topSpacer small black">Phone Number</div>
-					<div class="topSpacerSmall">
-						<input type="text" class="small black" id="phone" value="" />
-					</div>
-					
-					<div class="topSpacer small black">Email Address</div>
-					<div class="topSpacerSmall">
-						<input type="text" class="small black" id="email" value="" />
-					</div>
-					
-					<div class="topSpacer small black">Message</div>
-					<div class="topSpacerSmall">
-						<textarea class="small black" id="message"></textarea>
-					</div>
-
-					<div class="topSpacer textRight">
-						<input type="button" class="small blackRedBtn" id="submitBn" value="SUBMIT" />
-					</div>
-
-					<div class="topSpacerBigger">&nbsp;</div> -->
-
 
 				</div>
 
@@ -110,35 +80,23 @@
 
 <script>
 
-	function setBackground(){
-		var formHeight=$(".form").height();
-		$(".image").height(formHeight)
-	}
-
-	$(window).resize(function(){
-		setBackground();
-	});
-
-	$(window).load(function(){
-		setBackground();
-	});
-
 
 	$(document).ready(function(){
 
-		$("#submitBn").click(function(){
+		$("#submitBtn").click(function(){
 
-			var reason=$("#reason").val();
-			var fullname=$("#fullname").val(); 
-			var phone=$("#phone").val(); 
+			var fname=$("#fname").val();
+			var lname=$("#lname").val(); 
 			var email=$("#email").val(); 
+			var phone=$("#phone").val(); 
+			var reason=$("#reason").val(); 
 			var message=$("#message").val();
 
-			if(reason=="" || fullname=="" || phone=="" || email=="" || message=="" ){
+			if(fname=="" || lname=="" || email=="" || phone=="" || reason=="" || message=="" ){
 				showPopupMsg("popupMsg","Please fill all fields","");
 			}
 			else{
-				$.post("contactusSave/",{"reason":reason , "fullname":fullname , "phone":phone , "email":email , "message":message},function(result){
+				$.post("contactusSave/",{"fname":fname , "lname":lname , "email":email , "phone":phone , "reason":reason , "message":message},function(result){
 					showPopupMsg("popupMsg","Your message has been sent successfully","contactus/");
 				});
 			}

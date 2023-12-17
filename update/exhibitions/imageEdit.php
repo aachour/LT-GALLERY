@@ -11,8 +11,9 @@
 	$prompt=1;
 	extract($_POST);
 	extract($_GET);
+    
 	@$entryId=sanitizeInput($id);
-    @$exhibitionsId=sanitizeInput($exhibitionid); 
+    @$exhibitionId=sanitizeInput($exhibitionid); 
     
 	$error='';
 
@@ -124,9 +125,9 @@
                         <?php if(isset($entryId)){?>
                             <input type='hidden' name='id' value='<?php echo $entryId; ?>' />
                         <?php } ?>
-                        <input type='hidden' name='exhibitionsid' value='<?php echo $exhibitionsId; ?>' />
+                        <input type='hidden' name='exhibitionid' value='<?php echo $exhibitionId; ?>' />
                         <input name='save' class='submit' value='Save' type='submit' />
-                        <input onclick="window.location='images.php?exhibitionsid=<?php echo @$exhibitionsId; ?>'" class='submit' value='Cancel' type='Button' />
+                        <input onclick="window.location='images.php?exhibitionid=<?php echo @$exhibitionId; ?>'" class='submit' value='Cancel' type='Button' />
                     </td>
                 </tr>
 

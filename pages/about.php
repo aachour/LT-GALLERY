@@ -8,10 +8,12 @@
 	if(numRows($result)==1){
 		$row=fetchArray($result);
 		foreach($row as $key => $item){$$key = stripslashes(($row[$key]));}	
-		$textArray=explode(' ', sanitizeInput($text,"HTML"));
+		$textArray=explode('</p>', sanitizeInput($text,"HTML"));
 		$textCount=count($textArray);
-		$text1=implode(' ', array_slice($textArray, 0, 81));
-		$text2=implode(' ', array_slice($textArray, 81, $textCount));
+		$halfTextCount=round($textCount/2)-1;
+
+		$text1=$textArray[0];
+		$text2=$textArray[1];
 		
 	}
 ?>
@@ -43,10 +45,22 @@
 
 					<div class="row">
 						<div class="topSpacer col-lg-6 col-12">
-							<div class="small black"><?php echo @$text1;?></div>
+							<div class="small black">
+								<?php 
+									for($i=0;$i<$halfTextCount;$i++){
+										echo $textArray[$i];
+									}
+								?>
+							</div>
 						</div>
 						<div class="topSpacer  col-lg-6 col-12">
-							<div class="small black"><?php echo @$text2;?></div>
+							<div class="small black">
+								<?php 
+									for($i=$halfTextCount;$i<$textCount;$i++){
+										echo $textArray[$i];
+									}
+								?>
+							</div>
 						</div>
 					</div>
 

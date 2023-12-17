@@ -22,6 +22,9 @@ body{
 	}
 }
 @media(min-width:900px){
+	#page{
+		min-height:calc(100vh - 200px) !important;
+	}
 	.content{
 		position:relative;
 		width:100%;
@@ -124,6 +127,15 @@ body{
 	width:100%;
 }
 
+#home #section2 .filterBtn:hover , #exhibitions #section2 .filterBtn:hover{
+	font-weight: bold;
+}
+
+.exhibition .dateLine{
+	height:2px;
+	margin-top:10px;
+}
+
 
 /************************************************************************/
 /************************************************************************/
@@ -148,11 +160,60 @@ body{
 	outline:none;
 	resize:none;
 }
+#contactus input[type="button"]{
+	width:25%;
+	padding:5px;
+	border:0px;
+	outline:none;
+	background:url("../images/triangle-right.png") right bottom no-repeat;
+	background-size:20px 20px;
+}
+@media(max-width:900px){
+	#contactus input[type="text"] , #contactus input[type="button"] , #contactus input[type="button"]{
+		width:100%;
+	}
+}
+@media(min-width:900px){
+	#contactus input[type="button"]{
+		margin-left:70%;
+	}
+}
+
+.masonry-item {
+	width: 100%; /* Initially set to full width */
+	margin:0px;
+	box-sizing: border-box;
+	background-color: #ffffff;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	overflow: hidden;
+}
+@media (max-width: 768px) {
+	.masonry-item {
+		width: 45%; /* Two columns on larger screens */
+	}
+}
+@media (min-width: 768px) {
+	.masonry-item {
+		width: 23%;
+	}
+}
+
+
+.buttonTriangle{
+	width:270px;
+	padding:5px 5px 5px 0px;
+	border:0px;
+	outline:none;
+	text-align: left;
+	background:url("../images/triangle-right.png") right bottom no-repeat;
+	background-size:20px 20px;
+}
 
 #footer{
 	position:relative;
 	width:100%;
-	padding:40px 0px;
+	padding:40px 0px !important;
 }
 
 

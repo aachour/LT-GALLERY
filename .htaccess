@@ -7,6 +7,20 @@ RewriteEngine on
 
 RewriteRule  ^home/$ ./pages/home.php
 
+RewriteRule  ^exhibitions/$ ./pages/exhibitions.php
+
+RewriteRule  ^exhibition/(.*)$ ./pages/exhibition.php?args=$1
+
+RewriteRule  ^loadExhibitions/$ ./pages/loadExhibitions.php
+
+RewriteRule  ^artists/$ ./pages/artists.php
+
+RewriteRule  ^artist/(.*)$ ./pages/artist.php?args=$1
+
+RewriteRule  ^podcasts/$ ./pages/podcasts.php
+
+RewriteRule  ^news/$ ./pages/news.php
+
 RewriteRule  ^about/$ ./pages/about.php
 
 RewriteRule  ^contactus/$ ./pages/contactus.php
