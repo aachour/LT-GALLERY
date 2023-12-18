@@ -11,7 +11,7 @@
 
 		<div id="fileuploader">Upload</div>
 
-		<div class="micro greyDark">(Allowed extensions: PDF) <br />(Max upload size: 3 MB)</div>
+		<div class="micro greyDark">(Allowed extensions: PDF) <br />(Max upload size: 15 MB)</div>
 
 	</div>
 
@@ -30,7 +30,7 @@
 			multiple:false,
 			dragDrop:true,
 			maxFileCount:100,
-			maxFileSize:3*1024*1024,
+			maxFileSize:15*1024*1024,
 			allowedTypes:"pdf",
 			fileName:"myfile",
 			showDelete: true,

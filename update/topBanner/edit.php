@@ -93,7 +93,7 @@
 
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Image <sup class='red'>*</sup><br />[2000x700px]</td>
+                    <td>Image <sup class='red'>*</sup><br /><span class="tiny">[2000x700px]</span></td>
                     <td width="20px"></td>
                     <td>
                         <div>

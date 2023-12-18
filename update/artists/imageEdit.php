@@ -93,7 +93,7 @@
 
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Image <sup class='red'>*</sup></td>
+                    <td>Image <sup class='red'>*</sup><br /><span class="tiny">[Random size]</span></td>
                     <td width="20px"></td>
                     <td>
                         <div>

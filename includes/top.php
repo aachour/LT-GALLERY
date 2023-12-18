@@ -62,7 +62,7 @@
 						<a class="small proximaMd <?php if(@$CURRENT_SECTION=="EXHIBITIONS"){echo "red";}else{echo "blackRed";}?>" href="exhibitions/">Exhibitions</a>
 						<a class="small proximaMd <?php if(@$CURRENT_SECTION=="ARTISTS"){echo "red";}else{echo "blackRed";}?>" href="artists/">Artists</a>
 						<a class="small proximaMd <?php if(@$CURRENT_SECTION=="PODCASTS"){echo "red";}else{echo "blackRed";}?>" href="podcasts/">Podcasts</a>
-						<a class="small proximaMd <?php if(@$CURRENT_SECTION=="NEWS"){echo "red";}else{echo "blackRed";}?>" href="news/">News</a>
+						<!-- <a class="small proximaMd <?php if(@$CURRENT_SECTION=="NEWS"){echo "red";}else{echo "blackRed";}?>" href="news/">News</a> -->
 						<a class="small proximaMd <?php if(@$CURRENT_SECTION=="ABOUT US"){echo "red";}else{echo "blackRed";}?>" href="about/">About</a>
 						<a class="small proximaMd <?php if(@$CURRENT_SECTION=="CONTACT US"){echo "red";}else{echo "blackRed";}?>" href="contactus/">Contact Us</a>
 					</div>

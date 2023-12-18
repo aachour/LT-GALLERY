@@ -101,7 +101,7 @@
 
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Image <sup class='red'>*</sup></td>
+                    <td>Image <sup class='red'>*</sup><br /><span class="tiny">[1700x700px]</span></td>
                     <td width="20px"></td>
                     <td>
                         <div>
@@ -110,7 +110,7 @@
                             <input type="button" class="browseBtn" id="aboutusBrowseBtn" value="BROWSE" />
                         </div>
                         <div class="topSpacerSmaller tiny textRight <?php if(@$image==""){echo "hidden";}?>" id="imageViewDelete">
-                            <a class="tiny" href="<?php if(@$image!=""){echo "../../aboutus-images/images/".@$image;}?>" id="imageView" target="_blank">View</a>
+                            <a class="tiny" href="<?php if(@$image!=""){echo "../../aboutus/images/".@$image;}?>" id="imageView" target="_blank">View</a>
                             &nbsp;|&nbsp;
                             <span class="tiny clickable" id="imageDelete">Delete</span>
                         </div>
