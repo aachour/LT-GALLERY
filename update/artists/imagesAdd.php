@@ -59,7 +59,7 @@
             
                         $msg="<br />Entry saved.<br />";
                         $prompt=0;
-                        echo "<meta http-equiv='refresh' content='2;url=images.php?artistId=".@$artistId."'>";
+                        echo "<meta http-equiv='refresh' content='2;url=images.php?artistid=".@$artistId."'>";
             
                     }
                     else{

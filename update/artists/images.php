@@ -101,7 +101,7 @@
 						echo "<td>".sanitizeInput($caption,"HTML")."</td>";
 						echo "<td>";
 
-							echo"<form action='imagesAdd.php' method='post'>
+							echo"<form action='imageEdit.php' method='post'>
                                 <input type='hidden' name='id' value='".$id."'/>
 								<input type='hidden' name='artistid' value='".$artistId."'/>
 								<input type='submit' class='submit' name='edit' value='Edit' style='width:150px;'/>

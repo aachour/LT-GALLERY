@@ -1,19 +1,20 @@
 <?php
-	@$PAGE_TITLE="PODCASTS | LT GALLERY";
-	@$CURRENT_SECTION="PODCASTS";
+	@$PAGE_TITLE="NEWS | LT GALLERY";
+	@$CURRENT_SECTION="NEWS";
 
 	include ("../includes/top.php");
 		
-	$query="SELECT * FROM `news` WHERE `status`='1' ORDER BY `id` DESC LIMIT 0,1";
-	$result=runQuery($query);
-	if(numRows($result)==1){
-		$row=fetchArray($result);
-		foreach($row as $key => $item){$$key = stripslashes(($row[$key]));}	
-        $date=date('d-m-Y',strtotime(@$date));
-	}
+	// $query="SELECT * FROM `news` WHERE `status`='1' ORDER BY `id` DESC LIMIT 0,1";
+	// $result=runQuery($query);
+	// if(numRows($result)==1){
+	// 	$row=fetchArray($result);
+	// 	foreach($row as $key => $item){$$key = stripslashes(($row[$key]));}	
+	// 	$date=$day."-".$month."-".$year;
+    //     $date=date('d-m-Y',strtotime(@$date));
+	// }
 ?>
 
-<div  class="fullContainer" id="podcasts">
+<div  class="fullContainer" id="news">
 
     <!--Section1-->
 	<div class="section" id="section1">
@@ -23,28 +24,31 @@
             <div class="col1">
 
                 <div class="medium black gilroyMedium">NEWS</div>
-                <div class="topSpacer tiny black bold filterBtn clickable" type="1">view all&nbsp;&nbsp;<img src="static/images/rectangle.svg" /></div>
+                <!-- <div class="topSpacer tiny black bold filterBtn clickable" type="1">view all&nbsp;&nbsp;<img src="static/images/rectangle.svg" /></div>
 				<div class="topSpacerSmall tiny black filterBtn clickable" type="2">Interviews&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
 				<div class="topSpacerSmall tiny black filterBtn clickable" type="3">Artists Talks&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
                 <div class="topSpacerSmall tiny black filterBtn clickable" type="2">News Articles&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
-				<div class="topSpacerSmall tiny black filterBtn clickable" type="3">Videos&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
+				<div class="topSpacerSmall tiny black filterBtn clickable" type="3">Videos&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div> -->
             </div>
 
             <div class="col2">
          
-				<div class="row">
+				<!-- <div class="row">
+
 					<div class=" col-lg-6 col-12 ">
-						<div class="small black "><?php echo date("F j, Y"); ?></div>
+						
+						<div class="small black gilroyLight"><?php echo $date; ?></div>
 
-						<a href=""><div class="topSpacer big black gilroyMedium clickable"><?php echo @$title;?></div></a>
-
+						<a href="">
+							<div class="topSpacer big black gilroyMedium clickable"><?php echo @$title;?></div>
+						</a>
 							
-							<div class="topSpacer medium black gilroyMedium "><?php echo @$author;?></div>	
+						<div class="topSpacer medium black gilroyMedium "><?php echo @$author;?></div>	
 
-						</div>
 						<div class="topSpacer col-lg-5 col-12 ">
 							<img class="topSpacer" src="news/images/<?php echo @$image;?>" width ="100%" />
 						</div>  
+						
 						<?php if($link!=""){?>
 						<div class="topSpacerBigger ">
 							<a href="<?php echo $link; ?>" target="_blank">
@@ -52,25 +56,35 @@
 							</a>
 						</div>
 						<?php }?>
+
 					</div>	
 
-				<div class="topSpacerBig">&nbsp;</div>
+					</div>
+
+				<div class="topSpacerBig">&nbsp;</div> -->
 
                 <?php 
-					$query="SELECT * FROM `news` WHERE `id`!='".$id."' AND `status`='1' ORDER BY `id` DESC";
+					$query="SELECT * FROM `news` WHERE  `status`='1' ORDER BY `id` DESC";
 					$result=runQuery($query);
 					if(numRows($result)>0){
 						while($row=fetchArray($result)){
 							foreach($row as $key => $item){$$key = stripslashes(($row[$key]));}	
-							echo'<div class="topSpacerBig podcast" status="0">
-								<div class="title clickable">
-									<div class=" small black ">'.date("F j, Y").'</div>
-									<div class="floatLeft medium black gilroyMedium">'.@$title.'</div>
-									<div class="floatRight">	
-										<img src="static/images/triangle-right-big.png" width="25px"></div>
-									<div class="clear"></div>
-									<div class="topSpacer small black">'.@$author.'</div>
-									<div class="topSpacerSmall text tiny black hidden">'.sanitizeInput(@$text,"HTML").'</div>
+							$date=$day."-".$month."-".$year;
+					        $date=date('d-m-Y',strtotime(@$date));
+							echo'<div class="bottomSpacerBig article" status="0">
+								<div class="title">
+									<div class="tiny black gilroyLight">'.$date.'</div>
+									<div class="topSpacerSmaller">
+										<div class="floatLeft medium gilroyMedium">';
+											if($link!=""){echo'<a class="blackGrey" href="'.$link.'" target="_blank">';}
+											echo @$title;
+											if($link!=""){echo'</a>';}
+										echo'</div>
+										<div class="floatRight">	
+											<img src="static/images/triangle-right-big.png" width="25px"></div>
+										<div class="clear"></div>
+									</div>
+									<div class="topSpacerSmaller text tiny black">'.sanitizeInput(@$text,"HTML").'</div>
 								</div>
 							</div>';
 						}

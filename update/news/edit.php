@@ -27,13 +27,9 @@
         <?php
         if(@$save){
             if(isEmpty($title) ||  isEmpty(@$author) || isEmpty($text) || isEmpty($day) || isEmpty($month) || isEmpty($year) ){
-                
                 $error="Please fill required filed";
-
-
             }
             if(@$error==''){
-
 
                 if(!isEmpty($entryId)){
                     $query="UPDATE `".$table."` SET
@@ -85,8 +81,6 @@
                 $result=runQuery($query);
                 $row=fetchArray($result);
                 foreach($row as $key => $item){$$key=stripcslashes($row[$key]);};
-                $date=date('d-m-Y',strtotime(@$date));
-
             }
         ?>
 

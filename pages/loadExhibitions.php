@@ -52,9 +52,9 @@
 						<div><img src="exhibitions/images/'.@$image.'" width="100%" /></div>
 					</a>
 					<div class="topSpacer tiny black">
-						<div class="floatLeft">'.$from_date.'</div>
+						<div class="floatLeft gilroyLight">'.$from_date.'</div>
 						<div class="floatLeft leftSpacer rightSpacer dateLine blackBg" style="width:'.$tmpWidth.'%;"></div>
-						<div class="floatLeft">'.$to_date.'</div>
+						<div class="floatLeft gilroyLight">'.$to_date.'</div>
 						<div class="clear"></div>
 					</div>
 					<div class="topSpacerSmall small black gilroyMedium">
