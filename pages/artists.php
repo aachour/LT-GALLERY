@@ -8,7 +8,7 @@
 	<!---------------------------------------------Middle---------------------------------------------->
 	<!------------------------------------------------------------------------------------------------->
 
-	<div class="fullContainer" id="exhibitions">
+	<div class="fullContainer" id="artists">
 
 		<!--Section1-->
 		<div class="section" id="section1">
@@ -46,6 +46,7 @@
 							
 							if(numRows($result)>0){
 								echo'<div class="masonry-container" id="masonry-container">';
+
 									while($row=fetchArray($result)){
 										foreach($row as $key => $item){$$key = stripslashes(($row[$key]));}	
 										$tmp_name=str_replace(" ","_",$name);
@@ -54,12 +55,14 @@
 
 										echo'<div class="masonry-item-artist topSpacerSmaller">
 											<a href="artist/'.$url.'">
-												<div>
+												<div class="artist">
 													<img src="artists/images/'.$image.'" width="100%" />
+													<div class="name tiny black hidden">'.$name.'</div>
 												</div>
 											</a>
 										</div>';
 									}
+									
 								echo'</div>';
 							}
 						?>
@@ -96,6 +99,12 @@
 
 		$(window).on('load', function() {
 			fixImages();
+
+			$(".artist").hover(function(){
+				$(this).find(".name").removeClass("hidden");
+			},function(){
+				$(this).find(".name").addClass("hidden");
+			});
 		});
 
 	</script>

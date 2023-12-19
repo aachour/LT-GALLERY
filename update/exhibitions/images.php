@@ -70,7 +70,7 @@
 
 			echo "<p class='medium blue underline'>".$pageTitle."<br /><br /></p>";
 
-			echo "<a href='imageEdit.php?exhibitionid=".$exhibitionId."'>
+			echo "<a href='imagesAdd.php?exhibitionid=".$exhibitionId."'>
 				<input type='submit' class='submit' name='Add' value='Add Entry' />
 			</a>
 			<a href='index.php'>

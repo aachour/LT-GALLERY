@@ -6,7 +6,7 @@
 
 	include('../top.php');
 
-    include("../cropImage/index.html");
+    include("../uploadFile/popupUploadImage-exhibition.php");
     
 	$prompt=1;
 	extract($_POST);
@@ -94,14 +94,14 @@
 
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Image <sup class='red'>*</sup><br /><span class="tiny">[Random size]</span></td>
+                    <td width="150px">Image <sup class='red'>*</sup><br /><span class="tiny">[Random size]</span></td>
                     <td width="20px"></td>
-                    <td>
-                    <div>
-                        <input type="text" value="<?php if(@$image!=""){echo "Image uploaded";}?>" id="imageTxt" disabled />
-                        <input type="hidden" value="<?php echo @$image;?>" id="image" name="image" />
-                        <input type="button" class="browseBtn" id="galleryBrowseBtn" value="BROWSE" />
-                    </div>
+                    <td width="600px">
+                        <div>
+                            <input type="text" value="<?php if(@$image!=""){echo "Image uploaded";}?>" id="imageTxt" disabled />
+                            <input type="hidden" value="<?php echo @$image;?>" id="image" name="image" />
+                            <input type="button" class="browseBtn" id="galleryBrowseBtn" value="BROWSE" />
+                        </div>
                         <div class="topSpacerSmaller tiny textRight <?php if(@$image==""){echo "hidden";}?>" id="imageViewDelete">
                             <a class="tiny" href="<?php if(@$image!=""){echo "../../exhibitions/images/".@$image;}?>" id="imageView" target="_blank">View</a>
                             &nbsp;|&nbsp;
@@ -114,7 +114,7 @@
                 <tr>
                     <td>Caption</td>
                     <td width="20px"></td>
-                    <td><?php echoTextArea("caption", @$caption,"ckeditor"); ?></td>
+                    <td><?php echoTextField("caption", @$caption,"ckeditor"); ?></td>
                 </tr>
               
                 <tr height="20px"></tr>
@@ -145,6 +145,10 @@
 <script>
 
     $(document).ready(function(){
+
+        $("#galleryBrowseBtn").click(function(){
+            $("#popupUploadExhibitionImage").removeClass("hidden");
+        });
 
         $("#imageDelete").click(function(){
             $("#imageTxt").val("");
