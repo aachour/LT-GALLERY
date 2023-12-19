@@ -69,7 +69,7 @@
 
 			echo "<p class='medium blue underline'>".$pageTitle."<br /><br /></p>";
 
-			echo "<a href='imageEdit.php?artistid=".$artistId."'>
+			echo "<a href='imagesAdd.php?artistid=".$artistId."'>
 				<input type='submit' class='submit' name='Add' value='Add Entry' />
 			</a>
 			<a href='index.php'>
@@ -101,7 +101,7 @@
 						echo "<td>".sanitizeInput($caption,"HTML")."</td>";
 						echo "<td>";
 
-							echo"<form action='imageEdit.php' method='post'>
+							echo"<form action='imagesAdd.php' method='post'>
                                 <input type='hidden' name='id' value='".$id."'/>
 								<input type='hidden' name='artistid' value='".$artistId."'/>
 								<input type='submit' class='submit' name='edit' value='Edit' style='width:150px;'/>

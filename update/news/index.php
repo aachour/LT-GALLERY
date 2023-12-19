@@ -65,7 +65,6 @@
                             <th>Aouthor</th>
                             <th>Text</th>
                             <th>Date</th>
-                            <th>Image</th>
                             <th>Actions</th>
                             <th></th>
     
@@ -78,10 +77,11 @@
                                 echo "<td>".sanitizeInput($title)."</td>";
                                 echo "<td>".sanitizeInput($author,"HTML")."</td>";
                                 echo "<td>".sanitizeInput($text,"HTML")."</td>";
-                                echo "<td>".date('d-m-Y',strtotime($date))."</td>";  
-                                echo "<td>
-                                <img src='../../news/images/".$image."' width='200px' />
-                                </td>";                                            
+                                echo "<td>";
+                                if($day!=0){echo $day."-";}
+                                if($month!=0){echo $month."-";}
+                                if($year!=0){echo $year;}
+                                echo "</td>";
                                 echo "<td>
                                 <form action='edit.php' method='post'>
                                     <input type='hidden' name='id' value='".$id."'/>

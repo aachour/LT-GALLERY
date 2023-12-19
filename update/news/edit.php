@@ -26,7 +26,7 @@
 
         <?php
         if(@$save){
-            if(isEmpty($title) ||  isEmpty(@$author) || isEmpty($text) || isEmpty($date) ){
+            if(isEmpty($title) ||  isEmpty(@$author) || isEmpty($text) || isEmpty($day) || isEmpty($month) || isEmpty($year) ){
                 
                 $error="Please fill required filed";
 
@@ -40,20 +40,22 @@
                     `title`='".sanitizeInput($title,"HTML")."',
                     `author`='".sanitizeInput($author,"HTML")."',
                     `text`='".sanitizeInput($text,"HTML")."',
+                    `day`='".sanitizeInput($day,"HTML")."',
+                    `month`='".sanitizeInput($month,"HTML")."',
+                    `year`='".sanitizeInput($year,"HTML")."',
                     `link`='".sanitizeInput($link,"HTML")."',
-                    `date`='".date('Y-m-d',strtotime(@$date))."', 
-                    `image`='".sanitizeInput(@$image,"HTML")."',
                     `dateedit`=NOW()
 					 WHERE `id`=".$entryId;
                     
                 }else{
-                    $query = "INSERT INTO `" .$table. "` (`title` , `author` , `text` , `link` , `date`, `image`, `datesubmit` ,`status`)
+                    $query = "INSERT INTO `" .$table. "` (`title` , `author` , `text` , `day`, `month`, `year`, `link` , `datesubmit` ,`status`)
                     VALUES( '" . sanitizeInput($title, "HTML") . "' ,
                             '" . sanitizeInput($author, "HTML") . "' , 
                             '" . sanitizeInput($text, "HTML") . "' , 
+                            '".sanitizeInput(@$day)."' , 
+                            '".sanitizeInput(@$month)."' ,
+                            '".sanitizeInput(@$year)."' ,
                             '" . sanitizeInput(@$link, "HTML") . "' , 
-                            '".date('Y-m-d',strtotime(@$date))."',
-                            '" . sanitizeInput(@$image, "HTML") . "' , 
                             NOW(),
                             '1'
                         )";
@@ -115,13 +117,19 @@
                 </tr>
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Date <sup class="red">*</sup></td>
-                    <td width="20px"></td> 
-                    <td><input type="text" class="datepicker" id="date" name="date" value="<?php echo @$date;?>" /></td>
-                    <td></td>
+                    <td>Date<sup class='red'>*</sup></td>
+                    <td width="20px"></td>
+                    <td>
+                        <?php
+                            $temp=date("Y");
+                            echoDayDropDown("day",@$day,"date","width:250px;");
+                            echoMonthDropDown("month", @$month,"date","width:250px;");
+                            echoYearDropDown("year",@$year, $temp+3, $temp-23,"date","width:250px;");
+                        ?>
+                    </td>
                 </tr>
                 <tr height="10px"></tr>
-                <td>Image <sup class="red">*</sup></td>
+                <!-- <td>Image <sup class="red">*</sup></td>
                 <td width="20px"></td>
                 <td>
                     <div>
@@ -134,7 +142,8 @@
                         &nbsp;|&nbsp;
                         <span class="tiny clickable" id="imageDelete">Delete</span></a>
                     </div>
-                </td>
+                </td> -->
+
                 <tr height="20px"></tr>
                 <tr>
                     <td></td>

@@ -243,7 +243,7 @@
                             $temp=date("Y");
                             echoDayDropDown("from_day",@ $from_day,"date","width:250px;");
                             echoMonthDropDown("from_month", @$from_month,"date","width:250px;");
-                            echoYearDropDown("from_year",@ $from_year, $temp+3, $temp-5,"date","width:250px;");
+                            echoYearDropDown("from_year",@ $from_year, $temp+3, $temp-23,"date","width:250px;");
                         ?>
                     </td>
                 </tr>
@@ -257,7 +257,7 @@
                             $temp=date("Y");
                             echoDayDropDown("to_day", @$to_day,"date","width:250px;");
                             echoMonthDropDown("to_month", @$to_month,"date","width:250px;");
-                            echoYearDropDown("to_year",@$to_year, $temp+3, $temp-5,"date","width:250px;");
+                            echoYearDropDown("to_year",@$to_year, $temp+3, $temp-23,"date","width:250px;");
                         ?>
                     </td>
                 </tr>

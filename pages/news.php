@@ -33,22 +33,26 @@
             <div class="col2">
          
 				<div class="row">
-					<div class=" col-lg-6 col-12">
+					<div class=" col-lg-6 col-12 ">
 						<div class="small black "><?php echo date("F j, Y"); ?></div>
-						<div class="topSpacer big black gilroyMedium"><?php echo @$title;?></div>
-						<div class="topSpacer medium black gilroyMedium "><?php echo @$author;?></div>
-					</div>
-					<div class="topSpacer col-lg-5 col-12 ">
-						<img class="topSpacer" src="news/images/<?php echo @$image;?>" width ="100%" />
-					</div>  
-					<?php if($link!=""){?>
-					<div class="topSpacerBigger ">
-						<a href="<?php echo $link; ?>" target="_blank">
-							<input type="button" value="Go to Article" class="buttonTriangle small black" />
-						</a>
-					</div>
-					<?php }?>
-				</div>
+
+						<a href=""><div class="topSpacer big black gilroyMedium clickable"><?php echo @$title;?></div></a>
+
+							
+							<div class="topSpacer medium black gilroyMedium "><?php echo @$author;?></div>	
+
+						</div>
+						<div class="topSpacer col-lg-5 col-12 ">
+							<img class="topSpacer" src="news/images/<?php echo @$image;?>" width ="100%" />
+						</div>  
+						<?php if($link!=""){?>
+						<div class="topSpacerBigger ">
+							<a href="<?php echo $link; ?>" target="_blank">
+								<input type="button" value="Go to Article" class="buttonTriangle small black" />
+							</a>
+						</div>
+						<?php }?>
+					</div>	
 
 				<div class="topSpacerBig">&nbsp;</div>
 
@@ -91,9 +95,9 @@
 
 <script>
 
-var limit=4;
-var offset=0;
-var type=2;
+	var limit=4;
+	var offset=0;
+	var type=2;
 
 	$(document).ready(function(){
 
@@ -113,51 +117,51 @@ var type=2;
 
 
 
-function loadExhibitions(type,limit,offset){
-    $("#loader").removeClass("hidden");
-    $.post("loadExhibitions/",{"type":type , "limit":limit , "offset":offset},function(result){
-        $("#loader").addClass("hidden");
-        if(result!=""){
-            $("#allExhibitions").append(result);
-        }else if(offset==0 && result=="") {
-            $("#allExhibitions").append('<p class="medium black textCenter">No exhibitions found.</p>');
-            $("#loadMoreBtn").addClass("hidden");
-        }else{
-            $("#loadMoreBtn").addClass("hidden");
-        }
-    });
-}
+		function loadExhibitions(type,limit,offset){
+			$("#loader").removeClass("hidden");
+			$.post("loadExhibitions/",{"type":type , "limit":limit , "offset":offset},function(result){
+				$("#loader").addClass("hidden");
+				if(result!=""){
+					$("#allExhibitions").append(result);
+				}else if(offset==0 && result=="") {
+					$("#allExhibitions").append('<p class="medium black textCenter">No exhibitions found.</p>');
+					$("#loadMoreBtn").addClass("hidden");
+				}else{
+					$("#loadMoreBtn").addClass("hidden");
+				}
+			});
+		}
 
-$(document).ready(function(){
-    
-    loadExhibitions(type,limit,offset);
+		$(document).ready(function(){
+			
+			loadExhibitions(type,limit,offset);
 
-    $(".filterBtn").click(function(){
-        
-        $(".filterBtn").each(function(){
-            $(this).removeClass("bold");
-            $(this).find("img").addClass("hidden")
-        });
+			$(".filterBtn").click(function(){
+				
+				$(".filterBtn").each(function(){
+					$(this).removeClass("bold");
+					$(this).find("img").addClass("hidden")
+				});
 
-        $(this).addClass("bold");
-        $(this).find("img").removeClass("hidden")
+				$(this).addClass("bold");
+				$(this).find("img").removeClass("hidden")
 
-        offset=0;
+				offset=0;
 
-        type=$(this).attr("type");
+				type=$(this).attr("type");
 
-        $("#allExhibitions").html("");
-        $("#loadMoreBtn").removeClass("hidden");
-        loadExhibitions(type,limit,offset)
-        
-    });
+				$("#allExhibitions").html("");
+				$("#loadMoreBtn").removeClass("hidden");
+				loadExhibitions(type,limit,offset)
+				
+			});
 
-    $("#loadMoreBtn").click(function(){
-        offset+=4;
-        loadExhibitions(type,limit,offset);
-    });
+			$("#loadMoreBtn").click(function(){
+				offset+=4;
+				loadExhibitions(type,limit,offset);
+			});
 
-});
+		});
 
 </script>
 
