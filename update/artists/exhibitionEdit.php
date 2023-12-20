@@ -33,10 +33,10 @@
         if(@$save){
 
             if(@$error==''){
-                if($type==1 && !isset($exhibition_id)){
+                if($type==1 && isEmpty($exhibition_id)){
                     $error="Please fill all required fields";
                 }
-                else if($type==2 && (isEmpty($year) || isEmpty($title))){
+                else if($type==2 && (isEmpty($category_id) || isEmpty($year) || isEmpty($title))){
                     $error="Please fill all required fields";
                 }
 
@@ -185,7 +185,7 @@
                     <td>
                         <?php
                             $temp=date("Y");
-                            echoYearDropDown("year", @$year, $temp+3, $temp-23,"date","width:250px;");
+                            echoYearDropDown("year", @$year, $temp+3, 1950,"date","width:250px;");
                         ?>
                     </td>
                 </tr>

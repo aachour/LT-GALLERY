@@ -148,7 +148,7 @@
                             $temp=date("Y");
                             echoDayDropDown("day", @$day,"date","width:200px;");
                             echoMonthDropDown("month", @$month,"date","width:200px;");
-                            echoYearDropDown("year", @$year, $temp+3, $temp-23,"date","width:200px;");
+                            echoYearDropDown("year", @$year, $temp+3, 1950,"date","width:200px;");
                         ?>
                     </td>
                 </tr>
@@ -162,8 +162,7 @@
                         <?php } ?>
                         <input name='save' class='submit' value='Save' type='submit' />
                         <input type='hidden' name='artistid' value='<?php echo $artistId; ?>' />
-                        <input onclick="window.location='collections.php'" class='submit' value='Cancel' type='Button' />
-
+                        <input onclick="window.location='collections.php?artistid=<?php echo @$artistId; ?>'" class='submit' value='Cancel' type='Button' />
                     </td>
                 </tr>        
 

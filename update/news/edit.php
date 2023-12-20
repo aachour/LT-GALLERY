@@ -118,7 +118,7 @@
                             $temp=date("Y");
                             echoDayDropDown("day",@$day,"date","width:250px;");
                             echoMonthDropDown("month", @$month,"date","width:250px;");
-                            echoYearDropDown("year",@$year, $temp+3, $temp-23,"date","width:250px;");
+                            echoYearDropDown("year",@$year, $temp+3, 1950,"date","width:250px;");
                         ?>
                     </td>
                 </tr>
