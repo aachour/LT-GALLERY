@@ -180,7 +180,7 @@
 			if(numRows($result)>0){
 		?>
 
-			<div class="section" id="section2">
+			<div class="section" id="section1">
 
 				<div class="content">
 					<div class="topSpacerBigger big proximaSb mainTitle gallery-slide "><span>SPREADS</span><div class="redLine"></div></div>
