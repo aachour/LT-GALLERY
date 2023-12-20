@@ -44,9 +44,10 @@
                                 `dateedit`=NOW()
                                 WHERE `id`=".$entryId;
                                 }else{
-                                    $query="INSERT INTO `".$table."` ( `name` , `location`, `city` , `country_id`, `day` , `month`, `year` , `datesubmit` , `status`)
+                                    $query="INSERT INTO `".$table."` ( `name` ,`artist_id`, `location`, `city` , `country_id`, `day` , `month`, `year` , `datesubmit` , `status`)
                                             VALUE(
                                             '".sanitizeInput(@$name ,"HTML")."', 
+                                            '".sanitizeInput(@$artistId)."', 
                                             '".sanitizeInput(@$location,"HTML")."' , 
                                             '".sanitizeInput(@$city,"HTML")."' ,
                                             '".sanitizeInput(@$country_id,"HTML")."' , 

@@ -54,14 +54,14 @@
                 if($list){
                     echo "<p class='medium blue underline'>".$pageTitle."<br /><br /></p>";
 
-                    echo "<a href='collectionEdit.php'><input type='submit' class='submit' name='Add' value='Add Entry' /></a>
+                    echo "<a href='collectionEdit.php?artistid=".@$artistId."''><input type='submit' class='submit' name='Add' value='Add Entry' /></a>
                         <a href='index.php'>
                             <input type='submit' class='submit' name='Add' value='Back' />
                         </a>
                     <br /><br />
                     <br /><br />";
 
-                    $query="SELECT * FROM `".$table."` WHERE `status`='1' ORDER BY `id` DESC";
+                    $query="SELECT * FROM `".$table."` WHERE `artist_id`='".@$artistId." 'AND `status`='1' ORDER BY `id` DESC";
 
                     $result=runQuery($query);
 
