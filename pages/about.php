@@ -33,11 +33,11 @@
 			
 			<div class="content">
 
-				<div class="col1">&nbsp;</div>
+				<div class="col1 noPadding">&nbsp;</div>
 
 				<div class="col2">
 
-					<div class="topSpacerBig big black gilroyMedium"><?php echo @$title;?></div>
+					<div class="topSpacer big black gilroyMedium"><?php echo @$title;?></div>
 
 					<?php if(@$sub_title!=""){?>
 					<div class="topSpacer small black"><?php echo @$sub_title;?></div>

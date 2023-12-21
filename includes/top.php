@@ -74,45 +74,52 @@
 
 		</div>
 
+		<!------Mobile Desktop-->
+		<div class="header onlyMobile">
+
+			<div class="content">
+
+				<a href="home/">
+					<div class="logo">
+						<img src="static/images/logo2-black.png" width="120px" />
+					</div>
+				</a>
+
+				<div class="burger clickable" id="burger1"></div>
+
+				<div class="clear"></div>
+
+			</div>
+		</div>
+
 		<div class="rightLine onlyDesktop"></div>
 			
-		<!-- <div class="burger clickable onlyMobile" id="burger1"></div> -->
-
-		<!--Menu
+		<!--Menu-->
 		<div id="mobileMenu" class="textRight hidden">
 
 			<div class="burger clickable" id="burger2"></div>
 			<div class="clear"></div>
 
-			<div class="topSpacerBigger">
-				<a class="small proximaMd <?php if(@$CURRENT_SECTION=="HOME"){echo "red";}else{echo "blackRed";}?>" href="home/">Home</a>
-			</div>
-			<div class="topSpacerBigger">
-				<a class="small proximaMd <?php if(@$CURRENT_SECTION=="PUBLICATIONS"){echo "red";}else{echo "blackRed";}?>" href="publications/">Publications</a>
-			</div>
-			<div class="topSpacer">
-				<a class="small proximaMd <?php if(@$CURRENT_SECTION=="ABOUT US"){echo "red";}else{echo "blackRed";}?>" href="aboutus/">About Us</a>
-			</div>
-			<div class="topSpacer">
-				<a class="small proximaMd <?php if(@$CURRENT_SECTION=="CONTACT US"){echo "red";}else{echo "blackRed";}?>" href="contactus/">Contact Us</a>
-			</div>
+			<div class="topSpacerBig"><a class="small proximaMd <?php if(@$CURRENT_SECTION=="EXHIBITIONS"){echo "red";}else{echo "blackRed";}?>" href="exhibitions/">Exhibitions</a></div>
 
-		</div>-->
+			<div class="topSpacer"><a class="small proximaMd <?php if(@$CURRENT_SECTION=="ARTISTS"){echo "red";}else{echo "blackRed";}?>" href="artists/">Artists</a></div>
+
+			<!-- <div class="topSpacer"><a class="small proximaMd <?php if(@$CURRENT_SECTION=="PODCASTS"){echo "red";}else{echo "blackRed";}?>" href="podcasts/">Podcasts</a></div> -->
+
+			<div class="topSpacer"><a class="small proximaMd <?php if(@$CURRENT_SECTION=="NEWS"){echo "red";}else{echo "blackRed";}?>" href="news/">News</a></div>
+
+			<div class="topSpacer"><a class="small proximaMd <?php if(@$CURRENT_SECTION=="ABOUT US"){echo "red";}else{echo "blackRed";}?>" href="about/">About</a></div>
+
+			<div class="topSpacer"><a class="small proximaMd <?php if(@$CURRENT_SECTION=="CONTACT US"){echo "red";}else{echo "blackRed";}?>" href="contactus/">Contact Us</a></div>
+
+		</div>
 
 
 		<script>
-
-			$(window).load(function(){
-			
-			});
-
-			$(window).resize(function(){
-			
-			});
 			
 			$(document).ready(function(){	
 
-				$("#burger1").click(function(){
+				$("#burger1").click(function(){ 
 					$("#mobileMenu").removeClass("hidden");
 				});
 

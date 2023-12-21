@@ -37,7 +37,7 @@
 				
 				<div class="col2">
 
-					<div class="topSpacerBigger">
+					<div class="">
 						<?php 
 							$query="SELECT * FROM `artists` WHERE `status`='1' ORDER BY `name` ASC ";
 
@@ -85,13 +85,16 @@
 	<script>
 
 		function fixImages(){
-			var $masonryContainer = $('#masonry-container');
-			$masonryContainer.masonry({
-				itemSelector: '.masonry-item-artist',
-				columnWidth: '.masonry-item-artist',
-				gutter: 20, // Adjust the space between columns
-				fitWidth: true // Set to true for a fluid-width container
-			});
+			var windowWidth=$(window).width();
+			if(windowWidth>=900){
+				var $masonryContainer = $('#masonry-container');
+				$masonryContainer.masonry({
+					itemSelector: '.masonry-item-artist',
+					columnWidth: '.masonry-item-artist',
+					gutter: 20, // Adjust the space between columns
+					fitWidth: true // Set to true for a fluid-width container
+				});
+			}
 		}
 
 		$(window).resize(function(){

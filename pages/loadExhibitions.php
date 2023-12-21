@@ -25,6 +25,8 @@
 
 		echo'<div class="row" id="exhibitions">';
 
+			$i=0;
+
 			while($row=fetchArray($result)){
 				foreach($row as $key => $item){$$key = stripslashes(($row[$key]));}	
 
@@ -47,25 +49,33 @@
 				$url=$tmp_title."-".$id;
 				
 				
-				echo'<div class="exhibition bottomSpacer col-lg-6 col-12">
-					<a href="exhibition/'.$url.'">
-						<div><img src="exhibitions/images/'.@$image.'" width="100%" /></div>
-					</a>
-					<div class="topSpacer tiny black">
-						<div class="floatLeft gilroyLight">'.$from_date.'</div>
-						<div class="floatLeft leftSpacer rightSpacer dateLine blackBg" style="width:'.$tmpWidth.'%;"></div>
-						<div class="floatLeft gilroyLight">'.$to_date.'</div>
-						<div class="clear"></div>
+				echo'<div class="col-lg-6 col-12">
+					<div class="exhibition bottomSpacer">
+						<a href="exhibition/'.$url.'">
+							<div><img src="exhibitions/images/'.@$image.'" width="100%" /></div>
+						</a>
+						<div class="topSpacer tiny black">
+							<div class="floatLeft gilroyLight">'.$from_date.'</div>
+							<div class="floatLeft leftSpacer rightSpacer dateLine blackBg" style="width:'.$tmpWidth.'%;"></div>
+							<div class="floatLeft gilroyLight">'.$to_date.'</div>
+							<div class="clear"></div>
+						</div>
+						<div class="topSpacerSmall small black gilroyMedium">
+							<a class="small blackGrey" href="exhibition/'.$url.'">'.$title.'</a>
+						</div>
+						<div class="topSpacerSmall small black">';
+							if(count($artists_id)>1){echo'Resident Artists';}
+							else{echo getArtistName(@$artists_id[0]);}
+						echo'</div>
+						<div class="topSpacerSmall tiny black">'.truncate($text,130,"...").'</div>
 					</div>
-					<div class="topSpacerSmall small black gilroyMedium">
-						<a class="small blackGrey" href="exhibition/'.$url.'">'.$title.'</a>
-					</div>
-					<div class="topSpacerSmall small black">';
-						if(count($artists_id)>1){echo'Resident Artists';}
-						else{echo getArtistName(@$artists_id[0]);}
-					echo'</div>
-					<div class="topSpacerSmall tiny black">'.truncate($text,130,"...").'</div>
 				</div>';
+				
+				$i++;
+
+				if($i%2==0){
+					echo'<div class="clear"></div>';
+				}
 				
 			}
 		echo'</div>';

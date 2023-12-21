@@ -31,7 +31,7 @@
 					</div>
 					
 					<div class="col-lg-4 col-12">
-						<div class="textRight">
+						<div class="socialMedia">
 							<a href="#" target="_blank">
 								<img src="static/images/a.png" />
 							</a>&nbsp;

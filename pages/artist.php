@@ -60,7 +60,7 @@
 	<!---------------------------------------------Middle---------------------------------------------->
 	<!------------------------------------------------------------------------------------------------->
 
-	<div class="fullContainer" id="exhibition">
+	<div class="fullContainer" id="artist">
 
 		<!--Section1-->
 		<div class="section" id="section1">
@@ -110,7 +110,7 @@
 									$i=1;
 									while($row=fetchArray($result)){
 										foreach($row as $key => $item){$$key = stripslashes(($row[$key]));}	
-										echo'<div class="masonry-item thumb-image topSpacerSmaller clickable" counter="'.$i.'">
+										echo'<div class="masonry-item thumb-image galleryImage topSpacerSmaller clickable" counter="'.$i.'">
 											<img src="artists/images/'.$image.'" width="100%" />
 										</div>';
 										$i++;
@@ -296,33 +296,39 @@
 				}
 			});
 
-			var swiperGallery = new Swiper('#swiperGallery', {
-				slidesPerView: "1",
-				spaceBetween: 30,
-				loop: true,
-				navigation: {
-					nextEl: ".swiper-button-next",
-					prevEl: ".swiper-button-prev",
-				},
-			});
+			if(windowWidth>=900){
 
-			swiperGallery.slideTo(parseInt(counter));
+				var swiperGallery = new Swiper('#swiperGallery', {
+					slidesPerView: "1",
+					spaceBetween: 30,
+					loop: true,
+					navigation: {
+						nextEl: ".swiper-button-next",
+						prevEl: ".swiper-button-prev",
+					},
+				});
 
-			$(".thumb-image").click(function(){
-				var counter=$(this).attr("counter");
-				$("#popupGallery").removeClass("hidden");
-				setGallerySwiper(counter);
-			});
+				swiperGallery.slideTo(parseInt(counter));
+
+				$(".thumb-image").click(function(){
+					var counter=$(this).attr("counter");
+					$("#popupGallery").removeClass("hidden");
+					setGallerySwiper(counter);
+				});
+			}
 		}
 
 		function fixImages(){
-			var $masonryContainer = $('#masonry-container');
-			$masonryContainer.masonry({
-				itemSelector: '.masonry-item',
-				columnWidth: '.masonry-item',
-				gutter: 20, // Adjust the space between columns
-				fitWidth: true // Set to true for a fluid-width container
-			});
+			var windowWidth=$(window).width();
+			if(windowWidth>=900){
+				var $masonryContainer = $('#masonry-container');
+				$masonryContainer.masonry({
+					itemSelector: '.masonry-item',
+					columnWidth: '.masonry-item',
+					gutter: 20, // Adjust the space between columns
+					fitWidth: true // Set to true for a fluid-width container
+				});
+			}
 		}
 
 		$(window).resize(function(){

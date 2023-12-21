@@ -24,10 +24,12 @@
 					}
 				?>
 
-				<img src="topbanner/images/<?php echo @$image;?>" width="100%" />
-
+				<div class="">
+					<img src="topbanner/images/<?php echo @$image;?>" width="100%" />
+				</div>
+	
 				<div class="topSpacer">
-					<div class="col1">&nbsp;</div>
+					<div class="col1 noPadding">&nbsp;</div>
 					<div class="col2">
 						<div class="proximaSb bigger black"><?php echo sanitizeInput(@$title,"HTML"); ?></div>
 					</div>

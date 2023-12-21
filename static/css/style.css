@@ -105,7 +105,7 @@ a.underline{
 		font-size:4vw !important;
 	}
 	.tiny{
-		font-size:3vw !important;
+		font-size:3.5vw !important;
 	}
 }
 @media(min-width:900px){
@@ -184,7 +184,7 @@ a.underline{
 		margin-top:5px;
 	}
 	.topSpacer{
-		margin-top:15px;
+		margin-top:10px;
 	}
 	.topSpacerBig{
 		margin-top:25px;
@@ -303,6 +303,10 @@ a.underline{
 	text-align: justify !important;
 }
 
+.noPadding{
+	padding-bottom:0px !important;
+}
+
 @media(min-width:900px){
 	.quarterText{
 		width:30% !important;
@@ -313,5 +317,4 @@ a.underline{
 	.threeQuarters{
 		width:80% !important;
 	}
-	
 }

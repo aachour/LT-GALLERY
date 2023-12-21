@@ -20,6 +20,17 @@ body{
 		position:relative;
 		padding:20px 0px;
 	}
+	.col1{
+		width:100%;
+		height:auto;
+		padding-bottom:40px !important;
+	}
+	.col2{
+		width:100%;
+	}
+	.noPadding{
+		padding:0px !important;
+	}
 }
 @media(min-width:900px){
 	#page{
@@ -66,30 +77,42 @@ body{
 /************************************************************************/
 /************************************************************************/
 
-.header{
-	position:relative;
-	width:100%;
-	padding-top:50px;
-	padding-bottom:25px;
+@media(max-width:900px){
+	.header{
+		position:relative;
+		width:100%;
+		padding-top:25px;
+		padding-bottom:25px;
+	}
+	.header .logo{
+		float:left;
+	}
+	.header .burger{
+		float:right;
+		width:30px;
+		height:23px;
+		margin-top:12px;
+		background:url("../images/burger.png") center no-repeat;
+		background-size:contain;
+	}
 }
-.header .logo{
-	float:left;
-}
-.header .nav{
-	float:right;
-	margin-top:15px;
-}
-.header .nav a{
-	margin:0px 15px;
-}
-
-.header .burger{
-	float:right;
-	width:30px;
-	height:23px;
-	margin-top:4px;
-	background:url("../images/burger.png") center no-repeat;
-	background-size:contain;
+@media(min-width:900px){
+	.header{
+		position:relative;
+		width:100%;
+		padding-top:50px;
+		padding-bottom:25px;
+	}
+	.header .logo{
+		float:left;
+	}
+	.header .nav{
+		float:right;
+		margin-top:15px;
+	}
+	.header .nav a{
+		margin:0px 15px;
+	}
 }
 
 #mobileMenu{
@@ -99,14 +122,14 @@ body{
 	width:200px;
 	height:100%;
 	padding:20px;
-	background:#fff;
+	background:rgba(255,255,255,0.95);
 	z-index:999;
 }
 #mobileMenu .burger{
 	float:right;
 	width:30px;
 	height:23px;
-	margin-top:4px;
+	margin-top:17px;
 	background:url("../images/burger.png") center no-repeat;
 	background-size:contain;
 }
@@ -134,6 +157,13 @@ body{
 .exhibition .dateLine{
 	height:2px;
 	margin-top:10px;
+}
+
+@media(max-width:900px){
+	#exhibition .galleryImage ,  #artist .galleryImage{
+		width:100%;
+		margin-bottom:10px;
+	}
 }
 
 /************************************************************************/
@@ -164,6 +194,13 @@ body{
 	top:5px;
 	left:5px;
 	z-index:99;
+}
+
+@media(max-width:900px){
+	#artists .artist{
+		width:100%;
+		margin-bottom:10px;
+	}
 }
 
 .swiper-button-next,
@@ -310,7 +347,17 @@ body{
 	width:100%;
 	padding:40px 0px !important;
 }
-
+@media(max-width:900px){
+	#footer .socialMedia{
+		margin-top:20px;
+		text-align:left;
+	}
+}
+@media(min-width:900px){
+	#footer .socialMedia{
+		text-align:right;
+	}
+}
 
 /************************************************************************/
 /************************************************************************/
