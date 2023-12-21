@@ -129,7 +129,7 @@
 									$i=1;
 									while($row=fetchArray($result)){
 										foreach($row as $key => $item){$$key = stripslashes(($row[$key]));}	
-										echo'<div class="masonry-item thumb-image topSpacerSmaller clickable" counter="'.$i.'">
+										echo'<div class="masonry-item thumb-image galleryImage topSpacerSmaller clickable" counter="'.$i.'">
 											<img src="exhibitions/images/'.$image.'" width="100%" />
 										</div>';
 										$i++;
@@ -194,13 +194,16 @@
 		}
 
 		function fixImages(){
-			var $masonryContainer = $('#masonry-container');
-			$masonryContainer.masonry({
-				itemSelector: '.masonry-item',
-				columnWidth: '.masonry-item',
-				gutter: 20, // Adjust the space between columns
-				fitWidth: true // Set to true for a fluid-width container
-			});
+			var windowWidth=$(window).width();
+			if(windowWidth>=900){
+				var $masonryContainer = $('#masonry-container');
+				$masonryContainer.masonry({
+					itemSelector: '.masonry-item',
+					columnWidth: '.masonry-item',
+					gutter: 20, // Adjust the space between columns
+					fitWidth: true // Set to true for a fluid-width container
+				});
+			}
 		}
 
 		$(window).resize(function(){
