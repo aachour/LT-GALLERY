@@ -31,8 +31,8 @@
 	<!--Gallery Images-->
 	<div class="popup hidden" id="popupGallery" style="padding:0px !important;">
 
-		<div class="closeBtn closeBtn2 clickable"></div>
-
+		<div class="closeBtn closeBtn2 clickable"></div> 
+		
 		<div class="swiper" id="swiperGallery">
 			<div class="swiper-wrapper">
 				<?php
