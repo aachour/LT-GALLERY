@@ -34,6 +34,32 @@
 	}
 
 ?>
+		<!--Gallery Images-->
+		<div class="popup hidden" id="popupGallery" style="padding:0px !important;">
+
+		<div class="closeBtn closeBtn2 clickable"></div>
+
+		<div class="swiper" id="swiperGallery">
+			<div class="swiper-wrapper">
+				<?php
+					$query="SELECT `image` as `galleryImage` FROM `exhibition_images` WHERE `exhibition_id`='".@$exhibition_id."' AND `status`='1' ORDER BY `listorder` ASC";
+					$result=runQuery($query);
+					if(numRows($result)>0){
+						while($row=fetchArray($result)){
+							foreach($row as $key => $item){$$key = stripslashes(($row[$key]));}	
+							echo'<div class="swiper-slide gallery-slide textCenter">
+								<img src="exhibitions/images/'.$galleryImage.'" />
+							</div>';
+							
+						}
+					}
+				?>
+			</div>
+			<div class="swiper-button-next swiper-button-next-white onlyDesktop"></div>
+			<div class="swiper-button-prev swiper-button-prev-white onlyDesktop"></div>
+		</div>
+
+		</div>
 
 	<!------------------------------------------------------------------------------------------------->
 	<!---------------------------------------------Middle---------------------------------------------->
@@ -100,11 +126,13 @@
 							
 							if(numRows($result)>0){
 								echo'<div class="masonry-container" id="masonry-container">';
+									$i=1;
 									while($row=fetchArray($result)){
 										foreach($row as $key => $item){$$key = stripslashes(($row[$key]));}	
-										echo'<div class="masonry-item topSpacerSmaller galleryImage">
+										echo'<div class="masonry-item thumb-image topSpacerSmaller clickable" counter="'.$i.'">
 											<img src="exhibitions/images/'.$image.'" width="100%" />
 										</div>';
+										$i++;
 									}
 								echo'</div>';
 							}
@@ -125,7 +153,65 @@
 
 
 	<script>
+			// galley slide show
+		function setGallerySwiper(counter=0){
+			
+			var windowWidth=$(window).width();
+			var windowHeight=$(window).height();
+			
+			$(".gallery-slide").each(function(){
+				var imageWidth=$(this).find("img").width();
+				$(this).width(imageWidth);
+				if(windowWidth>=900){
+					// $(this).find("img").width((imageWidth*0.65));
+					$(this).find("img").height((windowHeight*0.4));
+					$(this).find("img").css('margin-top','10%');
+				}else{
+					$(this).find("img").width((imageWidth*0.40));
+					$(this).find("img").css('margin-top','165px');
+				}
+			});
 
+			var swiperGallery = new Swiper('#swiperGallery', {
+				slidesPerView: "1",
+				spaceBetween: 30,
+				loop: true,
+				navigation: {
+					nextEl: ".swiper-button-next",
+					prevEl: ".swiper-button-prev",
+				},
+			});
+
+			swiperGallery.slideTo(parseInt(counter));
+
+			$(".thumb-image").click(function(){
+				var counter=$(this).attr("counter");
+				$("#popupGallery").removeClass("hidden");
+				setGallerySwiper(counter);
+			});
+		}
+
+		function fixImages(){
+			var $masonryContainer = $('#masonry-container');
+			$masonryContainer.masonry({
+				itemSelector: '.masonry-item',
+				columnWidth: '.masonry-item',
+				gutter: 20, // Adjust the space between columns
+				fitWidth: true // Set to true for a fluid-width container
+			});
+		}
+
+		$(window).resize(function(){
+			fixImages();
+			setGallerySwiper();
+		});
+
+		$(window).on('load', function() {
+			fixImages();
+			setGallerySwiper();
+		});
+
+		// end of slidesow iamges  
 		function fixImages(){
 			var windowWidth=$(window).width();
 			if(windowWidth>=900){
@@ -146,6 +232,23 @@
 		$(window).on('load', function() {
 			fixImages();
 		});
+
+		
+		$(document).ready(function(){
+		$(".artistTab").click(function(){
+			$(".artistSection").addClass("hidden"); 
+			var value=$(this).attr("section");
+
+			$('.artistSection[section="'+value+'"]').removeClass("hidden");
+		});
+
+		$("#popupGallery").find(".closeBtn").click(function(){
+			$("#popupGallery").addClass("hidden");
+			$(".swiper1Btn").removeClass("hidden");
+		});
+
+		});
+
 
 	</script>
 
