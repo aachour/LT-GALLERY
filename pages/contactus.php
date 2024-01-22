@@ -1,5 +1,5 @@
 <?php
-	@$PAGE_TITLE="CONTACT US | LT GALLERY";
+	@$PAGE_TITLE="Contact Us | LT Gallery";
 	@$CURRENT_SECTION="CONTACT US";
 	include ("../includes/top.php");
 	include ("../includes/popupMsg.php");

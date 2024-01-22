@@ -122,11 +122,11 @@ a.underline{
 		line-height:150% !important;
 	}
 	.small{
-		font-size:1.1vw !important;
+		font-size:1.15vw !important;
 		line-height:150% !important;
 	}
 	.tiny{
-		font-size:0.85vw !important;
+		font-size:0.95vw !important;
 		line-height:150% !important;
 	}
 }
@@ -317,4 +317,8 @@ a.underline{
 	.threeQuarters{
 		width:80% !important;
 	}
+}
+
+.filterBtnActive , .filterBtn:hover{
+	font-family: 'Gilroy Medium' !important;
 }

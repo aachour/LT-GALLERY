@@ -1,5 +1,5 @@
 <?php
-	@$PAGE_TITLE="EXHIBITION | LT GALLERY";
+	@$PAGE_TITLE="Exhibition | LT Gallery";
 	@$CURRENT_SECTION="EXHIBITION";
 	include ("../includes/top.php");
 
@@ -42,13 +42,14 @@
 		<div class="swiper" id="swiperGallery">
 			<div class="swiper-wrapper">
 				<?php
-					$query="SELECT `image` as `galleryImage` FROM `exhibition_images` WHERE `exhibition_id`='".@$exhibition_id."' AND `status`='1' ORDER BY `listorder` ASC";
+					$query="SELECT `image` as `galleryImage` , `caption` as `galleryCaption` FROM `exhibition_images` WHERE `exhibition_id`='".@$exhibition_id."' AND `status`='1' ORDER BY `listorder` ASC";
 					$result=runQuery($query);
 					if(numRows($result)>0){
 						while($row=fetchArray($result)){
 							foreach($row as $key => $item){$$key = stripslashes(($row[$key]));}	
 							echo'<div class="swiper-slide gallery-slide textCenter">
 								<img src="exhibitions/images/'.$galleryImage.'" />
+								<div class="topSpacerSmall small white textCenter gilroyMedium">'.$galleryCaption.'</div>
 							</div>';
 							
 						}
@@ -92,7 +93,23 @@
 							<?php if($file!=""){?>
 							<div class="topSpacer">
 								<a href="exhibitions/files/<?php echo $file; ?>" target="_blank">
-									<input type="button" value="Download Press File" class="buttonTriangle small black" />
+									<input type="button" value="Download Catalogue" class="buttonTriangle small black" />
+								</a>
+							</div>
+							<?php }?>
+
+							<?php if($file2!=""){?>
+							<div class="topSpacer">
+								<a href="exhibitions/files/<?php echo $file2; ?>" target="_blank">
+									<input type="button" value="Download Catalogue" class="buttonTriangle small black" />
+								</a>
+							</div>
+							<?php }?>
+
+							<?php if($file3!=""){?>
+							<div class="topSpacer">
+								<a href="exhibitions/files/<?php echo $file3; ?>" target="_blank">
+									<input type="button" value="Download Catalogue" class="buttonTriangle small black" />
 								</a>
 							</div>
 							<?php }?>
@@ -103,17 +120,51 @@
 										<input type="button" value="View Available Artworks" class="buttonTriangle small black" />
 									</div>';
 									foreach($artists_id as $artist_id){
-										echo'<a href="" class="blackGrey tiny">
-											<div class="topSpacerSmall">'.getArtistName($artist_id).'</div>
+										$artist_name=getArtistName($artist_id);
+										$tmp_name=str_replace(" ","_",$artist_name);
+										$tmp_name=str_replace("-","_",$tmp_name);
+										$tmp_name=str_replace("&","and",$tmp_name);
+										$url=$tmp_name."-".$artist_id;
+										echo'<a href="artist/'.$url.'" class="blackGrey tiny">
+											<div class="topSpacerSmall">'.$artist_name.'</div>
 										</a>';	
+									}
+								}
+
+								if($other_artists!=""){
+									$other_artists_array=explode(",",$other_artists);
+									if(count($other_artists_array)>0){
+										foreach($other_artists_array as $artist ){
+											echo'<div class="topSpacerSmall">'.$artist.'</div>';
+										}
 									}
 								}
 							?>
 
 						</div>
-						
+							
 						<div class="col-lg-6 col-12">
-							<div class="topSpacer tiny black"><?php echo sanitizeInput($text,"HTML");?></div>
+							<div class="topSpacer tiny black">
+								<?php 
+									if(@$text!=""){
+										$textArray=explode("</p>",$text);
+										$countText=count($textArray);
+										if($countText>2){
+											echo @$textArray[0]."</p>";
+											echo @$textArray[1]."</p>
+											<a class='tiny clickable black underline' id='readMoreBtn'>Read More</a>";
+											echo'<div class="readMoreBio hidden">';
+												for($i=2;$i<$countText;$i++){
+													echo @$textArray[$i];
+												}
+											echo'</div>';
+										}else{
+											echo sanitizeInput($text,"HTML");
+										}
+									}
+								?>
+							</div>
+							
 						</div>
 						
 					</div>
@@ -145,6 +196,16 @@
 
 			</div>
 			
+		</div>
+
+
+		<div class="section">
+			<div class="content">
+				<div class="col1">
+					<input type="button" class="backTopBtn tiny gilroyMedium" value="Back to top" />
+				</div>
+				<div class="clear"></div>
+			</div>
 		</div>
 
 		<div class="topSpacerBig">&nbsp;</div>
@@ -240,17 +301,28 @@
 
 		
 		$(document).ready(function(){
-		$(".artistTab").click(function(){
-			$(".artistSection").addClass("hidden"); 
-			var value=$(this).attr("section");
+			
 
-			$('.artistSection[section="'+value+'"]').removeClass("hidden");
-		});
+			$(".artistTab").click(function(){
+				$(".artistSection").addClass("hidden"); 
+				var value=$(this).attr("section");
 
-		$("#popupGallery").find(".closeBtn").click(function(){
-			$("#popupGallery").addClass("hidden");
-			$(".swiper1Btn").removeClass("hidden");
-		});
+				$('.artistSection[section="'+value+'"]').removeClass("hidden");
+			});
+
+			$("#popupGallery").find(".closeBtn").click(function(){
+				$("#popupGallery").addClass("hidden");
+				$(".swiper1Btn").removeClass("hidden");
+			});
+
+			$("#readMoreBtn").click(function(){
+				$(this).addClass("hidden");
+				$(".readMoreBio").removeClass("hidden");
+			});
+
+			$(".backTopBtn").click(function(){
+				$("html,body").animate({"scrollTop":0},500);
+			})
 
 		});
 

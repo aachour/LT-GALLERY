@@ -1,5 +1,5 @@
 <?php
-	@$PAGE_TITLE="ARTISTS | LT GALLERY";
+	@$PAGE_TITLE="Artists | LT Gallery";
 	@$CURRENT_SECTION="ARTISTS";
 	include ("../includes/top.php");
 ?>
@@ -28,7 +28,7 @@
 								$tmp_name=str_replace("&","and",$tmp_name);
 								$url=$tmp_name."-".$id;
 								echo'<div class="topSpacerSmall">
-									<a href="artist/'.$url.'" class="blackGrey tiny">'.$name.'</a>
+									<a href="artist/'.$url.'" class="black filterBtn tiny">'.$name.'</a>
 								</div>';
 							}
 						}
@@ -44,6 +44,7 @@
 							$result=runQuery($query);
 							
 							if(numRows($result)>0){
+								
 								echo'<div class="masonry-container" id="masonry-container">';
 
 									while($row=fetchArray($result)){
@@ -53,7 +54,6 @@
 										$tmp_name=str_replace("&","and",$tmp_name);
 										$url=$tmp_name."-".$id;
 		
-
 										echo'<div class="masonry-item-artist topSpacerSmaller">
 											<a href="artist/'.$url.'">
 												<div class="artist">

@@ -69,7 +69,7 @@
 
 			echo "<a href='edit.php'><input type='submit' class='submit' name='Add' value='Add Entry' /></a><br /><br />";
 
-			$query="SELECT * FROM `".$table."` WHERE `status`='1' ORDER BY `id` DESC";
+			$query="SELECT * FROM `".$table."` WHERE `status`='1' ORDER BY `from_year` , `from_month` , `from_day` DESC";
 			
 			$result=runQuery($query);
 			

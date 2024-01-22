@@ -1,5 +1,5 @@
 <?php
-	@$PAGE_TITLE="PODCASTS | LT GALLERY";
+	@$PAGE_TITLE="Podcasts | LT Gallery";
 	@$CURRENT_SECTION="PODCASTS";
 
 	include ("../includes/top.php");
@@ -35,7 +35,9 @@
 
 					<div class="topSpacer col-lg-9 col-12">
 						<div class="topSpacer medium black gilroyMedium"><?php echo @$title;?></div>
+						<?php if($subtitle!=""){?>
 						<div class="topSpacer small black"><?php echo @$subtitle;?></div>
+						<?php }?>
 						<div class="topSpacer tiny black halfText"><?php echo @$text;?></div>
 						<?php if($link!=""){?>
 						<div class="topSpacerBig textRight">

@@ -102,7 +102,7 @@
                 <tr height="20px"></tr>
 
                 <tr>
-                    <td>location <sup class="red">*</sup></td>
+                    <td>location </td>
                     <td width=20px""></td>
                     <td><?php echoTextField("location",@$location,"ckeditor"); ?></td>
                 </tr>
@@ -110,7 +110,7 @@
                 <tr height="20px"></tr>
 
                 <tr>
-                    <td>city <sup class="red">*</sup></td>
+                    <td>city </td>
                     <td width="20px"></td>
                     <td><?php echoTextField("city",@$city,"ckeditor"); ?></td>
                 </tr>
@@ -141,7 +141,7 @@
                 </tr>
                 <tr height="20px"></tr>
         		<tr>
-                    <td>Date From <sup class='red'>*</sup></td>
+                    <td>Date From </td>
                     <td width="20px"></td>
                     <td>
                         <?php

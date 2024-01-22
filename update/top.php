@@ -56,6 +56,8 @@
 
                 <br /><br />
 
+                <a class="<?php if(@$section=="FOOTER"){echo"white underline";}else{echo"whiteUnderline";}?>" href="../footer/index.php">Footer</a> &nbsp;|&nbsp;
+
                 <a class="<?php if(@$section=="CONTACT US"){echo"white underline";}else{echo"whiteUnderline";}?>" href="../contactus/index.php">Contact Us</a> &nbsp;|&nbsp;
                 
                 <a class=" <?php if(@$section=="CHANGE PASSWORD"){echo"white underline";}else{echo"whiteUnderline";}?>" href="../home/edit.php">Change Password</a> &nbsp;|&nbsp;

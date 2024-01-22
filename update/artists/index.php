@@ -102,14 +102,18 @@
                                 <input type='hidden' name='artistid' value='".$id."'/>
                                 <input type='submit' class='submit' name='award' value='Awards' style='width:150px;'/>
                             </form>";
-							echo"<form action='exhibitions.php' method='post'>
-								<input type='hidden' name='artistid' value='".$id."'/>
-								<input type='submit' class='submit' name='exhibitions' value='Exhibitions' style='width:150px;'/>
-							</form>";
 							echo"<form action='collections.php' method='post'>
 								<input type='hidden' name='artistid' value='".$id."'/>
                                 <input type='submit' class='submit' name='collection' value='Collections' style='width:150px;'/>
                             </form>";
+							echo"<form action='exhibitions.php' method='post'>
+								<input type='hidden' name='artistid' value='".$id."'/>
+								<input type='submit' class='submit' name='exhibitions' value='Exhibitions' style='width:150px;'/>
+							</form>";
+							echo"<form action='fairs.php' method='post'>
+								<input type='hidden' name='artistid' value='".$id."'/>
+								<input type='submit' class='submit' name='fairs' value='Art Fairs' style='width:150px;'/>
+							</form>";
 							echo"<form action='images.php' method='post'>
 								<input type='hidden' name='artistid' value='".$id."'/>
 								<input type='submit' class='submit' name='image' value='Gallery' style='width:150px;'/>

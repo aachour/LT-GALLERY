@@ -1,5 +1,5 @@
 <?php
-	@$PAGE_TITLE="NEWS | LT GALLERY";
+	@$PAGE_TITLE="News | LT Gallery";
 	@$CURRENT_SECTION="NEWS";
 
 	include ("../includes/top.php");
@@ -24,11 +24,6 @@
             <div class="col1">
 
                 <div class="medium black gilroyMedium">NEWS</div>
-                <!-- <div class="topSpacer tiny black bold filterBtn clickable" type="1">view all&nbsp;&nbsp;<img src="static/images/rectangle.svg" /></div>
-				<div class="topSpacerSmall tiny black filterBtn clickable" type="2">Interviews&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
-				<div class="topSpacerSmall tiny black filterBtn clickable" type="3">Artists Talks&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
-                <div class="topSpacerSmall tiny black filterBtn clickable" type="2">News Articles&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
-				<div class="topSpacerSmall tiny black filterBtn clickable" type="3">Videos&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div> -->
             </div>
 
             <div class="col2">
@@ -64,7 +59,7 @@
 				<div class="topSpacerBig">&nbsp;</div> -->
 
                 <?php 
-					$query="SELECT * FROM `news` WHERE  `status`='1' ORDER BY `id` DESC";
+					$query="SELECT * FROM `news` WHERE  `status`='1' ORDER BY `year` DESC , `month` DESC , `day` DESC";
 					$result=runQuery($query);
 					if(numRows($result)>0){
 						while($row=fetchArray($result)){
@@ -84,7 +79,8 @@
 											<img src="static/images/triangle-right-big.png" width="25px"></div>
 										<div class="clear"></div>
 									</div>
-									<div class="topSpacerSmaller text tiny black">'.sanitizeInput(@$text,"HTML").'</div>
+									<div class="topSpacerSmaller small black gilroyMedium">'.$author.'</div>
+									<div class="topSpacerSmall text tiny black">'.sanitizeInput(@$text,"HTML").'</div>
 								</div>
 							</div>';
 						}

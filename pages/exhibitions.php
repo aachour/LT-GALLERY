@@ -1,5 +1,5 @@
 <?php
-	@$PAGE_TITLE="EXHIBITIONS | LT GALLERY";
+	@$PAGE_TITLE="Exhibitions | LT Gallery";
 	@$CURRENT_SECTION="EXHIBITIONS";
 	include ("../includes/top.php");
 ?>
@@ -18,7 +18,7 @@
 				<div class="col1">
 					<div class="medium gilroyMedium black">Exhibitions</div>
 					<div class="topSpacer tiny black filterBtn clickable" type="1">Future&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
-					<div class="topSpacerSmall tiny black bold filterBtn clickable" type="2">Present&nbsp;&nbsp;<img src="static/images/rectangle.svg" /></div>
+					<div class="topSpacerSmall tiny black filterBtn filterBtnActive clickable" type="2">Present&nbsp;&nbsp;<img src="static/images/rectangle.svg" /></div>
 					<div class="topSpacerSmall tiny black filterBtn clickable" type="3"><?php echo date('Y')-1;?>&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
 					<div class="topSpacerSmall tiny black filterBtn clickable" type="4">Past&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
 				</div>
@@ -76,11 +76,11 @@
 			$(".filterBtn").click(function(){
 				
 				$(".filterBtn").each(function(){
-					$(this).removeClass("bold");
+					$(this).removeClass("filterBtnActive");
 					$(this).find("img").addClass("hidden")
 				});
 
-				$(this).addClass("bold");
+				$(this).addClass("filterBtnActive");
 				$(this).find("img").removeClass("hidden")
 
 				offset=0;

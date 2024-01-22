@@ -31,7 +31,7 @@
 
         if(@$save){
 
-            if(isEmpty($name) || isEmpty($text) || isEmpty($image)){
+            if(isEmpty($name) || isEmpty($image)){
 				$error="Please fill all required fields";
             }
 
@@ -95,7 +95,7 @@
 
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Biography <sup class='red'>*</sup></td>
+                    <td>Biography</td>
                     <td width="20px"></td>
                     <td><?php echoTextArea("text", @$text,"ckeditor"); ?></td>
                 </tr>

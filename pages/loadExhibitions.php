@@ -14,14 +14,23 @@
 	else if($type==4){$from_year=date('Y')-2;}
 	
 	if($type!=4){
-		$query="SELECT * FROM `exhibitions` WHERE `from_year`='".$from_year."' AND `status`='1' ORDER BY `from_year` , `from_month` , `from_day` DESC LIMIT $offset , $limit ";
+		$query="SELECT * FROM `exhibitions` WHERE `from_year`='".$from_year."' AND `status`='1' ORDER BY `from_year` DESC , `from_month` DESC , `from_day` DESC LIMIT $offset , $limit ";
 	}else{
-		$query="SELECT * FROM `exhibitions` WHERE `from_year`<='".$from_year."' AND `status`='1' ORDER BY `from_year` , `from_month` , `from_day` DESC LIMIT $offset , $limit ";
+		$query="SELECT * FROM `exhibitions` WHERE `from_year`<='".$from_year."' AND `status`='1' ORDER BY `from_year` DESC , `from_month` DESC , `from_day` DESC LIMIT $offset , $limit ";
 	}
 
 	$result=runQuery($query); 
 
-	if(numRows($result)>0){
+	$rows=numRows($result);
+
+	if($rows==0 && $type==2 && $offset==0){
+		$query="SELECT * FROM `exhibitions`  WHERE `status`='1' ORDER BY `from_year` DESC , `from_month` DESC , `from_day` DESC LIMIT $offset , $limit ";
+		$result=runQuery($query); 
+
+		$rows=numRows($result);
+	}
+
+	if($rows>0){
 
 		echo'<div class="row" id="exhibitions">';
 
@@ -41,18 +50,17 @@
 				$date1 = new DateTime($from_date);
 				$date2 = new DateTime($to_date);
 				$days  = $date2->diff($date1)->format('%a');
-				$tmpWidth=(($days*100)/365)*0.45;
+				$tmpWidth=(($days*100)/42)*0.45;
 
 				$tmp_title=str_replace(" ","_",$title);
 				$tmp_title=str_replace("-","_",$tmp_title);
 				$tmp_title=str_replace("&","and",$tmp_title);
 				$url=$tmp_title."-".$id;
-				
-				
-				echo'<div class="col-lg-6 col-12">
+								
+				echo'<div class="col-lg-6 col-12" days='.$days.'>
 					<div class="exhibition bottomSpacer">
 						<a href="exhibition/'.$url.'">
-							<div><img src="exhibitions/images/'.@$image.'" width="100%" /></div>
+							<div class="blackBg"><img src="exhibitions/images/'.@$image.'" width="100%" /></div>
 						</a>
 						<div class="topSpacer tiny black">
 							<div class="floatLeft gilroyLight">'.$from_date.'</div>
@@ -61,7 +69,7 @@
 							<div class="clear"></div>
 						</div>
 						<div class="topSpacerSmall small black gilroyMedium">
-							<a class="small blackGrey" href="exhibition/'.$url.'">'.$title.'</a>
+							<a class="medium blackGrey" href="exhibition/'.$url.'">'.$title.'</a>
 						</div>
 						<div class="topSpacerSmall small black">';
 							if(count($artists_id)>1){echo'Resident Artists';}

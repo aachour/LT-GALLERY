@@ -93,7 +93,7 @@
                 </tr>
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Author<sup class="red">*</sup></td>
+                    <td>Author - Magazine/Newspaper<sup class="red">*</sup></td>
                     <td width=20px""></td>
                     <td><?php echoTextField("author",@$author,"ckeditor"); ?></td>
                 </tr>
@@ -105,7 +105,7 @@
                 </tr>
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Link<sup class="red">*</sup></td>
+                    <td>Link</td>
                     <td width="20px"></td>
                     <td><?php echoTextField("link",@$link,"ckeditor"); ?></td>
                 </tr>

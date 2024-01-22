@@ -27,7 +27,7 @@
 
         <?php
         if(@$save){
-            if(isEmpty($title) || isEmpty($subtitle) || isEmpty($text) || isEmpty($image) ){
+            if(isEmpty($title) || isEmpty($text) || isEmpty($image) ){
                 $error="Please fill required filed";
             }
             if(@$error==''){
@@ -100,7 +100,7 @@
                 </tr>
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Subtitle <sup class="red">*</sup></td>
+                    <td>Subtitle</td>
                     <td width=20px""></td>
                     <td><?php echoTextField("subtitle",@$subtitle,"ckeditor"); ?></td>
                 </tr>
@@ -112,7 +112,7 @@
                 </tr>
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Link<sup class="red">*</sup></td>
+                    <td>Link</td>
                     <td width="20px"></td>
                     <td><?php echoTextField("link",@$link,"ckeditor"); ?></td>
                 </tr>

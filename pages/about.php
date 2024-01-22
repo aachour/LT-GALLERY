@@ -1,5 +1,5 @@
 <?php
-	@$PAGE_TITLE="ABOUT US | LT GALLERY";
+	@$PAGE_TITLE="About | LT Gallery";
 	@$CURRENT_SECTION="ABOUT US";
 	include ("../includes/top.php");
 	

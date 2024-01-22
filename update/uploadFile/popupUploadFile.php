@@ -49,10 +49,10 @@
 				$(".ajax-file-upload-container").html("");
 				$("#popupUploadFile").find(".closeBtn").removeClass("hidden");
 
-				$("#file").val(filename);
-				$("#fileTxt").val("File uploaded");
-				$("#fileViewDelete").removeClass("hidden");
-				$("#fileViewDelete").find("#fileView").attr("href","../../exhibitions/files/"+filename);
+				$("#file"+fileNumb).val(filename);
+				$("#file"+fileNumb+"Txt").val("File uploaded");
+				$("#file"+fileNumb+"ViewDelete").removeClass("hidden");
+				$("#file"+fileNumb+"ViewDelete").find("#file"+fileNumb+"View").attr("href","../../exhibitions/files/"+filename);
 			},
 			onError: function(files,status,errMsg,pd){
 				$("#popupUploadFile").find(".closeBtn").removeClass("hidden");

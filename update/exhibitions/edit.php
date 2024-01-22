@@ -33,7 +33,7 @@
 
         if(@$save){
 
-            if(isEmpty($category_id) || isEmpty($title) || isEmpty($text) || isEmpty($image)){
+            if(isEmpty($category_id) || isEmpty($title) || isEmpty($image)){
 				$error="Please fill all required fields";
             }
             
@@ -43,6 +43,7 @@
                     $query="UPDATE `".$table."` SET
                     `category_id`='".sanitizeInput(@$category_id)."',
                     `artists_id`='".json_encode(@$artists_id)."',
+                    `other_artists`='".sanitizeInput($other_artists)."',
                     `title`='".sanitizeInput($title,"HTML")."',
                     `text`='".sanitizeInput($text,"HTML")."',
                     `venue`='".sanitizeInput($venue,"HTML")."',
@@ -55,14 +56,17 @@
                     `to_month`='".sanitizeInput($to_month,"HTML")."',
                     `to_year`='".sanitizeInput($to_year,"HTML")."',
                     `file`='".sanitizeInput(@$file,"HTML")."',
+                    `file2`='".sanitizeInput(@$file2,"HTML")."',
+                    `file3`='".sanitizeInput(@$file3,"HTML")."',
                     `image`='".sanitizeInput($image,"HTML")."',
                     `dateedit`=NOW()
 					WHERE `id`=".$entryId;
                 }
                 else{
-					$query="INSERT INTO `".$table."` (`category_id` , `artists_id` , `title` , `text` , `venue` , `city` , `country_id` , `from_day` , `from_month`  , `from_year` , `to_day` , `to_month` , `to_year` , `file` , `image` , `datesubmit` , `status`) 
+					$query="INSERT INTO `".$table."` (`category_id` , `artists_id` , `other_artists` , `title` , `text` , `venue` , `city` , `country_id` , `from_day` , `from_month`  , `from_year` , `to_day` , `to_month` , `to_year` , `file` , `file2` , `file3` , `image` , `datesubmit` , `status`) 
 							VALUES( '".sanitizeInput($category_id)."' , 
                                     '".json_encode(@$artists_id)."' ,
+                                    '".sanitizeInput($other_artists)."' , 
                                     '".sanitizeInput($title,"HTML")."' , 
                                     '".sanitizeInput($text,"HTML")."' , 
                                     '".sanitizeInput($venue,"HTML")."' , 
@@ -75,6 +79,8 @@
                                     '".sanitizeInput(@$to_month)."' ,
                                     '".sanitizeInput(@$to_year)."' ,
                                     '".sanitizeInput(@$file,"HTML")."' ,
+                                    '".sanitizeInput(@$file2,"HTML")."' ,
+                                    '".sanitizeInput(@$file3,"HTML")."' ,
                                     '".sanitizeInput($image,"HTML")."' , 
 									NOW() , 
 									'1')";
@@ -166,6 +172,13 @@
                         </select>
                     </td>
                 </tr>
+
+                <tr height="20px"></tr>
+                <tr>
+                    <td>Other Artists<br />[comma separator]</td>
+                    <td width="20px"></td>
+                    <td><?php echoTextField("other_artists", @$other_artists,"ckeditor"); ?></td>
+                </tr>
                 
                 <tr height="20px"></tr>
                 <tr>
@@ -177,24 +190,10 @@
 
                 <tr height="20px"></tr>
                 <tr>
-                    <td>Text <sup class='red'>*</sup></td>
+                    <td>Text</td>
                     <td width="20px"></td>
                     <td><?php echoTextArea("text", @$text,"ckeditor"); ?></td>
                 </tr>
-
-                <!-- <tr height="20px"></tr>
-                <tr>
-                    <td>Date From</td>
-                    <td width="20px"></td> 
-                    <td><input type="text" class="datepicker" id="date_from" name="date_from" value="<?php echo @$date_from;?>" /></td>
-                </tr>
-
-                <tr height="20px"></tr>
-                <tr>
-                    <td>Date To</td>
-                    <td width="20px"></td> 
-                    <td><input type="text" class="datepicker" id="date_to" name="date_to" value="<?php echo @$date_to;?>" /></td>
-                </tr> -->
 
                 <tr height="20px"></tr>
                 <tr>
@@ -236,7 +235,7 @@
 
                 <tr height="10px"></tr>
         		<tr>
-                    <td>Date From <sup class='red'>*</sup></td>
+                    <td>Date From</td>
                     <td width="20px"></td>
                     <td>
                         <?php
@@ -250,7 +249,7 @@
 
                 <tr height="10px"></tr>
         		<tr>
-                    <td>Date To <sup class='red'>*</sup></td>
+                    <td>Date To</td>
                     <td width="20px"></td>
                     <td>
                         <?php
@@ -264,18 +263,54 @@
 
                 <tr height="20px"></tr>
                 <tr>
-                    <td>File <sup class='red'>*</sup></td>
+                    <td>File</td>
                     <td width="20px"></td>
                     <td>
                         <div>
-                            <input type="text" value="<?php if(@$file!=""){echo "File uploaded";}?>" id="fileTxt" disabled />
-                            <input type="hidden" value="<?php echo @$file;?>" id="file" name="file" />
-                            <input type="button" class="browseBtn" id="exhibitionFileBrowseBtn" value="BROWSE" />
+                            <input type="text" value="<?php if(@$file!=""){echo "File uploaded";}?>" id="file1Txt" disabled />
+                            <input type="hidden" value="<?php echo @$file;?>" id="file1" name="file" />
+                            <input type="button" class="browseBtn exhibitionFileBrowseBtn" value="BROWSE" file="1" />
                         </div>
-                        <div class="topSpacerSmaller tiny textRight <?php if(@$file==""){echo "hidden";}?>" id="fileViewDelete">
-                            <a class="tiny" href="<?php if(@$file!=""){echo "../../exhibitions/images/".@$file;}?>" id="fileView" target="_blank">View</a>
+                        <div class="topSpacerSmaller tiny textRight <?php if(@$file==""){echo "hidden";}?>" id="file1ViewDelete">
+                            <a class="tiny" href="<?php if(@$file!=""){echo "../../exhibitions/files/".@$file;}?>" id="file1View" target="_blank">View</a>
                             &nbsp;|&nbsp;
-                            <span class="tiny clickable" id="fileDelete">Delete</span>
+                            <span class="fileDelete tiny clickable" file="1">Delete</span>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr height="20px"></tr>
+                <tr>
+                    <td>File2 </td>
+                    <td width="20px"></td>
+                    <td>
+                        <div>
+                            <input type="text" value="<?php if(@$file2!=""){echo "File uploaded";}?>" id="file2Txt" disabled />
+                            <input type="hidden" value="<?php echo @$file2;?>" id="file2" name="file2" />
+                            <input type="button" class="browseBtn exhibitionFileBrowseBtn" value="BROWSE" file="2" />
+                        </div>
+                        <div class="topSpacerSmaller tiny textRight <?php if(@$file2==""){echo "hidden";}?>" id="file2ViewDelete">
+                            <a class="tiny" href="<?php if(@$file2!=""){echo "../../exhibitions/files/".@$file2;}?>" id="file2View" target="_blank">View</a>
+                            &nbsp;|&nbsp;
+                            <span class="fileDelete tiny clickable" file="2">Delete</span>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr height="20px"></tr>
+                <tr>
+                    <td>File3 </td>
+                    <td width="20px"></td>
+                    <td>
+                        <div>
+                            <input type="text" value="<?php if(@$file3!=""){echo "File uploaded";}?>" id="file3Txt" disabled />
+                            <input type="hidden" value="<?php echo @$file3;?>" id="file3" name="file3" />
+                            <input type="button" class="browseBtn exhibitionFileBrowseBtn" value="BROWSE" file="3" />
+                        </div>
+                        <div class="topSpacerSmaller tiny textRight <?php if(@$file3==""){echo "hidden";}?>" id="file3ViewDelete">
+                            <a class="tiny" href="<?php if(@$file3!=""){echo "../../exhibitions/files/".@$file3;}?>" id="file3View" target="_blank">View</a>
+                            &nbsp;|&nbsp;
+                            <span class="fileDelete tiny clickable" file="3">Delete</span>
                         </div>
                     </td>
                 </tr>
@@ -342,15 +377,17 @@
             width: '100%'
         });
 
-        $("#exhibitionFileBrowseBtn").click(function(){
+        $(".exhibitionFileBrowseBtn").click(function(){
+            fileNumb=$(this).attr("file");
             $("#popupUploadFile").removeClass("hidden");
         })
 
-        $("#fileDelete").click(function(){
-            $("#fileTxt").val("");
-            $("#file").val("");
-            $("#fileViewDelete").addClass("hidden");
-            $("#fileView").attr("href","");
+        $(".fileDelete").click(function(){
+            var fileCount=$(this).attr("file");
+            $("#file"+fileCount+"Txt").val("");
+            $("#file"+fileCount+"").val("");
+            $("#file"+fileCount+"ViewDelete").addClass("hidden");
+            $("#file"+fileCount+"View").attr("href","");
         });
         
 

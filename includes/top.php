@@ -59,12 +59,12 @@
 
 				<div class="col2">
 					<div class="nav textRight">
-						<a class="small proximaMd <?php if(@$CURRENT_SECTION=="EXHIBITIONS"){echo "red";}else{echo "blackRed";}?>" href="exhibitions/">Exhibitions</a>
-						<a class="small proximaMd <?php if(@$CURRENT_SECTION=="ARTISTS"){echo "red";}else{echo "blackRed";}?>" href="artists/">Artists</a>
-						<!-- <a class="small proximaMd <?php if(@$CURRENT_SECTION=="PODCASTS"){echo "red";}else{echo "blackRed";}?>" href="podcasts/">Podcasts</a> -->
-						<a class="small proximaMd <?php if(@$CURRENT_SECTION=="NEWS"){echo "red";}else{echo "blackRed";}?>" href="news/">News</a>
-						<a class="small proximaMd <?php if(@$CURRENT_SECTION=="ABOUT US"){echo "red";}else{echo "blackRed";}?>" href="about/">About</a>
-						<a class="small proximaMd <?php if(@$CURRENT_SECTION=="CONTACT US"){echo "red";}else{echo "blackRed";}?>" href="contactus/">Contact Us</a>
+						<a class="small tab black <?php if(@$CURRENT_SECTION=="EXHIBITIONS"){echo "tabActive";} ?>" href="exhibitions/">Exhibitions</a>
+						<a class="small tab black <?php if(@$CURRENT_SECTION=="ARTISTS"){echo "tabActive";} ?>" href="artists/">Artists</a>
+						<!-- <a class="small tab black <?php if(@$CURRENT_SECTION=="PODCASTS"){echo "tabActive";} ?>" href="podcasts/">Podcasts</a> -->
+						<a class="small tab black <?php if(@$CURRENT_SECTION=="NEWS"){echo "tabActive";} ?>" href="news/">News</a>
+						<a class="small tab black <?php if(@$CURRENT_SECTION=="ABOUT US"){echo "tabActive";} ?>" href="about/">About</a>
+						<a class="small tab black <?php if(@$CURRENT_SECTION=="CONTACT US"){echo "tabActive";} ?>" href="contactus/">Contact Us</a>
 					</div>
 				</div>
 
@@ -100,17 +100,17 @@
 			<div class="burger clickable" id="burger2"></div>
 			<div class="clear"></div>
 
-			<div class="topSpacerBig"><a class="small proximaMd <?php if(@$CURRENT_SECTION=="EXHIBITIONS"){echo "red";}else{echo "blackRed";}?>" href="exhibitions/">Exhibitions</a></div>
+			<div class="topSpacerBig"><a class="small tab black <?php if(@$CURRENT_SECTION=="EXHIBITIONS"){echo "tabActive";}?>" href="exhibitions/">Exhibitions</a></div>
 
-			<div class="topSpacer"><a class="small proximaMd <?php if(@$CURRENT_SECTION=="ARTISTS"){echo "red";}else{echo "blackRed";}?>" href="artists/">Artists</a></div>
+			<div class="topSpacer"><a class="small tab black <?php if(@$CURRENT_SECTION=="ARTISTS"){echo "tabActive";}?>" href="artists/">Artists</a></div>
 
-			<!-- <div class="topSpacer"><a class="small proximaMd <?php if(@$CURRENT_SECTION=="PODCASTS"){echo "red";}else{echo "blackRed";}?>" href="podcasts/">Podcasts</a></div> -->
+			<!-- <div class="topSpacer"><a class="small tab black <?php if(@$CURRENT_SECTION=="PODCASTS"){echo "tabActive";}?>" href="podcasts/">Podcasts</a></div> -->
 
-			<div class="topSpacer"><a class="small proximaMd <?php if(@$CURRENT_SECTION=="NEWS"){echo "red";}else{echo "blackRed";}?>" href="news/">News</a></div>
+			<div class="topSpacer"><a class="small tab black <?php if(@$CURRENT_SECTION=="NEWS"){echo "tabActive";}?>" href="news/">News</a></div>
 
-			<div class="topSpacer"><a class="small proximaMd <?php if(@$CURRENT_SECTION=="ABOUT US"){echo "red";}else{echo "blackRed";}?>" href="about/">About</a></div>
+			<div class="topSpacer"><a class="small tab black <?php if(@$CURRENT_SECTION=="ABOUT US"){echo "tabActive";}?>" href="about/">About</a></div>
 
-			<div class="topSpacer"><a class="small proximaMd <?php if(@$CURRENT_SECTION=="CONTACT US"){echo "red";}else{echo "blackRed";}?>" href="contactus/">Contact Us</a></div>
+			<div class="topSpacer"><a class="small tab black <?php if(@$CURRENT_SECTION=="CONTACT US"){echo "tabActive";}?>" href="contactus/">Contact Us</a></div>
 
 		</div>
 
