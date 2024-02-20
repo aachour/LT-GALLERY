@@ -1,8 +1,8 @@
 <?php
-	$pageTitle = 'TOP BANNER';
-	$section = 'TOP BANNER';
-	$table='top_banner';
-	$folder='../../top_banner/';
+	$pageTitle = 'HOME TEXT';
+	$section = 'HOME TEXT';
+	$table='home_text';
+	//$folder='../../home_text/';
 
 	include('../top.php');
 
@@ -30,7 +30,7 @@
 
         if(@$save){
 
-			if(isEmpty($image)){
+			if(isEmpty($text)){
 				$error="Please fill all required fields";
             }
 
@@ -38,17 +38,9 @@
 
 				if(!isEmpty($entryId)){
                     $query="UPDATE `".$table."` SET
-                    `image`='".sanitizeInput($image,"HTML")."',
-                    `link`='".sanitizeInput($link,"HTML")."',
+                    `text`='".sanitizeInput($text,"HTML")."',
                     `dateedit`=NOW()
 					WHERE `id`=".$entryId;
-                }else{
-                    $query = "INSERT INTO `" .$table. "` ( `image` , `link` , `datesubmit` ,`status`)
-                    VALUES( '" . sanitizeInput($image, "HTML") . "' , 
-                            '" . sanitizeInput($link, "HTML") . "' , 
-                            NOW(),
-                            '1'
-                        )";
                 }
 				
                 if(runQuery($query)){
@@ -85,29 +77,10 @@
             <table cellpadding="0" cellspacing="0" class="prompt small">
 
                 <tr>
-                    <td>Link </td>
+                    <td width="150px">Title <sup class='red'>*</sup></td>
                     <td width="20px"></td>
-                    <td width="500px"><?php echoTextField("link", @$link,"ckeditor"); ?></td>
+                    <td width="700px"><?php echoTextField("text", @$text,"ckeditor"); ?></td>
                 </tr>
-
-                <tr height="20px"></tr>
-                <tr>
-                    <td>Image <sup class='red'>*</sup><br /><span class="tiny">[2000x700px]</span></td>
-                    <td width="20px"></td>
-                    <td>
-                        <div>
-                            <input type="text" class="" value="<?php if(@$image!=""){echo "Image uploaded";}?>" id="imageTxt" disabled />
-                            <input type="hidden" value="<?php echo @$image;?>" id="image" name="image" />
-                            <input type="button" class="browseBtn" id="topBannerBrowseBtn" value="BROWSE" />
-                        </div>
-                        <div class="topSpacerSmaller tiny textRight <?php if(@$image==""){echo "hidden";}?>" id="imageViewDelete">
-                            <a class="tiny" href="<?php if(@$image!=""){echo "../../topbanner/images/".@$image;}?>" id="imageView" target="_blank">View</a>
-                            &nbsp;|&nbsp;
-                            <span class="tiny clickable" id="imageDelete">Delete</span>
-                        </div>
-                    </td>
-                </tr>
-
 
                 <tr height="10px"></tr>
                 <tr>

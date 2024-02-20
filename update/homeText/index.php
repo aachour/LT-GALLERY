@@ -1,8 +1,8 @@
 <?php
-	$pageTitle = 'FOOTER';
-	$section = 'FOOTER';
-	$table='footer';
-	//$folder='../../footer/';
+	$pageTitle = 'HOME TEXT';
+	$section = 'HOME TEXT';
+	$table='home_text';
+	//$folder='../../home_text/';
 
 	include('../top.php');
 
@@ -49,26 +49,13 @@
             }else if($rows>0){
                 echo "<table cellpadding='0' cellspacing='0' border='0' class='listingTable' width='100%'>
                     <tr class='head blue'>
-						<th>Address</th>
-						<th>Working Hours</th>
-						<th>Phone</th>
-						<th>Email</th>
-						<th>Social Media</th>
+						<th>Text</th>
 						<th>Actions</th>
 					</tr>";
                 while($row=fetchArray($result)){
                     foreach($row as $key => $temp){$$key = stripslashes(($row[$key]));}
 					echo '<tr>';
-						echo "<td>".sanitizeInput(@$address)."</td>";
-						echo "<td>".sanitizeInput(@$working_hours)."</td>";
-						echo "<td>".sanitizeInput(@$phone)."</td>";
-						echo "<td>".sanitizeInput(@$email)."</td>";
-						echo "<td>";
-							echo sanitizeInput(@$asocial)."<br />";
-							echo sanitizeInput(@$instagram)."<br />";
-							echo sanitizeInput(@$youtube)."<br />";
-							echo sanitizeInput(@$linkedin)."<br />";
-						echo"</td>";
+						echo "<td>".sanitizeInput($text,"HTML")."</td>";
 						echo "<td>";
 							echo"<form action='edit.php' method='post'>
                                 <input type='hidden' name='id' value='".$id."'/>

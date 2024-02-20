@@ -17,19 +17,29 @@
 
 				<div class="col1">
 					<div class="medium gilroyMedium black">Exhibitions</div>
-					<div class="topSpacer tiny black filterBtn clickable" type="1">Future&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
-					<div class="topSpacerSmall tiny black filterBtn filterBtnActive clickable" type="2">Present&nbsp;&nbsp;<img src="static/images/rectangle.svg" /></div>
-					<div class="topSpacerSmall tiny black filterBtn clickable" type="3"><?php echo date('Y')-1;?>&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
-					<div class="topSpacerSmall tiny black filterBtn clickable" type="4">Past&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
+					<!-- <div class="topSpacer tiny black filterBtn clickable" year="<?php echo date('Y')+1; ?>">Future&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div> -->
+					<div class="topSpacerSmall tiny black filterBtn filterBtnActive clickable" year="<?php echo date('Y'); ?>">Present&nbsp;&nbsp;<img src="static/images/rectangle.svg" /></div>
+					<!-- <div class="topSpacerSmall tiny black filterBtn clickable" year="<?php echo date('Y')-1; ?>"><?php echo date('Y')-1;?>&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div> -->
+					<div class="topSpacerSmall tiny black">Past</div>
+					<?php 
+						$query="SELECT DISTINCT `from_year` FROM `exhibitions` WHERE `from_year` < '".(date('Y'))."' AND `from_year` > 0 AND `status`='1' ";
+						$result=runQuery($query);
+						if(numRows($result)>0){
+							while($row=fetchArray($result)){
+								foreach($row as $key => $item){$$key = stripslashes(($row[$key]));}	
+								echo'<div class="topSpacerSmall micro black filterBtn clickable" year="'.$from_year.'">'.$from_year.'&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>';
+							}
+						}
+					?>
 				</div>
 				
 				<div class="col2">
 
+					<div id="allExhibitions"></div>
+
 					<div class="textCenter hidden" id="loader">
 						<img src="static/images/loader.gif" width="150px" />
 					</div>
-
-					<div id="allExhibitions"></div>
 
 					<div class="topSpacer textCenter">
 						<input type="button" class="small blackGreyBtn" id="loadMoreBtn" value="Load More" />
@@ -52,11 +62,11 @@
 
 		var limit=4;
 		var offset=0;
-		var type=2;
+		var year=new Date().getFullYear();
 
-		function loadExhibitions(type,limit,offset){
+		function loadExhibitions(year,limit,offset){
 			$("#loader").removeClass("hidden");
-			$.post("loadExhibitions/",{"type":type , "limit":limit , "offset":offset},function(result){
+			$.post("loadExhibitions/",{"year":year , "limit":limit , "offset":offset},function(result){
 				$("#loader").addClass("hidden");
 				if(result!=""){
 					$("#allExhibitions").append(result);
@@ -71,7 +81,7 @@
 
 		$(document).ready(function(){
 			
-			loadExhibitions(type,limit,offset);
+			loadExhibitions(year,limit,offset);
 
 			$(".filterBtn").click(function(){
 				
@@ -85,17 +95,17 @@
 
 				offset=0;
 
-				type=$(this).attr("type");
+				year=$(this).attr("year");
 
 				$("#allExhibitions").html("");
 				$("#loadMoreBtn").removeClass("hidden");
-				loadExhibitions(type,limit,offset)
+				loadExhibitions(year,limit,offset)
 				
 			});
 
 			$("#loadMoreBtn").click(function(){
 				offset+=4;
-				loadExhibitions(type,limit,offset);
+				loadExhibitions(year,limit,offset);
 			});
 
 		});

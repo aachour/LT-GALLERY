@@ -42,6 +42,10 @@
                     `working_hours`='".sanitizeInput($working_hours,"HTML")."',
                     `phone`='".sanitizeInput($phone,"HTML")."',
                     `email`='".sanitizeInput($email,"HTML")."',
+                    `asocial`='".sanitizeInput($asocial,"HTML")."',
+                    `instagram`='".sanitizeInput($instagram,"HTML")."',
+                    `youtube`='".sanitizeInput($youtube,"HTML")."',
+                    `linkedin`='".sanitizeInput($linkedin,"HTML")."',
                     `dateedit`=NOW()
 					WHERE `id`=".$entryId;
                 }
@@ -82,7 +86,7 @@
                 <tr>
                     <td>Address <sup class='red'>*</sup></td>
                     <td width="20px"></td>
-                    <td><?php echoTextField("address", @$address,"ckeditor"); ?></td>
+                    <td width="500px"><?php echoTextField("address", @$address,"ckeditor"); ?></td>
                 </tr>
 
                 <tr height="20px"></tr>
@@ -104,6 +108,34 @@
                     <td>Email</td>
                     <td width="20px"></td>
                     <td><?php echoTextField("email", @$email,"ckeditor"); ?></td>
+                </tr>
+
+                <tr height="20px"></tr>
+                <tr>
+                    <td>A-social</td>
+                    <td width="20px"></td>
+                    <td><?php echoTextField("asocial", @$asocial,"ckeditor"); ?></td>
+                </tr>
+
+                <tr height="20px"></tr>
+                <tr>
+                    <td>Instagram</td>
+                    <td width="20px"></td>
+                    <td><?php echoTextField("instagram", @$instagram,"ckeditor"); ?></td>
+                </tr>
+
+                <tr height="20px"></tr>
+                <tr>
+                    <td>Youtube</td>
+                    <td width="20px"></td>
+                    <td><?php echoTextField("youtube", @$youtube,"ckeditor"); ?></td>
+                </tr>
+
+                <tr height="20px"></tr>
+                <tr>
+                    <td>Linkedin</td>
+                    <td width="20px"></td>
+                    <td><?php echoTextField("linkedin", @$linkedin,"ckeditor"); ?></td>
                 </tr>
                
                 <tr height="10px"></tr>

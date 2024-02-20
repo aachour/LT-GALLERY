@@ -75,14 +75,14 @@
 
 				<div class="col1">
 					<div class="medium gilroyMedium black"><?php echo $title; ?></div>
-					<div class="topSpacer tiny black bold filterBtn clickable" type="1">Details&nbsp;&nbsp;<img src="static/images/rectangle.svg" /></div>
-					<div class="topSpacerSmall tiny black filterBtn clickable" type="2">Artists&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
-					<div class="topSpacerSmall tiny black filterBtn clickable" type="3">Gallery&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
+					<div class="topSpacer tiny black bold filterBtn filterBtnActive clickable" section="1">Details&nbsp;&nbsp;<img src="static/images/rectangle.svg" /></div>
+					<div class="topSpacerSmall tiny black filterBtn clickable" section="2">Artists&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
+					<div class="topSpacerSmall tiny black filterBtn clickable" section="3">Gallery&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
 				</div>
 				
 				<div class="col2">
 
-					<div class="bottomSpacer">
+					<div class="bottomSpacer" id="details">
 						<img src="exhibitions/images/<?php echo $image; ?>" width="100%" />
 					</div>
 					
@@ -113,12 +113,17 @@
 								</a>
 							</div>
 							<?php }?>
-
+							
 							<?php 
 								if(count($artists_id)>0){
-									echo'<div class="topSpacer">
+									
+									echo'<div class="topSpacer" id="artists">
 										<input type="button" value="View Available Artworks" class="buttonTriangle small black" />
 									</div>';
+
+									echo'<div class="topSpacer small black gilroyMedium">Artists</div>';
+
+
 									foreach($artists_id as $artist_id){
 										$artist_name=getArtistName($artist_id);
 										$tmp_name=str_replace(" ","_",$artist_name);
@@ -170,7 +175,7 @@
 					</div>
 
 					<!--Gallery-->
-					<div class="topSpacerBigger">
+					<div class="topSpacerBigger" id="gallery">
 						<?php 
 							$query="SELECT * FROM `exhibition_images` WHERE `exhibition_id`='".$exhibition_id."' AND `status`='1' ORDER BY `listorder` ASC ";
 							$result=runQuery($query);
@@ -302,6 +307,28 @@
 		
 		$(document).ready(function(){
 			
+			$(".filterBtn").click(function(){
+
+				$(".filterBtn").removeClass("filterBtnActive");
+				$(".filterBtn").find("img").addClass("hidden");
+				$(".filterSection").addClass("hidden"); 
+
+				var value=$(this).attr("section");
+
+				$('.filterBtn[section="'+value+'"]').addClass("filterBtnActive");
+				$('.filterBtn[section="'+value+'"]').find("img").removeClass("hidden");
+				$('.filterSection[section="'+value+'"]').removeClass("hidden");
+
+				if(value=="1"){
+					var top=$('#details').offset().top;
+				}else if(value=="2"){
+					var top=$('#artists').offset().top;
+				}else if(value=="2"){
+					var top=$('#gallery').offset().top;
+				}
+				$("html,body").animate({"scrollTop":top-50},500);
+
+			});
 
 			$(".artistTab").click(function(){
 				$(".artistSection").addClass("hidden"); 

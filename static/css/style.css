@@ -93,13 +93,13 @@ a.underline{
 
 @media(max-width:900px){
 	.bigger{
-		font-size:8vw !important;
+		font-size:6.2vw !important;
 	}
 	.big{
-		font-size:6.5vw !important;
+		font-size:5.7vw !important;
 	}
 	.medium{
-		font-size:5.5vw !important;
+		font-size:5.2vw !important;
 	}
 	.small{
 		font-size:4vw !important;
@@ -107,14 +107,18 @@ a.underline{
 	.tiny{
 		font-size:3.5vw !important;
 	}
+	.micro{
+		font-size:3vw !important;
+		line-height:150% !important;
+	}
 }
 @media(min-width:900px){
 	.bigger{
-		font-size:2.5vw !important;
+		font-size:2.4vw !important;
 		line-height:150% !important;
 	}
 	.big{
-		font-size:2.4vw !important;
+		font-size:2.3vw !important;
 		line-height:150% !important;
 	}
 	.medium{
@@ -127,6 +131,10 @@ a.underline{
 	}
 	.tiny{
 		font-size:0.95vw !important;
+		line-height:150% !important;
+	}
+	.micro{
+		font-size:0.6vw !important;
 		line-height:150% !important;
 	}
 }
@@ -189,6 +197,9 @@ a.underline{
 	.topSpacerBig{
 		margin-top:25px;
 	}
+	.topSpacerBigger{
+		margin-top:40px;
+	}
 
 	.bottomSpacerSmall{
 		margin-bottom:5px;
@@ -199,10 +210,10 @@ a.underline{
 	.bottomSpacerBig{
 		margin-bottom:20px;
 	}
-	.topSpacerBigger{
-		margin-top:40px;
+	.bottomSpacerBigger{
+		margin-bottom:35px;
 	}
-	
+		
 	.rightSpacerSmall{
 		margin-right:10px;
 	}
@@ -250,6 +261,9 @@ a.underline{
 	}
 	.bottomSpacerBig{
 		margin-bottom:40px;
+	}
+	.bottomSpacerBigger{
+		margin-bottom:50px;
 	}
 
 	.rightSpacerSmall{
@@ -317,6 +331,10 @@ a.underline{
 	.threeQuarters{
 		width:80% !important;
 	}
+}
+
+.filterBtnActive , .filterBtn:hover{
+	font-family: 'Gilroy Light' !important;
 }
 
 .filterBtnActive , .filterBtn:hover{

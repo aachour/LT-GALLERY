@@ -4,26 +4,20 @@
 
 	include("../global/global.php");
 
-	$type=sanitizeInput($type);
+	$year=sanitizeInput($year);
 	$limit=sanitizeInput($limit);
 	$offset=sanitizeInput($offset);
-
-	if($type==1){$from_year=date('Y')+1;}
-	else if($type==2){$from_year=date('Y');}
-	else if($type==3){$from_year=date('Y')-1;}
-	else if($type==4){$from_year=date('Y')-2;}
 	
-	if($type!=4){
-		$query="SELECT * FROM `exhibitions` WHERE `from_year`='".$from_year."' AND `status`='1' ORDER BY `from_year` DESC , `from_month` DESC , `from_day` DESC LIMIT $offset , $limit ";
-	}else{
-		$query="SELECT * FROM `exhibitions` WHERE `from_year`<='".$from_year."' AND `status`='1' ORDER BY `from_year` DESC , `from_month` DESC , `from_day` DESC LIMIT $offset , $limit ";
-	}
+	$query="SELECT * FROM `exhibitions` WHERE `from_year`='".$year."' AND `status`='1' ORDER BY `from_year` DESC , `from_month` DESC , `from_day` DESC LIMIT $offset , $limit ";
 
 	$result=runQuery($query); 
 
 	$rows=numRows($result);
 
-	if($rows==0 && $type==2 && $offset==0){
+	$current_year=date('Y');
+
+	if($rows==0 && $year==$current_year && $offset==0){
+
 		$query="SELECT * FROM `exhibitions`  WHERE `status`='1' ORDER BY `from_year` DESC , `from_month` DESC , `from_day` DESC LIMIT $offset , $limit ";
 		$result=runQuery($query); 
 
@@ -38,8 +32,12 @@
 
 			while($row=fetchArray($result)){
 				foreach($row as $key => $item){$$key = stripslashes(($row[$key]));}	
-
-				$artists_id=json_decode($artists_id);
+				if(@$artists_id!=""){
+					$artists_id=json_decode($artists_id);
+				}
+				else{
+					@$artists_id=[];
+				}
 				
 				$from_date=$from_day."-".$from_month."-".$from_year;
 				$from_date=date('d M Y',strtotime($from_date));
@@ -58,7 +56,7 @@
 				$url=$tmp_title."-".$id;
 								
 				echo'<div class="col-lg-6 col-12" days='.$days.'>
-					<div class="exhibition bottomSpacer">
+					<div class="exhibition bottomSpacerBigger">
 						<a href="exhibition/'.$url.'">
 							<div class="blackBg"><img src="exhibitions/images/'.@$image.'" width="100%" /></div>
 						</a>
@@ -72,8 +70,8 @@
 							<a class="medium blackGrey" href="exhibition/'.$url.'">'.$title.'</a>
 						</div>
 						<div class="topSpacerSmall small black">';
-							if(count($artists_id)>1){echo'Resident Artists';}
-							else{echo getArtistName(@$artists_id[0]);}
+							if($artists_id !== null && is_array($artists_id) && count(@$artists_id)>1){echo'Resident Artists';}
+							else if(isset($artists_id[0])){echo getArtistName(@$artists_id[0]);}
 						echo'</div>
 						<div class="topSpacerSmall tiny black">'.truncate($text,130,"...").'</div>
 					</div>

@@ -17,7 +17,7 @@
 			<div class="content">
 
 				<div class="col1">
-					<div class="medium gilroyMedium">CONTACT US</div>
+					<div class="medium gilroyLight">CONTACT US</div>
 				</div>
 
 				<div class="col2">

@@ -203,9 +203,10 @@ body{
 	bottom:0px;
 	left:0px;
 	width:100%;
-	padding:5px;
+	padding:8% 5px 5px 5px;
 	color:#FFF !important;
-	background:#2B2B2B;
+	background:rgb(43, 43, 43, 0.6);
+	background-image: linear-gradient(to top, rgba(0,0,0,0.5), rgba(255,255,255,0.8));
 	z-index:99;
 }
 
@@ -382,7 +383,6 @@ body{
 		padding:20px 0px !important;
 	}
 	#footer .socialMedia{
-		margin-top:20px;
 		text-align:left;
 	}
 }
@@ -451,6 +451,20 @@ body{
 	background-position: cover;
 }
 
+.swiper-pagination{
+	/* top:75% !important; */
+}
+.swiper-pagination-bullet{
+	width:12px !important;
+	height:12px !important;
+	margin:0px 5px !important;
+	border:3px solid #FFF;
+	background:transparent !important;
+}
+.swiper-pagination-bullet-active {
+	border:0px;
+    background:rgba(255,255,255,0.6) !important;
+}
 
 input[type="button"].backTopBtn{
 	width:150px;

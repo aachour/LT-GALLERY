@@ -82,7 +82,7 @@
 				<div class="col2">
 
 					<div class="bottomSpacer">
-						<img src="artists/images/<?php echo $image; ?>" width="50%" />
+						<img src="artists/images/<?php echo $image; ?>" width="100%" />
 					</div>
 					
 					<div class="row" id="biography">
