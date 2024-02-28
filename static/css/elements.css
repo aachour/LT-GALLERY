@@ -291,6 +291,14 @@ body{
 	border-bottom:1px solid #000;
 	outline:none;
 }
+#contactus select{
+	width:95%;
+	padding:9px 5px;
+	border:0px;
+	border-bottom:1px solid #000;
+	background:transparent;
+	outline:none;
+}
 #contactus textarea{
 	width:95%;
 	height:169px;
@@ -452,18 +460,27 @@ body{
 }
 
 .swiper-pagination{
-	/* top:75% !important; */
+	bottom:3% !important;
 }
+
 .swiper-pagination-bullet{
-	width:12px !important;
-	height:12px !important;
+	width:20px !important;
+	height:20px !important;
 	margin:0px 5px !important;
-	border:3px solid #FFF;
+	border:5px solid rgba(255,255,255,0.7);
 	background:transparent !important;
 }
 .swiper-pagination-bullet-active {
 	border:0px;
-    background:rgba(255,255,255,0.6) !important;
+    background:rgba(255,255,255,0.7) !important;
+}
+@media(max-width:900px){
+	.swiper-pagination-bullet{
+		width:15px !important;
+		height:15px !important;
+		margin:0px 5px !important;
+		border:3px solid rgba(255,255,255,0.7);
+	}
 }
 
 input[type="button"].backTopBtn{

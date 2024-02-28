@@ -65,13 +65,13 @@
 						while($row=fetchArray($result)){
 							foreach($row as $key => $item){$$key = stripslashes(($row[$key]));}	
 							$date=$day."-".$month."-".$year;
-					        $date=date('d-m-Y',strtotime(@$date));
+					        $date=date('d-M-Y',strtotime(@$date));
 							echo'<div class="bottomSpacerBig article" status="0">
 								<div class="title">
 									<div class="tiny black gilroyLight">'.$date.'</div>
 									<div class="topSpacerSmaller">
 										<div class="floatLeft medium gilroyMedium">';
-											if($link!=""){echo'<a class="blackGrey" href="'.$link.'" target="_blank">';}
+											if($link!=""){echo'<a class="blackGrey gilroyMedium" href="'.$link.'" target="_blank">';}
 											echo @$title;
 											if($link!=""){echo'</a>';}
 										echo'</div>
@@ -79,7 +79,7 @@
 											<img src="static/images/triangle-right-big.png" width="25px"></div>
 										<div class="clear"></div>
 									</div>
-									<div class="topSpacerSmaller small black gilroyMedium">'.$author.'</div>
+									<div class="topSpacerSmaller small black gilroyLight">'.$author.'</div>
 									<div class="topSpacerSmall text tiny black">'.sanitizeInput(@$text,"HTML").'</div>
 								</div>
 							</div>';

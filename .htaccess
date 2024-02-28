@@ -23,6 +23,6 @@ RewriteRule  ^news/$ ./pages/news.php
 
 RewriteRule  ^about/$ ./pages/about.php
 
-RewriteRule  ^contactus/$ ./pages/contactus.php
+RewriteRule  ^contactus/(.*)$ ./pages/contactus.php?arg=$1
 
 RewriteRule  ^contactusSave/$ ./pages/contactusSave.php

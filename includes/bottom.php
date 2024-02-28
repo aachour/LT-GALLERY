@@ -47,7 +47,7 @@
 								<div class="newsletter">
 									<div class="tiny black">Sign up for our Newsletter</div>
 									<div class="topSpacerSmall">
-										<input type="text" class="tiny" placeholder="Email Addess" />
+										<input type="text" class="tiny" placeholder="Email Address" />
 										<input type="button" class="tiny" value="Submit" />
 									</div>
 								</div>

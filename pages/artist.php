@@ -69,7 +69,11 @@
 			<div class="content">
 
 				<div class="col1">
-					<div class="medium gilroyMedium black"><?php echo $name; ?></div>
+					<div style="margin-left:-5px;">
+						<a href="artists/" class="blackGrey tiny gilroyMedium"><img src="static/images/left-arrow-black.png" width="22px" />&nbsp;Artists</a>
+					</div>
+					
+					<div class="topSpacer medium gilroyMedium black"><?php echo $name; ?></div>
 					<div class="topSpacer tiny black filterBtn filterBtnActive clickable" section="1">Biography&nbsp;&nbsp;<img src="static/images/rectangle.svg" /></div>
 					<div class="topSpacerSmall tiny black filterBtn clickable" section="2">Gallery&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
 					<div class="topSpacerSmall tiny black filterBtn clickable" section="3">Honors & Awards&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
@@ -77,6 +81,12 @@
 					<div class="topSpacerSmall tiny black filterBtn clickable" section="5">Solo Exhibitions&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
 					<div class="topSpacerSmall tiny black filterBtn clickable" section="6">Collective Exhibitions&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
 					<div class="topSpacerSmall tiny black filterBtn clickable" section="7">Art Fairs&nbsp;&nbsp;<img src="static/images/rectangle.svg" class="hidden" /></div>
+					<div class="topSpacer">
+						<a href="contactus/1">
+							<input type="button" value="Enquire" class="blackGreyBtn small gilroyMedium" />
+						</a>
+					</div>
+					
 				</div>
 				
 				<div class="col2">

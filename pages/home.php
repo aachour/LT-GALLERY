@@ -51,7 +51,11 @@
 							if(numRows($result)==1){
 								$row=fetchArray($result);
 								foreach($row as $key => $item){$$key = stripslashes(($row[$key]));}	
-								echo'<div class="proximaSb bigger black"><img src="static/images/rectangle.svg" width="35px" />&nbsp;'.sanitizeInput(@$text).'</div>';
+								echo'<div class="proximaSb bigger black">
+									<div class="floatLeft"><img src="static/images/rectangle.svg" width="35px" /></div>
+									<div class="floatRight" style="width:calc(100% - 50px); line-height:170%;">'.sanitizeInput(@$text).'</div>
+									<div class="clear"></div>
+								</div>';
 							}
 						?>
 					</div>

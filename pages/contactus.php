@@ -3,6 +3,8 @@
 	@$CURRENT_SECTION="CONTACT US";
 	include ("../includes/top.php");
 	include ("../includes/popupMsg.php");
+	@extract(@$_GET);
+	echo'<input type="hidden" id="arg" value="'.@$arg.'">';
 ?>
 
 	<!------------------------------------------------------------------------------------------------->
@@ -43,16 +45,18 @@
 
 						<div class="topSpacer col-lg-6 col-12">
 							<div class="topSpacer">
-								<input type="text" class="small black" placeholder="Enquiry Reason" id="reason" value="" />
+								<select class="small black" id="reason">
+									<option value="General Enquiry">General Enquiry</option>
+									<option value="Enquiry of an artwork">Enquiry of an artwork</option>
+									<option value="Collaboration">Collaboration</option>
+								</select>
 							</div>
 							<div class="topSpacer">
 								<textarea class="small black" placeholder="Message" id="message"></textarea>
 							</div>
-						
 							<div class="topSpacerBig">
 								<input type="button" class="small" id="submitBtn" value="SUBMIT" />
 							</div>
-
 						</div>
 
 					</div>
@@ -82,6 +86,11 @@
 
 
 	$(document).ready(function(){
+
+		var arg=$("#arg").val();
+		if(arg=="1"){
+			$("#reason").val("Enquiry of an artwork");
+		}
 
 		$("#submitBtn").click(function(){
 
